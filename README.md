@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Setup
+==
+
+- Install Ruby 2.4.1 (chruby, rbenv, rvm, etc)
+- `bundle install`
