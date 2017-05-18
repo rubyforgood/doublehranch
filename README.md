@@ -3,6 +3,10 @@
 We are building a one-stop social networking platform for members and their
 families.
 
+## Architecture
+
+The app is built using Rails 5 with Postgres and AWS S3 for storing data.
+
 ## About Double H Ranch
 
 The Double H Ranch provides specialized programs and year-round support for
