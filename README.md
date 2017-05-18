@@ -3,6 +3,22 @@
 We are building a one-stop social networking platform for members and their
 families.
 
+## What This App Does
+
+* Admins import user data into the system, which triggers an email for
+  individuals to verify their account, create a login, and adjust their privacy
+  settings
+* Users are taken to a hub that aggregates social media data and links to:
+  * events calendar
+  * donor system
+  * volunteer system
+  * photo sharing / tagging /commenting
+  * chat
+  * newsletter sign-up
+  * HH Website
+* Admin dashboard is provided to provide user data (number of invites sent,
+  active users, etc)
+
 ## Architecture
 
 The app is built using Rails 5 with Postgres and AWS S3 for storing data.
