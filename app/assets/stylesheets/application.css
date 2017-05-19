@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require normalize.css/normalize.css
- *= require material-components-web/dist/material-components-web.css
+ *= require bootstrap/dist/css/bootstrap.css
  *= require_tree .
  *= require_self
  */

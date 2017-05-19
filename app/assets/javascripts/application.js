@@ -12,5 +12,5 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require material-components-web/dist/material-components-web.js
+//= require bootstrap/dist/js/bootstrap.js
 //= require_tree .
