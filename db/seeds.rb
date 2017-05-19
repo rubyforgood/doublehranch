@@ -6,10 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do
-  FactoryGirl.create(:user, :admin)
-end
+unless Rails.env.test?
+  10.times do
+    FactoryGirl.create(:user, :admin)
+  end
 
-100.times do
-  FactoryGirl.create(:user)
+  100.times do
+    FactoryGirl.create(:user)
+  end
 end
