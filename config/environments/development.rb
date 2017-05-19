@@ -59,4 +59,15 @@ Rails.application.configure do
   # Give Paperclip access to ImageMagick
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_region: 'us-east-2',
+    s3_credentials: {
+      s3_host_name: "s3-us-east-2.amazonaws.com",
+      bucket: "doublehranch-#{Rails.env}",
+      access_key_id: Rails.application.secrets[:aws_access_key_id],
+      secret_access_key: Rails.application.secrets[:aws_secret_access_key]
+    }
+  }
+
 end
