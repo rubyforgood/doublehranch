@@ -6,5 +6,4 @@ class User < ApplicationRecord
          :confirmable
 
   has_many :posts
-
 end

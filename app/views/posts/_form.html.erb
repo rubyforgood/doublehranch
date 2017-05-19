@@ -11,6 +11,6 @@
 <%= form_for @post, html: { multipart: true } do |f| %>
   <%= f.file_field :photo %>
   <%= f.text_field :caption %>
-
+  <%= f.text_field :tag_list, value: f.object.tag_list.to_s %>
   <%= f.submit "Create Post" %>
 <% end %>
