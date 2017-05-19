@@ -14,26 +14,70 @@ describe 'UserImporter' do
 
   it 'read the first row' do
     expect(subject.rows.first).to eq({
-                                      "Last Name"=>"zzzztt",
-                                      "Title Name"=>"zz. zzzzy zzzztt",
-                                      "Email"=>"zzzzztt86@gzzzz.zzz",
-                                      "Year "=>"2008,09",
-                                      "Position "=>"Outdoor Extreme",
-                                      "Additional Info"=>""
-                                      })
+      "Last Name"=>"zzzztt",
+      "Title Name"=>"zz. zzzzy zzzztt",
+      "Email"=>"zzzzztt86@gzzzz.zzz",
+      "Year "=>"2008,09",
+      "Position "=>"Outdoor Extreme",
+      "Additional Info"=>""
+      })
     end
 
-  context 'can sanitize the data' do
-    it 'splits the year' do
-      expect(subject.normalize_year("2016,14,17")).to eq(["2016", "2014", "2017"])
-    end
+    context 'sanitization' do
+      context 'year' do
+        it 'splits the year' do
+          expect(subject.normalize_year("2016,14,17")).to eq(["2016", "2014", "2017"])
+        end
 
-    it 'handles whitespace correctly' do
-      expect(subject.normalize_year("1234,    1123,  45, 34   ,14")).to eq(["1234", "1123", "2045", "2034", "2014"])
-    end
+        it 'handles whitespace correctly' do
+          expect(subject.normalize_year("1234,    1123,  45, 34   ,14")).to eq(["1234", "1123", "2045", "2034", "2014"])
+        end
 
-    it 'handles & correctly' do
-      expect(subject.normalize_year("  2016 &     14,   17")).to eq(["2016", "2014", "2017"])
+        it 'handles & correctly' do
+          expect(subject.normalize_year("  2016 &     14,   17")).to eq(["2016", "2014", "2017"])
+        end
+      end
+
+      context 'email' do
+      end
+
+      context 'position' do
+        it 'can get an array of positions' do
+          expect(subject.normalize_position("Barn Staff, Barn Director, Barn Director")).to eq(["Barn Staff", "Barn Director", "Barn Director"])
+        end
+      end
+
+      context 'matching' do
+        it 'can match years to positions in a perfect world' do
+          years = ["2016", "2014", "2017"]
+          positions = ["Barn Staff", "Barn Director", "Barn Director"]
+          expected = {
+            "2016"=>"Barn Staff",
+            "2014"=>"Barn Director",
+            "2017"=>"Barn Director"
+          }
+          expect(subject.join_year_and_position(years,positions)).to eq(expected)
+        end
+
+        it 'can match years to positions where there are less positions' do
+          years = ["2016", "2014", "2017"]
+          positions = ["Barn Staff", "Barn Director"]
+          expected = {
+            "2016"=>"Barn Staff",
+            "2014"=>"Barn Director",
+            "2017"=> nil
+          }
+          expect(subject.join_year_and_position(years,positions)).to eq(expected)
+        end
+        it 'can match years to positions when there are less years' do
+          years = ["2016", "2014"]
+          positions = ["Barn Staff", "Barn Director", "Barn Director"]
+          expected = {
+            "2016"=>"Barn Staff",
+            "2014"=>"Barn Director",
+          }
+          expect(subject.join_year_and_position(years,positions)).to eq(expected)
+        end
+      end
     end
   end
-end
