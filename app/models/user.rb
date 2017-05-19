@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          :confirmable
   has_many :email_templates, foreign_key: :author_id
+  has_many :posts
 end
 
