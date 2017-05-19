@@ -7,7 +7,7 @@ end
 
 ruby '2.4.1'
 
-gem 'coffee-rails', '~> 4.2'
+gem 'aws-sdk'
 gem 'devise'
 gem 'jbuilder', '~> 2.5'
 gem 'pg', '~> 0.20.0'

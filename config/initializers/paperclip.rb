@@ -1,7 +1,8 @@
 # config/initializers/paperclip.rb
 # If you want to disable paperclip attachments to S3 in the development environment,
 # remove the comments from the "if" condition below and restart the server.
-#if Rails.env.staging? || Rails.env.production?
+# if Rails.env.staging? || Rails.env.production?
+unless true # Rails.env.test?
 
   Paperclip::Attachment.default_options[:storage] = :s3
 
@@ -16,4 +17,4 @@
   # The only addition required to make the code work with DreamHost's DreamObjects..
   # Paperclip::Attachment.default_options[:s3_host_name] = 'objects.dreamhost.com'
   # Paperclip::Attachment.default_options[:s3_protocol] = 'https'
-#end
+end
