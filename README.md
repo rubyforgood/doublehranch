@@ -10,7 +10,7 @@ families.
 
 ## What This App Does
 
-* Admins import user data into the system, which triggers an email for
+* Admins import user data for alumni staff, counselors, campers, & volunteers into the system, which triggers an email for
   individuals to verify their account, create a login, and adjust their privacy
   settings
 * Users are taken to a hub that aggregates social media data and links to:
