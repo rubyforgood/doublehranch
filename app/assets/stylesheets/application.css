@@ -10,6 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require normalize.css/normalize.css
+ *= require material-components-web/dist/material-components-web.css
  *= require_tree .
  *= require_self
  */
