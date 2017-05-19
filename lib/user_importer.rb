@@ -3,7 +3,6 @@ class UserImporter
 
   def initialize(filename)
     @filename = filename
-
     @table = RemoteTable.new "#{@filename}"
   end
 
@@ -23,10 +22,16 @@ class UserImporter
     end
   end
 
+  def normalize_position(position)
+    list_of_positions = position.split(",")
+    list_of_positions.map do |position|
+      position.strip
+    end
+  end
+
+  def join_year_and_position(years, positions)
+    #TODO: set field needs review if the counts don't line up and/or notes
+    #section with why it doesn't line up.
+    Hash[years.zip(positions)]
+  end
 end
-# last name e.rows.first["Last Name"]
-# some stuff with names e.rows.first["Title Name"] maybe title or first name or last name or whatever
-# email e.rows.first["Email"] but sometimes 2 emails
-# year e.rows.first["Year"]
-# position e.rows.first["Position"]
-# e.rows.first["Additional Info"]
