@@ -2,7 +2,7 @@
   "name": "double_H_ranch",
   "private": true,
   "dependencies": {
-    "material-components-web": "^0.11.1",
+    "bootstrap": "4.0.0-alpha.6",
     "normalize.css": "^7.0.0"
   }
 }
