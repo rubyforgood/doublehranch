@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
   end
@@ -20,6 +20,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.includes(comments: [:user]).find(params[:id])
+    @comment = @post.comments.new(user: current_user)
   end
 
   private

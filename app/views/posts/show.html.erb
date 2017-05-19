@@ -1,2 +1,7 @@
 <%= image_tag @post.photo.url(:medium) %>
 <p><%= @post.caption %></p>
+
+
+<%= render @post.comments %>
+
+<%= render 'comments/form' %>
