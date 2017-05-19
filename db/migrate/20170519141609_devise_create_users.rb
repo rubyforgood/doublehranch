@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :maiden_name
       t.string :salutation
       t.hstore :privacy_settings
-      t.boolean :admin
+      t.boolean :admin, default: false
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
