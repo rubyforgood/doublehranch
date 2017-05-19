@@ -1,0 +1,16 @@
+<p>post form</p>
+
+<% if @post.errors.any? %>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @post, html: { multipart: true } do |f| %>
+  <%= f.file_field :photo %>
+  <%= f.text_field :caption %>
+
+  <%= f.submit "Create Post" %>
+<% end %>
