@@ -4,6 +4,7 @@ RSpec.describe HomeController, type: :controller do
 
   describe "GET #index" do
     subject { get :index }
+    let(:user) { create(:user) }
 
     context 'when not logged in' do
       it 'should redirect to the login page' do
@@ -13,7 +14,6 @@ RSpec.describe HomeController, type: :controller do
 
     context 'when user is logged in' do
       before do
-        user = FactoryGirl.create(:user)
         user.confirm
         sign_in user
       end
