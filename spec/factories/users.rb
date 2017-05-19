@@ -19,16 +19,3 @@ FactoryGirl.define do
     end
   end
 end
-    t.string "first_name"
-    t.string "last_name"
-    t.string "street_address"
-    t.string "city"
-    t.string "state"
-    t.string "country"
-    t.string "zip_code"
-    t.string "nickname"
-    t.string "maiden_name"
-    t.string "salutation"
-    t.hstore "privacy_settings"
-    t.boolean "admin", default: false
-    t.string "email", default: "", null: false
