@@ -10,5 +10,7 @@ class User < ApplicationRecord
   has_attached_file :profile_photo, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :profile_photo, content_type: /\Aimage\/.*\z/
 
+  has_many :sent_emails, foreign_key: :sender_id
+  has_many :received_emails, foreign_key: :recipient_id
 end
 
