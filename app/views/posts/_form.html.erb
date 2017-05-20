@@ -13,6 +13,6 @@
   <%= f.label :caption %>
   <%= f.text_field :caption %>
   <%= f.label :tag_list, "Tags (comma separated)" %>
-  <%= f.text_field :tag_list, value: f.object.tag_list.to_s %>
+  <%= f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path, :"data-delimiter" => ', ' %> 
   <%= f.submit "Create Post" %>
 <% end %>
