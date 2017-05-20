@@ -3,5 +3,6 @@ class EmailTemplate < ApplicationRecord
   validates :label, presence: true, uniqueness: true
   validates :subject, presence: true
   validates :body, presence: true
+  has_many :sent_emails
 end
 
