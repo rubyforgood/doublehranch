@@ -5,6 +5,5 @@ class Post < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
   acts_as_commentable
-  
   acts_as_taggable_on :tags
 end
