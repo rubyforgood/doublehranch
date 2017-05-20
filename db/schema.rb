@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170520183517) do
-=======
 ActiveRecord::Schema.define(version: 20170520174821) do
->>>>>>> 6dc87bda52404a1afa0df168a4dddfecaa982443
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +68,6 @@ ActiveRecord::Schema.define(version: 20170520174821) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-<<<<<<< HEAD
   create_table "programs", force: :cascade do |t|
     t.string "name"
     t.datetime "start_date"
@@ -81,8 +76,6 @@ ActiveRecord::Schema.define(version: 20170520174821) do
     t.datetime "updated_at", null: false
   end
 
-=======
->>>>>>> 6dc87bda52404a1afa0df168a4dddfecaa982443
   create_table "sent_emails", force: :cascade do |t|
     t.bigint "sender_id", null: false
     t.bigint "recipient_id", null: false
