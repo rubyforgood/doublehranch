@@ -1,4 +1,11 @@
 <h2>Create a new Email Template</h2>
+<% if @email_template.errors.any? %>
+  <%= flash[:alert] %>
+  </br>
+  <% @email_template.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
 <%= form_for @email_template do |f| %>
   <%= f.label 'Label' %>
   <%= f.text_field :label %>
