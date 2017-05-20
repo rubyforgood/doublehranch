@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20170520142249) do
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-
   create_table "comments", id: :serial, force: :cascade do |t|
     t.string "title", limit: 50, default: ""
     t.text "comment"
