@@ -1,10 +1,13 @@
-<div class="container mx-auto w-75">
-  <div class="mx-auto w-50">
-    <h3 class="text-center">Welcome, <%= @user.friendly_name %>!</h3>
-    <p class="text-center text-muted">
-      So happy to see you again!<br>
-      Please verify your information.
-    </p>
+
+<div class="verify">
+  <div class="verify-container">
+    <div class="mx-auto w-50">
+      <h1 class="text-center">Welcome, <%= @user.friendly_name %>!</h1>
+      <p class="text-center text-muted">
+        So happy to see you again!<br>
+        Please verify your information.
+      </p>
+    </div>
+    <%= render "users/form" %>
   </div>
-  <%= render "users/form" %>
 </div>
