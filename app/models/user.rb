@@ -1,4 +1,11 @@
 class User < ApplicationRecord
+  HONORIFICS = %w(
+    Miss
+    Mr.
+    Mrs.
+    Ms.
+  ).freeze
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,6 +19,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name,  presence: true
+  validates :salutation, inclusion: HONORIFICS
 
   def friendly_name
     first_name || nickname || "Friend"

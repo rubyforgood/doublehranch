@@ -10,7 +10,7 @@ FactoryGirl.define do
     zip_code               { Faker::Address.zip_code }
     nickname               { Faker::Name.first_name }
     maiden_name            { Faker::Name.last_name }
-    salutation             { Faker::Name.prefix }
+    salutation             { User::HONORIFICS.sample }
     password 'hunter2'
 
     trait :admin do

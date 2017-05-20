@@ -9,7 +9,7 @@
   <%= simple_form_for(@user, url: verification_path(@user), html: { class: "row" }) do |f| %>
     <div class="col-6">
       <%= f.input :email %>
-      <%= f.input :salutation %>
+      <%= f.input :salutation, collection: User::HONORIFICS, include_blank: false %>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
       <%= f.input :maiden_name %>
