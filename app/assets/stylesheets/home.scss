@@ -1,12 +1,15 @@
 .home {
-  background-color: #356945;
-  height: 100vh;
+  background-color: #fff;
 
   &-hero {
     background-color: #215B33;
+    background-repeat: repeat;
+    background-size: 500px;
+    background-image: image_url('DarkPattern.svg');
     height: 15rem;
     padding: 1rem;
     position: relative;
+    margin-top: 2rem;
 
     &-user {
       display: flex;
@@ -28,13 +31,9 @@
       font-size: 2rem;
       margin-left: 1rem;
       margin-top: 1rem;
-    }
-  }
-
-  &-navlogo {
-    img {
-      width: 3rem;
-      height: auto;
+      h1 {
+        position: absolute;
+      }
     }
   }
 }

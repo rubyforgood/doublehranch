@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20170520180502) do
     t.string "profile_photo_content_type"
     t.integer "profile_photo_file_size"
     t.datetime "profile_photo_updated_at"
+    t.boolean "subscribed_to_alumni_newsletter", default: true, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
