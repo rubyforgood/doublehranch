@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20170520142249) do
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-
   create_table "comments", id: :serial, force: :cascade do |t|
     t.string "title", limit: 50, default: ""
     t.text "comment"
@@ -74,6 +73,21 @@ ActiveRecord::Schema.define(version: 20170520142249) do
     t.string "name"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "name"
+    t.string "position_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "programs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
