@@ -1,0 +1,81 @@
+.signin {
+  height: 100%;
+  padding: 50px 0;
+  background-image: url(DarkPattern.svg);
+  background-repeat: repeat;
+
+  .signin-container {
+    box-shadow: 0 2px 40px -5px rgba(0, 0, 0, 0.9);
+    display: flex;
+    width: 75vw;
+    margin: 0 auto;
+
+    > div {
+      padding: 3em;
+    }
+
+    &-panelLeft {
+      background-color: white;
+      min-width: 50%;
+
+      input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px white inset;
+      }
+
+      .btn {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 15px;
+      }
+
+      a {
+        color: $green-med;
+      }
+
+      a:hover {
+        color: $green-light;
+      }
+    }
+
+    &-panelRight {
+      position: relative;
+
+      .dialog {
+        color: white;
+        height: 100%;
+        position: relative;
+        text-align: center;
+        z-index: 999;
+      }
+
+      .dialog h1 {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .filter-img {
+    color: white;
+    position: absolute;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+  }
+
+  .filter-img:after {
+    position: absolute;
+    content:"";
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    background: rgba(30, 64, 52, .90);
+  }
+}
+
+@media #{$desktop} {
+  .signin-container {
+    flex-flow: column-reverse;
+  }
+}

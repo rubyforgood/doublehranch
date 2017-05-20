@@ -1,0 +1,12 @@
+@font-face {
+  font-family: VersionType;
+  src: url("versiontypepro-regular-webfont.woff") format("woff"), url("versiontypepro-regular-webfont.tff") format("truetype");
+}
+
+h1 {
+  font-family: 'VersionType', sans-serif;
+  font-weight: bold;
+  font-size: 45px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
