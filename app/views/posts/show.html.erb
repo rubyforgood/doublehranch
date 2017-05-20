@@ -1,10 +1,11 @@
+<%= render 'layouts/nav' %>
 <div class="post-container">
   <%= image_tag @post.photo.url %>
   <div class="post-caption">
     <%= @post.caption %>
   </div>
   <span class="post-tags">
-    <%= @post&.tag_list %>
+    Tags: <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t)  }.join(', ')) %>
   </span>
   <div class="post-comments">
     <%= render @post.comments %>

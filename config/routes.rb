@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: "home#index"
   resources :email_templates
 
@@ -14,9 +15,14 @@ Rails.application.routes.draw do
 
 
   get "/admin/upload", to: "users#upload"
-  post "admin/import", to: "users#import"
+  post "/admin/import", to: "users#import"
+  
+  get 'tags/:tag', to: 'posts#index', as: :tag
+
   devise_for :users
-  resources :posts
+  resources :posts do
+    get :autocomplete_tag_name, :on => :collection
+  end
   resources :comments, only: [:update, :destroy]
 
 end

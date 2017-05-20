@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 20170520183517) do
     t.datetime "profile_photo_updated_at"
     t.boolean "subscribed_to_alumni_newsletter", default: true, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
