@@ -15,25 +15,25 @@ describe 'UserImporter' do
   it 'read the first row' do
     expect(subject.rows.first).to eq({
       1=>"2",
-        "Salutation"=>"zz.",
-        "First Name"=>"zzzzy",
-        "Nickname"=>"",
-        "Last Name"=>"zzzzzz",
-        "Maiden Name"=>"",
-        "Email"=>"zzzzzzz86@zzzzz.zzz",
-        "Title Name"=>"zz. zzzzy zzzzzz",
-        "Last"=>"zzzzzz",
-        "Year "=>"2008,09",
-        "Position "=>"Outdoor Extreme",
-        "verified_info"=>"1",
-        "missing_lookup"=>"0",
-        "do_not_snail_mail"=>"",
-        "do_not_call"=>"",
-        "do_not_solicit"=>"",
-        "do_not_email"=>"",
-        "Additional Info"=>""
+      "Salutation"=>"zz.",
+      "First Name"=>"zzzzy",
+      "Nickname"=>"",
+      "Last Name"=>"zzzzzz",
+      "Maiden Name"=>"",
+      "Email"=>"zzzzzzz86@zzzzz.zzz",
+      "Title Name"=>"zz. zzzzy zzzzzz",
+      "Last"=>"zzzzzz",
+      "Year "=>"2008,09",
+      "Position "=>"Outdoor Extreme",
+      "verified_info"=>"1",
+      "missing_lookup"=>"0",
+      "do_not_snail_mail"=>"",
+      "do_not_call"=>"",
+      "do_not_solicit"=>"",
+      "do_not_email"=>"",
+      "Additional Info"=>""
       })
-    end
+  end
 
       context 'sanitization' do
         context 'year' do
@@ -106,5 +106,4 @@ describe 'UserImporter' do
       it 'normalizes column names' do
         expect(subject.sanitized_rows.first["Year"]).not_to eq(nil)
       end
-
-    end
+end

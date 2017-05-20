@@ -53,15 +53,17 @@ class UserImporter
 
       years = normalize_year(row["Year"])
 
+      newsletter = row["do_not_email"] == "1" ? false : true
+
       user = User.new(
       email: row["Email"],
       first_name: row["First Name"],
       last_name: row["Last Name"],
       nickname: row["Nickname"],
       maiden_name: row["Maiden Name"],
-      salutation: row["Salutation"]
+      salutation: row["Salutation"],
+      subscribed_to_alumni_newsletter: newsletter
       )
-      binding.pry
       user.save(validate: false)
 
       programs = years.map do |year|
@@ -86,7 +88,5 @@ class UserImporter
         )
       end
     end
-    binding.pry
-
   end
 end
