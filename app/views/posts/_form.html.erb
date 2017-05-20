@@ -9,7 +9,7 @@
 <% end %>
 
 <%= form_for @post, html: { multipart: true } do |f| %>
-  <%= f.file_field :photo %>
+  <%= f.file_field :photo, multiple: 'multiple' %>
   <%= f.label :caption %>
   <%= f.text_field :caption %>
   <%= f.label :tag_list %>

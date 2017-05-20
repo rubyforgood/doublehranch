@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
@@ -10,11 +9,22 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user = current_user
-    if @post.save
-      redirect_to @post, notice: "Post was successfully created"
+    params_copy = post_params.clone
+    params_copy[:user_id] = current_user.id
+
+    posts = params[:post][:photo].map do |photo|
+      params_copy[:photo] = photo
+      Post.new params_copy
+    end
+
+    saved = ActiveRecord::Base.transaction do
+      posts.map {|p| p.save }.all?
+    end
+
+    if saved
+      redirect_to posts.first, notice: 'Post was successfully created'
     else
+      @post = Post.new(post_params)
       render :new
     end
   end
@@ -23,10 +33,10 @@ class PostsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.commentable_id = params[:post_id]
-    @comment.commentable_type = "Post"
+    @comment.commentable_type = 'Post'
 
     if @comment.save
-      redirect_to post_path(@comment.commentable_id), notice: "Comment was successfully created"
+      redirect_to post_path(@comment.commentable_id), notice: 'Comment was successfully created'
     else
       render post_path(@comment.commentable_id)
     end
