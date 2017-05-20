@@ -21,6 +21,7 @@ class VerificationController < ApplicationController
   def verification_params
     permitted_params = %i(
       city
+      country
       email
       first_name
       last_name
