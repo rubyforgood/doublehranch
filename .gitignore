@@ -25,4 +25,6 @@
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
 
+.env
+
 public/system/
