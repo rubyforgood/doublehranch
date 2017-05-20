@@ -12,10 +12,12 @@
  *
  *= require normalize.css/normalize.css
  *= require bootstrap/dist/css/bootstrap.css
- *= require_tree .
  *= require_self
  */
 
-body {
-  overflow-x: hidden;
-}
+@import 'shared/shared';
+@import 'shared/variables';
+@import 'shared/fonts';
+@import 'signin';
+@import 'home';
+@import 'gallery';
