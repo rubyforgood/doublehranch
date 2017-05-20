@@ -9,29 +9,25 @@ class PostsController < ApplicationController
   end
 
   def create
-    params_copy = post_params.clone
-    params_copy[:user_id] = current_user.id
+    post_attrs = post_params.clone
+    post_attrs[:user_id] = current_user.id
+    photos = post_attrs.delete(:photos) || []
 
-
-    posts = (params[:post][:photo] || []).map do |photo|
-      params_copy[:photo] = photo
-      Post.new params_copy
+    posts = photos.map do |photo|
+      Post.new(post_attrs.merge({ photo: photo }))
     end
 
-    saved = if posts.empty?
-              @post = Post.new(post_params)
-              @post.errors.add(:photo, 'No image provided')
-              false
-            else
-              ActiveRecord::Base.transaction do
-                posts.map {|p| p.save }.all?
-              end
-            end
+    saved = ActiveRecord::Base.transaction do
+      posts.map {|p| p.save }.all?
+    end
+
+    saved = false if posts.empty?
 
     if saved
       redirect_to posts.first, notice: 'Post was successfully created'
     else
-      @post ||= Post.new(post_params)
+      @post = Post.new(post_attrs)
+      @post.valid?
       render :new
     end
   end
@@ -61,7 +57,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:caption, :photo, :tag_list)
+    params.require(:post).permit(:caption, :tag_list, photos: [])
   end
 
   def comment_params
