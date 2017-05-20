@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520142249) do
+ActiveRecord::Schema.define(version: 20170520172012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-
 
   create_table "comments", id: :serial, force: :cascade do |t|
     t.string "title", limit: 50, default: ""
@@ -39,6 +38,13 @@ ActiveRecord::Schema.define(version: 20170520142249) do
     t.index ["author_id"], name: "index_email_templates_on_author_id"
   end
 
+  create_table "positions", force: :cascade do |t|
+    t.string "name"
+    t.string "position_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "caption"
     t.bigint "user_id"
@@ -49,6 +55,14 @@ ActiveRecord::Schema.define(version: 20170520142249) do
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "programs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|

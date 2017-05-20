@@ -79,6 +79,7 @@ describe 'UserImporter' do
           expect(subject.join_year_and_position(years,positions)).to eq(expected)
         end
       end
+<<<<<<< HEAD
 
       it 'can import each row' do
         expect(subject.import_by_row).to eq()
@@ -87,5 +88,7 @@ describe 'UserImporter' do
       it 'normalizes column names' do
         expect(subject.normalize_column_names).rows.first["Year"].should_not eq(nil)
       end
+=======
+>>>>>>> 06b75e01d63ce67b70682be959b5c60dfa42b7ea
     end
   end

@@ -10,9 +10,6 @@ class UserImporter
     @table.rows
   end
 
-  def normalize_column_names
-    binding.pry
-  end
 
   def normalize_year(years)
     list_of_years = years.split(/[,&]/)
