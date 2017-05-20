@@ -1,0 +1,19 @@
+.preferences {
+  display: flex;
+  height: 100%;
+
+  &-sidebar {
+    padding: 2em;
+    background-color: tomato;
+
+    h4 {
+      margin-bottom: 30px;
+    }
+  }
+
+  &-form {
+    width: 100%;
+    padding: 2em;
+    margin: 0 3em;
+  }
+}
