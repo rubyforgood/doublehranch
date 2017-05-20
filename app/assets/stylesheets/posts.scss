@@ -16,6 +16,11 @@
     }
   }
 
+  &-navigation {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &-comments {
     text-align: left;
     padding-top: 1rem;
