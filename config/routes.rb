@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#index"
   resources :email_templates
+  resources :sent_emails
 
   get "/profile/:user_id", to: "users#show", as: 'user_profile'
   get "/profile/:user_id/edit", to: "users#edit", as: 'edit_user_profile'

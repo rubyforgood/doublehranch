@@ -1,0 +1,20 @@
+<h2>Email Delivery</h2>
+<% if @sent_email.errors.any? %>
+  <p>Your email template is invalid:</p>
+  </br>
+  <% @sent_email.errors.full_messages.each do |msg| %>
+    <%= msg %>
+    </br>
+  <% end %>
+<% end %>
+<%= form_for @sent_email do |f| %>
+  <%= f.label 'Sender Name:' %>
+  <%= f.text_field :reply_to_name, value: "#{current_user.first_name} #{current_user.last_name}" %>
+  </br>
+  <%= f.label 'Sender Email:' %>
+  <%= f.collection_select(:sender_id, @possible_sender_emails, :id, :email) %></br>
+  </br>
+  <%= f.label 'Choose Your Email Template' %>
+  <%= f.collection_select(:email_template_id, EmailTemplate.all, :id, :label) %>
+  <%= f.submit 'Send Email' %>
+<% end %>
