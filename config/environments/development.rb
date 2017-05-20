@@ -26,6 +26,9 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # still needs .env file for some reason
+  config.read_encrypted_secrets = true
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
