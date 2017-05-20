@@ -1,8 +1,9 @@
 <h1>Greenhouse (= user directory page)</h1>
 <ul>
 <% @users.each do |user| %>
-  <li><% user.profile_photo if user.privacy_settings.profile_photo %></li>
-  <li><% user.phone if user.privacy_settings.phone %></li>
-  <li><% user.email if user.privacy_settings.email %></li>
+  <li><%= user.nickname %></li>
+  <li><%= user.profile_photo if user.privacy_settings && user.privacy_settings[:profile_photo] %></li>
+  <li><%= user.phone if user.privacy_settings && user.privacy_settings[:phone] %></li>
+  <li><%= user.email if user.privacy_settings && user.privacy_settings[:email] %></li>
 <% end %>
 </ul>
