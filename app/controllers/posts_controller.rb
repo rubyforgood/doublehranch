@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
-  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag' # <- New
+  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
 
   def index

@@ -4,7 +4,7 @@
     <%= @post.caption %>
   </div>
   <span class="post-tags">
-    <%= @post&.tag_list %>
+    <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t)  }.join(', ')) %>
   </span>
   <div class="post-comments">
     <%= render @post.comments %>
