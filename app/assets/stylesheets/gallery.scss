@@ -1,7 +1,7 @@
 .gallery {
   display: flex;
   padding-top: 1rem;
-  color: #fff;
+  color: #666;
   position: relative;
   @media #{$tablet} {
     flex-direction: column;
@@ -60,6 +60,16 @@
     width: 95%;
     margin: 0 auto;
     min-height: 25rem;
+
+    &-add {
+      float: right;
+      font-size: 2rem;
+      color: #6A8645;
+
+      &:hover {
+        color: $green-dark;
+      }
+    }
 
     .galleryimg {
       border: 1px solid #ccc;

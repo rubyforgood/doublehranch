@@ -1,4 +1,12 @@
-<p><%= comment.title %></p>
-<p><%= comment.comment %></p>
-<p><%= comment.user.email %></p>
-<p><%= comment.created_at %></p>
+<div class="post-comment">
+  <%= comment.comment %>
+
+  <div class="post-comment-details">
+    <div class="post-comment-details-email">
+      <%= comment.user.email %>
+    </div>
+    <div class="post-comment-details-date">
+      Written at <%= comment.created_at.strftime('%c') %>
+    </div>
+  </div>
+</div>
