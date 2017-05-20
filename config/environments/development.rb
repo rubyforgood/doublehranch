@@ -32,6 +32,8 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {:address => 'localhost', :port => 1025}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -53,4 +55,19 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Give Paperclip access to ImageMagick
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  # Paperclip config
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_region: 'us-east-2',
+    s3_credentials: {
+      s3_host_name: "s3-us-east-2.amazonaws.com",
+      bucket: "doublehranch-#{Rails.env}",
+      access_key_id: Rails.application.secrets[:access_key_id],
+      secret_access_key: Rails.application.secrets[:access_key]
+    }
+  }
 end

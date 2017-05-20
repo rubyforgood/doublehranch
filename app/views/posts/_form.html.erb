@@ -1,0 +1,18 @@
+<p>post form</p>
+
+<% if @post.errors.any? %>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @post, html: { multipart: true } do |f| %>
+  <%= f.file_field :photo %>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+  <%= f.label :tag_list %>
+  <%= f.text_field :tag_list, value: f.object.tag_list.to_s %>
+  <%= f.submit "Create Post" %>
+<% end %>

@@ -1,0 +1,25 @@
+<div class="container mx-auto w-75">
+  <div class="mx-auto w-50">
+    <h3 class="text-center">Welcome, <%= @user.first_name %>!</h3>
+    <p class="text-center text-muted">
+      So happy to see you again!<br>
+      Please verify your information.
+    </p>
+  </div>
+  <%= simple_form_for(@user, url: verification_path, html: { class: "row" }) do |f| %>
+    <div class="col-6">
+      <%= f.input :email %>
+      <%= f.input :salutation %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :maiden_name %>
+    </div>
+    <div class="col-6">
+      <%= f.input :street_address %>
+      <%= f.input :city %>
+      <%= f.input :state %>
+      <%= f.input :zip_code %>
+    </div>
+    <%= f.button :submit, "Verify Information", class: "mx-auto" %>
+  <% end %>
+</div>

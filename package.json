@@ -1,5 +1,10 @@
 {
   "name": "double_H_ranch",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.6",
+    "jquery": "^3.2.1",
+    "normalize.css": "^7.0.0",
+    "tether": "^1.4.0"
+  }
 }
