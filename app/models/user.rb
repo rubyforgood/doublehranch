@@ -27,4 +27,3 @@ class User < ApplicationRecord
     first_name || nickname || "Friend"
   end
 end
-
