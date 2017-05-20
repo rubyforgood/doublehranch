@@ -1,1 +1,6 @@
 <p>all posts</p>
+
+<% @posts.each do |post| %>
+<%= link_to (image_tag post.photo.url(:thumb)), post_path(post) %>
+<p><%= link_to post.caption, post_path(post) %></p>
+<% end %>

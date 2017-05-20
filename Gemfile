@@ -15,16 +15,20 @@ gem 'coffee-rails'
 gem 'country_select'
 gem 'devise'
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'paperclip', '~> 5.0.0'
 gem 'pg', '~> 0.20.0'
 gem 'puma', '~> 3.7'
 gem 'pundit'
+gem 'rails4-autocomplete'
 gem 'remote_table', '~> 3.3.3'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form', '~> 3.5'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
