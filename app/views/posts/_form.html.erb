@@ -1,5 +1,3 @@
-<p>post form</p>
-
 <% if @post.errors.any? %>
   <ul>
     <% @post.errors.full_messages.each do |msg| %>
@@ -9,10 +7,10 @@
 <% end %>
 
 <%= form_for @post, html: { multipart: true } do |f| %>
-  <%= f.file_field :photos, multiple: 'multiple', required: true %>
+  <%= f.file_field :photos, multiple: 'multiple', required: true %> <br /><br />
   <%= f.label :caption %>
-  <%= f.text_field :caption %>
+  <%= f.text_field :caption %> <br /><br />
   <%= f.label :tag_list, "Tags (comma separated)" %>
-  <%= f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path, :"data-delimiter" => ', ' %> 
-  <%= f.submit "Create Post" %>
+  <%= f.text_field :tag_list, value: f.object.tag_list.to_s %> <br /><br />
+  <%= f.submit "Create Post", class: 'btn btn-primary btn-block' %>
 <% end %>
