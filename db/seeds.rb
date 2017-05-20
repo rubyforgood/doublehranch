@@ -8,8 +8,7 @@ unless Rails.env.test?
     admin = FactoryGirl.create(:user)
     admin.confirm
   end
-  
-  post = Post.create(captions: "My first post!", user_id: User.first)
-  post.tag_last.add('tags', 'more tags')
-  
+
+  post = Post.create(caption: "My first post!", user_id: User.first)
+  post.tag_list.add('tags', 'more tags')
 end
