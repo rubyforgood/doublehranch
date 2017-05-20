@@ -26,9 +26,6 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # still needs .env file for some reason
-  config.read_encrypted_secrets = true
-
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -68,8 +65,8 @@ Rails.application.configure do
     s3_credentials: {
       s3_host_name: "s3-us-east-2.amazonaws.com",
       bucket: "doublehranch-#{Rails.env}",
-      access_key_id: Rails.application.secrets[:aws_access_key_id],
-      secret_access_key: Rails.application.secrets[:aws_secret_access_key]
+      access_key_id: Rails.application.secrets[:access_key_id],
+      secret_access_key: Rails.application.secrets[:access_key]
     }
   }
 
