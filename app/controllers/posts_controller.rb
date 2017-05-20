@@ -12,19 +12,26 @@ class PostsController < ApplicationController
     params_copy = post_params.clone
     params_copy[:user_id] = current_user.id
 
-    posts = params[:post][:photo].map do |photo|
+
+    posts = (params[:post][:photo] || []).map do |photo|
       params_copy[:photo] = photo
       Post.new params_copy
     end
 
-    saved = ActiveRecord::Base.transaction do
-      posts.map {|p| p.save }.all?
-    end
+    saved = if posts.empty?
+              @post = Post.new(post_params)
+              @post.errors.add(:photo, 'No image provided')
+              false
+            else
+              ActiveRecord::Base.transaction do
+                posts.map {|p| p.save }.all?
+              end
+            end
 
     if saved
       redirect_to posts.first, notice: 'Post was successfully created'
     else
-      @post = Post.new(post_params)
+      @post ||= Post.new(post_params)
       render :new
     end
   end
