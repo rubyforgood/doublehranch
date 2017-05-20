@@ -59,6 +59,7 @@ Rails.application.configure do
   # Give Paperclip access to ImageMagick
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
+  # Paperclip config
   config.paperclip_defaults = {
     storage: :s3,
     s3_region: 'us-east-2',
@@ -69,5 +70,4 @@ Rails.application.configure do
       secret_access_key: Rails.application.secrets[:access_key]
     }
   }
-
 end
