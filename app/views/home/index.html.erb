@@ -6,9 +6,12 @@
       </div>
       <div class="home-hero-username">
         <h1>Mae Beale</h1> <br />
-          <%= link_to '<button type="button" class="btn btn-secondary">Update Info</button>'.html_safe, edit_user_profile_path(current_user) %>
-        <br />
+        <%= link_to '<button type="button" class="btn btn-secondary">Update Info</button>'.html_safe, edit_user_profile_path(current_user) %>
+        <br/>
       </div>
     </div>
   </div>
-<%= render 'gallery' %>
+  <%= render 'gallery' %>
+  <%= render 'social/facebook' %>
+</div>
+
