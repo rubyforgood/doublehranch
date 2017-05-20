@@ -12,6 +12,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
   has_many :email_templates, foreign_key: :author_id
+  has_many :positions
   has_many :posts
 
   has_attached_file :profile_photo, styles: { medium: "300x300>", thumb: "100x100>" }
