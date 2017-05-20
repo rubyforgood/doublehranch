@@ -1,1 +1,31 @@
-<h1>Edit My Profile</h1>
+<%= render 'layouts/nav' %>
+<div class="preferences">
+  <div class="preferences-sidebar">
+    <%= link_to edit_user_profile_path(current_user, state: 'general') do %>
+      <h4>General</h4>
+    <% end %>
+    <%= link_to edit_user_profile_path(current_user, state: 'photo') do %>
+      <h4>Photo</h4>
+    <% end %>
+    <%= link_to edit_user_profile_path(current_user, state: 'password') do %>
+      <h4>Password</h4>
+    <% end %>
+    <%= link_to edit_user_profile_path(current_user, state: 'privacy') do %>
+      <h4>Privacy</h4>
+    <% end %>
+  </div>
+
+  <div class="preferences-form">
+    <% if params[:state] == 'privacy' %>
+      <%= render "privacy" %>
+    <% elsif params[:state] == 'photo' %>
+      <%= render "photo" %>
+    <% elsif params[:state] == 'password' %>
+      <%= render "password" %>
+    <% else params[:state] == 'general' %>
+      <%= render "general" %>
+    <% end %>
+
+  </div>
+
+</div>

@@ -12,6 +12,7 @@ gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-
 gem 'acts_as_commentable'
 gem 'aws-sdk'
 gem 'coffee-rails'
+gem 'country_select'
 gem 'devise'
 gem 'jbuilder', '~> 2.5'
 gem 'paperclip', '~> 5.0.0'
