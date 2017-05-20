@@ -1,0 +1,35 @@
+.post {
+  &-container {
+    margin: 0 auto;
+    width: 40%;
+    padding: 1rem;
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &-comments {
+    text-align: left;
+    padding-top: 1rem;
+
+    &-form {
+      textarea {
+        width: 100%;
+        resize: none;
+      }
+    }
+  }
+
+  &-comment {
+    margin-bottom: 1.5rem;
+    color: #666;
+
+    &-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+  }
+}

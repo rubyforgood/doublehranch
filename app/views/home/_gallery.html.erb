@@ -3,7 +3,8 @@
   </div>
   <div class="gallery-left">
     <div class="gallery-photos">
-      <h3>Photos Gallery</h3>
+      <h3>Photos Gallery <%= link_to '+ Upload Photo', new_post_path, class: "gallery-photos-add" %>
+      </h3>
       <%= render 'photos' %>
     </div>
   </div>
