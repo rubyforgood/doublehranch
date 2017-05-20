@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   post '/posts/:post_id/comment', to: 'posts#comment', as: 'comment_post'
 
+
+  get "/admin/upload", to: "users#upload"
+  post "admin/import", to: "users#import"
   devise_for :users
   resources :posts
   resources :comments, only: [:update, :destroy]
