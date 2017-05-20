@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.4.1'
+gem 'rails', '~> 5.1.0'
 
 gem 'aws-sdk'
 gem 'devise'
@@ -13,7 +13,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'pg', '~> 0.20.0'
 gem 'puma', '~> 3.7'
 gem 'pundit'
-gem 'rails', '~> 5.1.0'
 gem 'remote_table', '~> 3.3.3'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
