@@ -26,11 +26,6 @@ class User < ApplicationRecord
   has_many :sent_emails, foreign_key: :sender_id
   has_many :received_emails, foreign_key: :recipient_id
 
-  def self.default_admin_users
-    %w(info help).map { |email| find_by(email: "#{email}@doublehranch.com") }
-  end
-end
-
   def friendly_name
     first_name || nickname || "Friend"
   end
