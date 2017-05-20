@@ -15,25 +15,25 @@ describe 'UserImporter' do
   it 'read the first row' do
     expect(subject.rows.first).to eq({
       1=>"2",
-        "Salutation"=>"zz.",
-        "First Name"=>"zzzzy",
-        "Nickname"=>"",
-        "Last Name"=>"zzzzzz",
-        "Maiden Name"=>"",
-        "Email"=>"zzzzzzz86@zzzzz.zzz",
-        "Title Name"=>"zz. zzzzy zzzzzz",
-        "Last"=>"zzzzzz",
-        "Year "=>"2008,09",
-        "Position "=>"Outdoor Extreme",
-        "verified_info"=>"1",
-        "missing_lookup"=>"0",
-        "do_not_snail_mail"=>"",
-        "do_not_call"=>"",
-        "do_not_solicit"=>"",
-        "do_not_email"=>"",
-        "Additional Info"=>""
+      "Salutation"=>"zz.",
+      "First Name"=>"zzzzy",
+      "Nickname"=>"",
+      "Last Name"=>"zzzzzz",
+      "Maiden Name"=>"",
+      "Email"=>"zzzzzzz86@zzzzz.zzz",
+      "Title Name"=>"zz. zzzzy zzzzzz",
+      "Last"=>"zzzzzz",
+      "Year "=>"2008,09",
+      "Position "=>"Outdoor Extreme",
+      "verified_info"=>"1",
+      "missing_lookup"=>"0",
+      "do_not_snail_mail"=>"",
+      "do_not_call"=>"",
+      "do_not_solicit"=>"",
+      "do_not_email"=>"",
+      "Additional Info"=>""
       })
-    end
+  end
 
       context 'sanitization' do
         context 'year' do
@@ -89,22 +89,13 @@ describe 'UserImporter' do
           end
         end
 
-        xit 'can import each row' do
-          expect(subject.import_by_row).to eq()
-        end
-
         it 'normalizes column names' do
-          actual = subject.normalize_column_names.first["Year"]
+          actual = subject.sanitized_rows.first["Year"]
           expect(actual).not_to eq(nil)
         end
       end
 
-      xit 'can import each row' do
-        expect(subject.import_by_row).to eq()
-      end
-
       it 'normalizes column names' do
-        expect(subject.normalize_column_names.first["Year"]).not_to eq(nil)
+        expect(subject.sanitized_rows.first["Year"]).not_to eq(nil)
       end
-
-    end
+end
