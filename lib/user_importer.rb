@@ -10,7 +10,7 @@ class UserImporter
     @table.rows
   end
 
-  def normalize_column_names
+  def sanitized_rows
     @table.rows.map do |row|
       row.each_with_object({}) do |kv, acc|
         k,v = kv
@@ -20,7 +20,9 @@ class UserImporter
   end
 
   def normalize_year(years)
+    years ||= ""
     list_of_years = years.split(/[,&]/)
+
     list_of_years.map do |year|
       year = year.strip
       if year.length == 2
@@ -32,6 +34,7 @@ class UserImporter
   end
 
   def normalize_position(position)
+    position ||= ""
     list_of_positions = position.split(",")
     list_of_positions.map do |position|
       position.strip
@@ -45,30 +48,45 @@ class UserImporter
   end
 
   def import_by_row
-    @table.each_row do |row|
-      year = normalize_year(row["Year"])
-      position = normalize_position(row["Position"])
-      join_year_and_position(year, position)
 
-      User.find_or_create(
-        email: row["Email"],
-        first_name: row["First Name"],
-        last_name: row["Last Name"],
-        nickname: row["Nickname"],
-        maiden_name: row["Maiden Name"],
-        salutation: row["Salutation"]
+    sanitized_rows.each do |row|
+
+      years = normalize_year(row["Year"])
+
+      user = User.new(
+      email: row["Email"],
+      first_name: row["First Name"],
+      last_name: row["Last Name"],
+      nickname: row["Nickname"],
+      maiden_name: row["Maiden Name"],
+      salutation: row["Salutation"]
       )
+      binding.pry
+      user.save(validate: false)
 
-      Program.find_or_create(
-        name:       "Summer #{row["Year"]}",
-        start_date: DateTime.new(row["Year"], 6, 1),
-        end_date:   DateTime.new(row["Year"], 8, 31)
-      )
+      programs = years.map do |year|
+        Program.find_or_create_by!(
+        name:       "Summer #{year}",
+        start_date: DateTime.new(year, 6, 1),
+        end_date:   DateTime.new(year, 8, 31)
+        )
+      end
 
-      Position.find_or_create(
-        name:      row["Position"],
-      )
+      all_positions = normalize_position(row["Position"])
 
+      positions = all_positions.map do |position|
+        Position.find_or_create_by!(name: position)
+      end
+
+      programs.zip(positions).each do |program, position|
+        positions_held = PositionsHeld.find_or_create_by!(
+        user_id: user.id,
+        position_id: position&.id,
+        program_id: program&.id
+        )
+      end
     end
+    binding.pry
+
   end
 end

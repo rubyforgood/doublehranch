@@ -94,17 +94,17 @@ describe 'UserImporter' do
         end
 
         it 'normalizes column names' do
-          actual = subject.normalize_column_names.first["Year"]
+          actual = subject.sanitized_rows.first["Year"]
           expect(actual).not_to eq(nil)
         end
       end
 
-      xit 'can import each row' do
-        expect(subject.import_by_row).to eq()
+      it 'can import each row' do
+        expect(subject.import_by_row).to eq(false)
       end
 
       it 'normalizes column names' do
-        expect(subject.normalize_column_names.first["Year"]).not_to eq(nil)
+        expect(subject.sanitized_rows.first["Year"]).not_to eq(nil)
       end
 
     end
