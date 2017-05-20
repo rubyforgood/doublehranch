@@ -3,11 +3,17 @@
   height: 100%;
 
   &-sidebar {
-    padding: 2em;
-    background-color: tomato;
+    padding: 3em 4em;
+    box-shadow: 1px 1px 25px -9px rgba(0,0,0, 0.4);
 
     h4 {
+      color: $green-dark;
+      font-size: 20px;
       margin-bottom: 30px;
+    }
+
+    h4.active {
+      color: $green-light;
     }
   }
 
@@ -15,5 +21,48 @@
     width: 100%;
     padding: 2em;
     margin: 0 3em;
+
+    form {
+      display: flex;
+      flex-flow: column;
+
+      .btn {
+        min-width: 300px;
+      }
+    }
+  }
+}
+
+@media #{$desktop} {
+  .preferences {
+    &-sidebar {
+      padding: 3em;
+    }
+  }
+}
+
+@media #{$tablet} {
+  .preferences {
+    flex-flow: column;
+    &-sidebar {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-around;
+      padding: 2em 0;
+      max-height: 84px;
+
+      a {
+        height: 20px;
+      }
+
+      h4 {
+        margin: 0;
+      }
+    }
+
+    &-form {
+      align-self: center;
+      padding: 1em;
+    }
   }
 }
