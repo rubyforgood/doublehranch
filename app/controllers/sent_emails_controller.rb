@@ -7,14 +7,15 @@ class SentEmailsController < ApplicationController
 
   def new
     @sent_email = SentEmail.new
-    @possible_sender_emails = User.default_admin_users << current_user
+    @possible_senders = User.default_admin_users << current_user
   end
 
   def create
+    byebug
     @sent_email = SentEmail.new(sent_email_params)
   end
 
   private def sent_email_params
-    params.require(:sent_email).permit(:reply_to_name, :reply_to_email, :template_id)
+    params.require(:sent_email).permit(:reply_to_name, :reply_to_email, :template_id, :recipient_ids)
   end
 end
