@@ -15,12 +15,18 @@ a:hover {
   border-color: $orange;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-default {
   background-color: $green-med;
   border: none;
+  color: white;
 }
 
 .btn-primary:hover,
-.btn-primary:active {
+.btn-primary:active,
+.btn-primary:focus,
+.btn-default:hover,
+.btn-default:active,
+.btn-default:focus {
   background-color: $green-dark;
 }
