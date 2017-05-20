@@ -1,0 +1,59 @@
+.signin {
+  height: 100vh;
+  padding-top: 50px;
+
+  .signin-container {
+    background-color: white;
+    box-shadow: 0 2px 40px -5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    width: 75vw;
+    margin: 0 auto;
+  }
+
+  .signin-container > div {
+    padding: 3em;
+  }
+
+  .panel1 {
+    min-width: 40%;
+  }
+
+  .panel2 {
+    position: relative;
+  }
+
+  .dialog {
+    color: white;
+    position: relative;
+    text-align: center;
+    z-index: 999;
+  }
+
+  .filter-img {
+    background-image: url(coverphoto4.jpg);
+    color: white;
+    position: absolute;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+  }
+
+  .filter-img:after {
+    position: absolute;
+    content:"";
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    background: rgba(10, 47, 8, 0.9) 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+  
+  input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px white inset;
+  }
+}
