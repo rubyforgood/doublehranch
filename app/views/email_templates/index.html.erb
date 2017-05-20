@@ -1,0 +1,11 @@
+<h2>Available Email Templates</h2>
+
+<table>
+  <% @email_templates.each do |email_template| %>
+    <tr>
+      <td><%= email_template.label %></td>
+      <td><%= email_template.subject %></td>
+      <td><%= email_template.body %></td>
+    </tr>
+  <% end %>
+</table>

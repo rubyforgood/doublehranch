@@ -1,0 +1,21 @@
+<h2>Create a new Email Template</h2>
+<% if @email_template.errors.any? %>
+  <p>Your email template is invalid:</p>
+  </br>
+  <% @email_template.errors.full_messages.each do |msg| %>
+    <%= msg %>
+    </br>
+  <% end %>
+<% end %>
+<%= form_for @email_template do |f| %>
+  <%= f.label 'Label' %>
+  <%= f.text_field :label %>
+  </br>
+  <%= f.label 'Subject' %>
+  <%= f.text_field :subject %>
+  </br>
+  <%= f.label 'Email Body' %>
+  <%= f.text_area :body, size: "50x30" %>
+  </br> 
+  <%= f.submit 'Create email template' %>
+<% end %>
