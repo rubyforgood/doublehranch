@@ -1,0 +1,14 @@
+.orchard-navbar {
+  background-color: #E7E8B8;
+
+  &-logo {
+    img {
+      width: 8rem;
+      height: auto;
+    }
+  }
+
+  &-toggler {
+    margin-top: 1.5rem;
+  }
+}

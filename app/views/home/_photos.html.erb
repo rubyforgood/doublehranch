@@ -1,0 +1,10 @@
+<% @photos.each do | photo | %>
+<div class="responsive">
+  <div class="galleryimg">
+    <a target="_blank" href="#">
+      <%= image_tag photo.photo.url(:medium) %>
+    </a>
+  </div>
+</div>
+<% end %>
+<div class="clearfix"></div>
