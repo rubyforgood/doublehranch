@@ -44,11 +44,20 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:caption, :photo, :tag_list)
+    params.require(:post).permit(
+      :caption,
+      :photo,
+      :tag_list,
+      :user_id,
+    )
   end
 
   def comment_params
-    params.require(:comment).permit(:comment, :commentable_type, :commentable_id)
+    params.require(:comment).permit(
+      :comment,
+      :commentable_id,
+      :commentable_type,
+    )
   end
 
 end
