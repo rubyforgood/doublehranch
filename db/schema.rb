@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520142249) do
+ActiveRecord::Schema.define(version: 20170520180502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-
 
   create_table "comments", id: :serial, force: :cascade do |t|
     t.string "title", limit: 50, default: ""
@@ -117,7 +116,6 @@ ActiveRecord::Schema.define(version: 20170520142249) do
     t.integer "profile_photo_file_size"
     t.datetime "profile_photo_updated_at"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
