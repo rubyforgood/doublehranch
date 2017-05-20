@@ -1,4 +1,40 @@
 .home {
+  background-color: #356945;
+  height: 100vh;
+
+  &-hero {
+    background-color: #215B33;
+    height: 15rem;
+    padding: 1rem;
+    position: relative;
+
+    &-user {
+      display: flex;
+      width: 100%;
+      position: absolute;
+      bottom: 2rem;
+      left: 3rem;
+    }
+
+    &-userpic {
+      height: 8rem;
+      width: 8rem;
+      border-radius: 0 50% 50% 50%;
+      background-color: #102f1a;
+    }
+
+    &-username {
+      color: #fff;
+      font-size: 2rem;
+      margin-left: 1rem;
+      margin-top: 1rem;
+    }
+  }
+
+  &-gallery {
+    background-color: #1C4B2A;
+  }
+
   &-navlogo {
     img {
       width: 3rem;
