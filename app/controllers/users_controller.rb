@@ -26,7 +26,33 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :street_address, :city, :state, :country, :zip_code, :maiden_name, :salutation, :privacy_settings, :email, :password, :phone, :facebook_username, :twitter_handle, :instagram_username, :tumblr_name, :linkedin_username, :pinterest_name, :profile_photo_file_size, :profile_photo_file_name, :profile_photo_content_type)
+    params.require(:user).permit(
+      :admin,
+      :city,
+      :country,
+      :email,
+      :facebook_username,
+      :first_name,
+      :instagram_username,
+      :last_name,
+      :linkedin_username,
+      :maiden_name,
+      :nickname,
+      :password,
+      :phone,
+      :pinterest_name,
+      :privacy_settings,
+      :profile_photo_content_type,
+      :profile_photo_file_name,
+      :profile_photo_file_size,
+      :profile_photo,
+      :salutation,
+      :state,
+      :street_address,
+      :tumblr_name,
+      :twitter_handle,
+      :zip_code,
+    )
   end
 
 end
