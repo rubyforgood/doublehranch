@@ -6,7 +6,8 @@
       <%= comment.user.email %>
     </div>
     <div class="post-comment-details-date">
-      Written at <%= comment.created_at.strftime('%c') %>
+      Written <%= time_ago_in_words(comment.created_at) %> ago
     </div>
   </div>
 </div>
+

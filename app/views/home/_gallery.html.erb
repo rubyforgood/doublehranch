@@ -1,10 +1,14 @@
+<div>
+  <% @tags.each do |t| %>
+    <%= link_to t.name, (root_path + "?tag=#{t.name}") %>
+  <% end %>
+</div>
 <div class="gallery">
   <div class="gallery-linedetail">
   </div>
   <div class="gallery-left">
     <div class="gallery-photos">
-      <h3>Photos Gallery <%= link_to '+ Upload Photo', new_post_path, class: "gallery-photos-add" %>
-      </h3>
+      <h3>Photos Gallery <%= link_to '+ Upload Photo', new_post_path, class: "gallery-photos-add" %></h3>
       <%= render 'photos' %>
     </div>
   </div>
