@@ -4,7 +4,11 @@
       <span class="mdc-toolbar__title">Logo</span>
     </section>
     <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+        <%= link_to_if(user_signed_in?, 'Profile ', user_profile_path(current_user), :class => "mdc-toolbar__title") %>
+    </section>
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
         <%= link_to_if(user_signed_in?, 'Logout', destroy_user_session_path, :method => :delete, :class => "mdc-toolbar__title") %>
     </section>
   </div>
 </nav>
+
