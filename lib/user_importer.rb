@@ -45,7 +45,8 @@ class UserImporter
   end
 
   def import_by_row
-    @table.each_row do |row|
+    normalize_column_names.each do |row|
+      binding.pry
       year = normalize_year(row["Year"])
       position = normalize_position(row["Position"])
       join_year_and_position(year, position)
