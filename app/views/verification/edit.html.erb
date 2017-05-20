@@ -6,7 +6,7 @@
       Please verify your information.
     </p>
   </div>
-  <%= simple_form_for(@user, url: verification_path, html: { class: "row" }) do |f| %>
+  <%= simple_form_for(@user, url: verification_path(@user), html: { class: "row" }) do |f| %>
     <div class="col-6">
       <%= f.input :email %>
       <%= f.input :salutation %>
