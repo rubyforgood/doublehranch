@@ -5,5 +5,11 @@
   <li><%= user.profile_photo if user.privacy_settings && user.privacy_settings[:profile_photo] %></li>
   <li><%= user.phone if user.privacy_settings && user.privacy_settings[:phone] %></li>
   <li><%= user.email if user.privacy_settings && user.privacy_settings[:email] %></li>
+  <li><%= user.facebook_username if user.privacy_settings && user.privacy_settings[:facebook_username] %></li>
+  <li><%= user.twitter_handle if user.privacy_settings && user.privacy_settings[:twitter_handle] %></li>
+  <li><%= user.instagram_username if user.privacy_settings && user.privacy_settings[:instagram_username] %></li>
+  <li><%= user.tumblr_name if user.privacy_settings && user.privacy_settings[:tumblr_name] %></li>
+  <li><%= user.linkedin_username if user.privacy_settings && user.privacy_settings[:linkedin_username] %></li>
+  <li><%= user.pinterest_name if user.privacy_settings && user.privacy_settings[:pinterest_name] %></li>
 <% end %>
 </ul>
