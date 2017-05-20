@@ -16,7 +16,6 @@ class EmailTemplatesController < ApplicationController
       flash[:success] = 'Your email template has been saved!'
       redirect_to action: 'index'
     else
-      flash.now[:alert] = 'Your email template is invalid:'
       render 'new'
     end
   end

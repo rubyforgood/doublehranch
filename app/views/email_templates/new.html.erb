@@ -1,9 +1,10 @@
 <h2>Create a new Email Template</h2>
 <% if @email_template.errors.any? %>
-  <%= flash[:alert] %>
+  <p>Your email template is invalid:</p>
   </br>
   <% @email_template.errors.full_messages.each do |msg| %>
     <%= msg %>
+    </br>
   <% end %>
 <% end %>
 <%= form_for @email_template do |f| %>
