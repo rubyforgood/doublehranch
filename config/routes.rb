@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#index"
   resources :email_templates
+  resources :sent_emails
 
   get '/verification', to: 'verification#show'
 

@@ -7,6 +7,7 @@ class SentEmailsController < ApplicationController
 
   def new
     @sent_email = SentEmail.new
+    @possible_sender_emails = User.default_admin_users << current_user
   end
 
   def create
