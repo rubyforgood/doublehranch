@@ -1,10 +1,23 @@
-<nav class="mdc-toolbar">
-  <div class="mdc-toolbar__row">
-    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-      <span class="mdc-toolbar__title">Logo</span>
-    </section>
-    <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-        <%= link_to_if(user_signed_in?, 'Logout', destroy_user_session_path, :method => :delete, :class => "mdc-toolbar__title") %>
-    </section>
-  </div>
+<nav class="navbar navbar-toggleable-sm navbar-light bg-faded orchard-navbar">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand abs home-navlogo" href="/">
+        <%= image_tag("logo") %>
+    </a>
+    <div class="navbar-collapse collapse" id="collapsingNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Orchard</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href='https://www.doublehranch.org/'>Double H Ranch Website</a>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign Out', destroy_user_session_path, class: 'nav-link', method: 'delete' %>
+            </li>
+        </ul>
+    </div>
 </nav>
