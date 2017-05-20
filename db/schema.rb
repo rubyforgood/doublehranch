@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 20170520133954) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "email_templates", force: :cascade do |t|
+    t.string "label"
+    t.string "subject"
+    t.string "body"
+    t.integer "author_id"
+    t.index ["author_id"], name: "index_email_templates_on_author_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "caption"
     t.bigint "user_id"
