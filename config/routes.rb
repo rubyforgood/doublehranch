@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :email_templates
   resources :sent_emails
 
+  get '/verification', to: 'verification#show'
+
   get "/profile/:user_id", to: "users#show", as: 'user_profile'
   get "/profile/:user_id/edit", to: "users#edit", as: 'edit_user_profile'
   post "/profile/:user_id/update", to: "users#update", as: 'update_user_profile'
