@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   post '/posts/:post_id/comment', to: 'posts#comment', as: 'comment_post'
 
+  get 'tags/:tag', to: 'posts#index', as: :tag
+
   devise_for :users
   resources :posts
   resources :comments, only: [:update, :destroy]
