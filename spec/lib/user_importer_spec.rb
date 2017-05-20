@@ -100,7 +100,7 @@ describe 'UserImporter' do
       end
 
       it 'can import each row' do
-        expect(subject.import_by_row).to eq(false)
+        expect(subject.import_by_row).to eq([{"1"=>"2", "Salutation"=>"zz.", "First Name"=>"zzzzy", "Nickname"=>"", "Last Name"=>"zzzzzz", "Maide...nail_mail"=>"", "do_not_call"=>"", "do_not_solicit"=>"", "do_not_email"=>"", "Additional Info"=>""}])
       end
 
       it 'normalizes column names' do

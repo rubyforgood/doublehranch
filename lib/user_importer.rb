@@ -64,7 +64,6 @@ class UserImporter
       salutation: row["Salutation"],
       subscribed_to_alumni_newsletter: newsletter
       )
-      user.save(validate: false)
 
       programs = years.map do |year|
         Program.find_or_create_by!(
@@ -80,12 +79,14 @@ class UserImporter
         Position.find_or_create_by!(name: position)
       end
 
-      programs.zip(positions).each do |program, position|
-        positions_held = PositionsHeld.find_or_create_by!(
-        user_id: user.id,
-        position_id: position&.id,
-        program_id: program&.id
-        )
+      if user.save(validate: false)
+        programs.zip(positions).each do |program, position|
+          positions_held = PositionsHeld.find_or_create_by!(
+          user_id: user.id,
+          position_id: position&.id,
+          program_id: program&.id
+          )
+        end
       end
     end
   end
