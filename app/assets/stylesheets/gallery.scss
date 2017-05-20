@@ -1,0 +1,101 @@
+.gallery {
+  display: flex;
+  background-color: #f7f7f7;
+  padding-top: 1rem;
+  color: #fff;
+
+  &-left {
+    padding: 1rem;
+    width: 70%;
+    opacity: 0.8;
+  }
+
+  &-right {
+    padding: 1rem;
+    padding-right: 2rem;
+    width: 30%;
+    opacity: 0.8;
+
+    &-boxes {
+      padding: 1rem 1rem 2rem 1rem;
+      background-color: #999;
+      width: 90%;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+
+      h5 {
+        text-align: center;
+      }
+
+      button {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  &-photos {
+    padding: 1rem;
+    padding-bottom: 2rem;
+    background-color: #999;
+    width: 95%;
+    margin: 0 auto;
+    min-height: 25rem;
+
+    .galleryimg {
+      border: 1px solid #ccc;
+    }
+
+    .galleryimg:hover {
+      border: 1px solid #777;
+    }
+
+    .galleryimg img {
+      width: 100%;
+      height: auto;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .responsive {
+      padding: 0 6px;
+      float: left;
+      width: 24.99999%;
+    }
+
+    @media only screen and (max-width: 700px){
+      .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px){
+      .responsive {
+        width: 100%;
+      }
+    }
+
+    .clearfix:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  &-events {
+    &-calendar {
+      width: 80%;
+      margin: 0 auto;
+      height: 90%;
+    }
+  }
+
+  &-volunteer {
+  }
+
+  &-donate {
+  }
+}
