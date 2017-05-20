@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520172012) do
+ActiveRecord::Schema.define(version: 20170520154405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20170520172012) do
     t.string "position_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "positions_helds", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "position_id"
+    t.bigint "program_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position_id"], name: "index_positions_helds_on_position_id"
+    t.index ["program_id"], name: "index_positions_helds_on_program_id"
+    t.index ["user_id"], name: "index_positions_helds_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -135,5 +146,8 @@ ActiveRecord::Schema.define(version: 20170520172012) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "positions_helds", "positions"
+  add_foreign_key "positions_helds", "programs"
+  add_foreign_key "positions_helds", "users"
   add_foreign_key "posts", "users"
 end
