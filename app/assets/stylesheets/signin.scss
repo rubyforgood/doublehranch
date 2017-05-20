@@ -8,25 +8,30 @@
     display: flex;
     width: 75vw;
     margin: 0 auto;
+
+    &-panelLeft {
+      min-width: 40%;
+    }
+
+    &-panelRight {
+      position: relative;
+
+      .dialog {
+        color: white;
+        height: 100%;
+        position: relative;
+        text-align: center;
+        z-index: 999;
+      }
+
+      .dialog h1 {
+        margin-bottom: 30px;
+      }
+    }
   }
 
   .signin-container > div {
     padding: 3em;
-  }
-
-  .panel1 {
-    min-width: 40%;
-  }
-
-  .panel2 {
-    position: relative;
-  }
-
-  .dialog {
-    color: white;
-    position: relative;
-    text-align: center;
-    z-index: 999;
   }
 
   .filter-img {
@@ -52,8 +57,9 @@
   .btn {
     width: 100%;
   }
-  
+
   input:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 30px white inset;
   }
+
 }

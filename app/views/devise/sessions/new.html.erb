@@ -1,7 +1,7 @@
 <div class="signin">
   <div class="signin-container">
-    <div class="panel1">
-      <h2 class="text-center">Sign In</h2>
+    <div class="signin-container-panelLeft">
+      <h1 class="text-center">Sign In</h1>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "d-flex flex-column"}) do |f| %>
       <div class="field form-group">
         <%= f.label :email %><br />
@@ -25,9 +25,9 @@
       <% end %>
     </div>
 
-    <div class="panel2 hidden-sm-down">
+    <div class="signin-container-panelRight hidden-sm-down">
       <div class="dialog">
-        <h2>Welcome to Orchard</h2>
+        <h1>Welcome to Orchard</h1>
         <p>A place for alumni to stay connected . . . . Henna tattoo watsu quantum theory native american ancestry twelfth house Whole Earth Catalog breathwork, psychic surgery empowering messages. Jasmine himalayan sea salt hemp seed shamanic The Secret lavender, perineum to end suffering combined energy fields. Astrological crystal healing consciousness, community fluorescent lights. </p>
       </div>
       <div class="filter-img">
