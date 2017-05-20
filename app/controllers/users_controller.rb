@@ -54,4 +54,5 @@ class UsersController < ApplicationController
       :zip_code,
     )
   end
+
 end
