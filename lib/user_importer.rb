@@ -48,6 +48,7 @@ class UserImporter
   end
 
   def import_by_row
+    unknown_position = Position.find_or_create_by!(name: "Unknown")
     sanitized_rows.each do |row|
 
       years = normalize_year(row["Year"])
@@ -93,9 +94,10 @@ class UserImporter
 
       if user.save(validate: false)
         programs.zip(positions).each do |program, position|
+          position ||= unknown_position
           positions_held = PositionsHeld.find_or_create_by!(
           user_id: user.id,
-          position_id: position&.id,
+          position_id: position.id,
           program_id: program&.id
           )
         end
