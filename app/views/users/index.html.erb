@@ -5,12 +5,22 @@
   <% @users.each do |user| %>
   <%= link_to user_profile_path(user), class: "list-group-item list-group-item-action flex-column align-items-start" do %>
     <div class="d-flex w-100 greenhouse-user-main">
-      <%= image_tag(user.profile_photo) %>
-      <h5 class="mb-1 greenhouse-user-name"><%= user.friendly_name %></h5>
+      <div class="greenhouse-user-main-photo">
+        <%= image_tag(user.profile_photo) %>
+      </div>
+      <div class="greenhouse-user-main-name">
+        <h5 class="mb-1 greenhouse-user-name"><%= "#{user.first_name} \"#{user.nickname}\" #{user.last_name} (fm. #{user.maiden_name})"%></h5>
+      </div>
     </div>
-    <p class="mb-1"><li><%= user.phone %></li>
+    <p class="mb-1">
+    <li><%= user.phone %></li>
     <li><%= user.email %></li>
-    <li><%= "#{user.street_address} #{user.city} #{user.state} #{user.country}" %> </li></p>
+    <li>
+      <%= user.street_address %> <br />
+      <%= "#{user.city}, #{user.state}" %> <br />
+      <%= user.country %>
+    </li>
+  </p>
     <%= render 'social_media' %>
   <% end %>
   <% end %>
