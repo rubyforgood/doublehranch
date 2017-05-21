@@ -1,16 +1,15 @@
 .home {
-  background-color: #fff;
+  background-color: $beige;
 
   &-hero {
-    background-color: #215B33;
     background-image: asset-url("DarkPattern.svg");
+    background-color: $green-background;
     background-repeat: repeat;
     background-size: 500px;
     display: flex;
     align-items: center;
-    height: 15rem;
+    height: 13rem;
     justify-content: center;
-    margin-top: 2rem;
     position: relative;
 
     &-user {
