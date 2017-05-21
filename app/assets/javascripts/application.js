@@ -13,6 +13,7 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/ui/widget.js
 //= require jquery-ui/ui/widgets/autocomplete.js
 //= require autocomplete-rails
 //= require turbolinks
