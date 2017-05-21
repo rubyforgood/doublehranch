@@ -30,9 +30,26 @@
 }
 
 .password {
-  max-width: 450px;
+  max-width: 300px;
   display: flex;
   flex-flow: column;
+}
+
+.profilePhoto {
+  max-width: 300px;
+
+  &-avatar {
+    border-radius: 100%;
+    display: flex;
+    height: 300px;
+    justify-content: center;
+    overflow: hidden;
+    width: 300px;
+
+    img {
+      height: 100%;
+    }
+  }
 }
 
 @media #{$desktop} {
@@ -65,6 +82,10 @@
     &-form {
       align-self: center;
       padding: 1em;
+    }
+
+    .profilePhoto {
+      margin: 0 auto;
     }
   }
 }
