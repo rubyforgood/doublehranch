@@ -2,19 +2,34 @@
     <button class="navbar-toggler navbar-toggler-right orchard-navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand abs orchard-navbar-logo" href="/">
-        <%= image_tag("logo-horizontal") %>
+    <a class="navbar-brand orchard-navbar-logo abs" href="/">
+      <!-- <div class="orchard-navbar-logo"> -->
+          <%= image_tag("OrchardTrees") %>
+        <h1>Orchard</h1>
+      <!-- </div> -->
     </a>
+
     <div class="navbar-collapse collapse" id="collapsingNavbar">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <%= link_to 'The Grapevine', grapevine_path, class: 'nav-link' %>
+              <%= link_to grapevine_path, class: 'nav-link' do %>
+                <h1>The Grapevine</h1>
+              <% end %>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href='https://www.doublehranch.org/'>Double H Ranch Website</a>
+              <%= link_to edit_user_profile_path(current_user), class: 'nav-link' do %>
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Sign Out', destroy_user_session_path, class: 'nav-link', method: 'delete' %>
+              <%= link_to 'https://www.doublehranch.org/', class: 'nav-link' do %>
+                <%= image_tag("HHLogoGrey") %>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              <% end %>
             </li>
         </ul>
     </div>
