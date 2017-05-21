@@ -3,7 +3,7 @@
 
   &-hero {
     background-color: #215B33;
-    background-image: image_url('DarkPattern.svg');
+    background-image: asset-url("DarkPattern.svg");
     background-repeat: repeat;
     background-size: 500px;
     display: flex;
