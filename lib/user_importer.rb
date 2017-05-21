@@ -1,4 +1,6 @@
 class UserImporter
+  TRUTHY = ["1", "true", "yes", "y"]
+
   attr_reader :filename
 
   def initialize(filename)
@@ -33,9 +35,9 @@ class UserImporter
     end
   end
 
-  def normalize_position(position)
-    position ||= ""
-    list_of_positions = position.split(",")
+  def normalize_position(positions)
+    positions ||= ""
+    list_of_positions = positions.split(",")
     list_of_positions.map do |position|
       position.strip
     end
@@ -47,18 +49,23 @@ class UserImporter
     Hash[years.zip(positions)]
   end
 
+  def extract_privacy_settings(row)
+    boolean_columns = row.slice("do_not_snail_mail", "do_not_call", "do_not_solicit", "do_not_email")
+    boolean_columns.each_with_object({}) do |kv, acc|
+      k, v = kv
+      v = TRUTHY.include?(v.to_s.downcase)
+      acc[k] = v
+    end
+  end
+
   def import_by_row
     unknown_position = Position.find_or_create_by!(name: "Unknown")
     sanitized_rows.each do |row|
 
       years = normalize_year(row["Year"])
 
-      newsletter = row["do_not_email"] == "1" ? false : true
-      privacy_settings = {}
-      privacy_settings["do_not_snail_mail"] = row["do_not_snail_mail"]
-      privacy_settings["do_not_call"] = row["do_not_call"]
-      privacy_settings["do_not_solicit"] = row["do_not_solicit"]
-      privacy_settings["do_not_email"] = row["do_not_email"]
+      privacy_settings = extract_privacy_settings(row)
+      newsletter = privacy_settings["do_not_email"]
 
       user = User.new(
       email: row["Email"].to_s,
@@ -82,7 +89,7 @@ class UserImporter
           end_date:   end_date
           )
         rescue
-          puts "The year #{year} is invalid for user #{user}"
+          puts "User #{user} has an invalid year: #{year}. Unable to save."
         end
       end
 
@@ -95,10 +102,10 @@ class UserImporter
       if user.save(validate: false)
         programs.zip(positions).each do |program, position|
           position ||= unknown_position
-          positions_held = PositionsHeld.find_or_create_by!(
-          user_id: user.id,
-          position_id: position.id,
-          program_id: program&.id
+          PositionsHeld.find_or_create_by!(
+            user_id: user.id,
+            position_id: position.id,
+            program_id: program&.id
           )
         end
       end
