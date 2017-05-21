@@ -7,7 +7,7 @@
 ## Setup
 
 - Install Ruby 2.4.1 (chruby, rbenv, rvm, etc)
-- `bin/setup` initially, then `bin/update thereafter`
+- `bin/setup` initially, then `bin/update` thereafter
 
 ## What This App Does
 
@@ -21,7 +21,7 @@
   * photo sharing / tagging /commenting
   * chat
   * facebook feed
-  * instagram feed
+  * twitter feed
 * Admin dashboard provides user data (number of invites sent,
   active users, etc)
 
