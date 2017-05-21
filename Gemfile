@@ -46,6 +46,7 @@ end
 
 group :test do
   gem 'rake'
+  gem 'database_cleaner'
 end
 
 group :development do
