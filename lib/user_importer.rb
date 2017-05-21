@@ -82,7 +82,7 @@ class UserImporter
           end_date:   end_date
           )
         rescue
-          puts "The year #{year} is invalid"
+          puts "The year #{year} is invalid for user #{user}"
         end
       end
 
