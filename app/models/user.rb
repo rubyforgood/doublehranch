@@ -29,6 +29,10 @@ class User < ApplicationRecord
   def friendly_name
     first_name || nickname || "Friend"
   end
+  
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   has_many :sent_emails, foreign_key: :sender_id
   has_many :received_emails, foreign_key: :recipient_id
@@ -36,4 +40,11 @@ class User < ApplicationRecord
   def self.default_admin_users
     %w(info help).map { |email| find_by(email: "#{email}@doublehranch.com") }
   end
+  
+  scope :admins, ->() { where(admin: true) }
+  
+  scope :positions, ->(position_name) {
+    joins(positions_helds: :positions).where('positions.name ILIKE ?',"%#{position_name}%").uniq
+  }
+
 end

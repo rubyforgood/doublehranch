@@ -7,18 +7,19 @@
     </br>
   <% end %>
 <% end %>
-<%= form_tag @sent_email do %>
-  <%= label_tag 'Sender Name:' %>
-  <%= text_field_tag :reply_to_name, value: "#{current_user.first_name} #{current_user.last_name}" %>
-  </br>
-  <%= label_tag 'Sender Email:' %>
-  <%=select_tag 'sender_id', options_for_select(@possible_senders.collect{ |u| [u.email, u.id] }) %>
-  </br>
-  <%= label_tag 'Choose Your Email Template:' %>
-  <%= select_tag(:email_template_id, options_for_select(EmailTemplate.all)) %>
-  </br>
-  <%= label_tag 'Recipients:' %>
-  <%= select_tag(:recipient_ids, options_for_select(User.all)) %>
 
-  <%= submit_tag %>
+<%= form_for @sent_email do |f| %>
+  <%= f.label 'Sender Name:' %>
+  <%= f.text_field :reply_to_name, value: "#{current_user.first_name} #{current_user.last_name}" %>
+  </br>
+  <%= f.label 'Sender Email:' %>
+  <%=f.select :sender_id, options_for_select(@possible_senders.collect{ |u| [u.email, u.id] }) %>
+  </br>
+  <%= f.label 'Choose Your Email Template:' %>
+  <%= f.select(:email_template_id, options_for_select(EmailTemplate.all.collect{ |u| [u.label, u.id] })) %>
+  </br>
+  <%= f.label 'Recipients:' %>
+  <%= select_tag :recipients, options_for_select(@groups, :selected => "Everyone") %>
+
+  <%= f.submit %>
 <% end %>
