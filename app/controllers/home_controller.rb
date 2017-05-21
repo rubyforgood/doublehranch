@@ -7,5 +7,7 @@ class HomeController < ApplicationController
     else
       @photos = Post.all
     end
+
+    @name = current_user.friendly_name
   end
 end

@@ -6,13 +6,46 @@
   @media #{$tablet} {
     flex-direction: column;
   }
-  &-linedetail {
-    position: absolute;
+
+  &-socialFeed {
+    margin-top: 2rem;
     width: 100%;
-    top: 0;
-    background-image: url('line-detail.svg');
-    background-size: 50px;
-    background-repeat: repeat-x;
+    margin: 0 auto;
+
+    h3 {
+      margin-bottom: 2rem;
+    }
+
+    &-boxes {
+      box-shadow: 0 2px 15px -5px rgba(0, 0, 0, 0.9);
+      padding: 1rem 1rem 2rem 1rem;
+      background-color: #cfcbc4;
+      width: 100%;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  &-twitter {
+    @media #{$tablet} {
+      width: 100%;
+    }
+    width: 48%;
+    height: 30rem;
+    overflow-y: scroll;
+    float: left;
+  }
+
+  &-facebook {
+    @media #{$tablet} {
+      width: 100%;
+    }
+    float: right;
+    display: block;
+    height: 30rem;
+    overflow-y: scroll;
+    width: 48%;
   }
 
   &-left {
@@ -57,18 +90,20 @@
     padding: 1rem;
     padding-bottom: 2rem;
     background-color: #cfcbc4;
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
     min-height: 25rem;
+    margin-bottom: 1rem;
+
+    &-tags {
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
 
     &-add {
       float: right;
       font-size: 2rem;
       color: #6A8645;
-
-      &:hover {
-        color: $green-dark;
-      }
     }
 
     .galleryimg {
@@ -120,11 +155,5 @@
       margin: 0 auto;
       height: 90%;
     }
-  }
-
-  &-volunteer {
-  }
-
-  &-donate {
   }
 }

@@ -1,0 +1,23 @@
+.verify {
+  background-image: asset-url("DarkPattern.svg");
+  background-repeat: repeat;
+  height: 100%;
+  padding: 2em;
+
+  &-container {
+    background-color: white;
+    padding: 2em;
+    display: flex;
+    flex-flow: column;
+
+    form {
+      display: flex;
+      flex-flow: column;
+
+      .btn {
+        align-self: center;
+        min-width: 200px;
+      }
+    }
+  }
+}

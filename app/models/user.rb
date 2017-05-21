@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   HONORIFICS = %w(
-    Miss
     Mr.
-    Mrs.
     Ms.
+    Mrs.
+    Dr.
   ).freeze
 
   # Include default devise modules. Others available are:
@@ -17,8 +17,7 @@ class User < ApplicationRecord
   has_many :positions, through: :positions_held
   has_many :posts
 
-
-  has_attached_file :profile_photo, styles: { medium: "300x300>", thumb: "100x100>" }
+  has_attached_file :profile_photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.png"
   validates_attachment_content_type :profile_photo, content_type: /\Aimage\/.*\z/
 
   validates :first_name, presence: true
@@ -26,6 +25,6 @@ class User < ApplicationRecord
   validates :salutation, inclusion: HONORIFICS
 
   def friendly_name
-    first_name || nickname || "Friend"
+    nickname || first_name || "Friend"
   end
 end
