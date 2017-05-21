@@ -4,6 +4,14 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  color: #6A8645;
+}
+
+a:hover {
+  color: $green-dark;
+}
+
 a:link,
 a:visited,
 a:active,

@@ -2,7 +2,7 @@
 <div class="preferences">
   <div class="preferences-sidebar">
     <%= link_to edit_user_profile_path(current_user, state: 'general') do %>
-      <h4 class="<%= "active" if params[:state] == "general" %>"> General</h4>
+      <h4 class="<%= "active" if params[:state].in?([nil, 'general']) %>"> General</h4>
     <% end %>
     <%= link_to edit_user_profile_path(current_user, state: 'photo') do %>
       <h4 class=" <%= "active" if params[:state] == "photo" %>">Photo</h4>
