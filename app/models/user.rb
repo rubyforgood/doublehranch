@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name,  presence: true
-  validates :salutation, inclusion: HONORIFICS
+  validates :salutation, inclusion: HONORIFICS, allow_blank: true
 
   def friendly_name
     nickname || first_name || "Friend"

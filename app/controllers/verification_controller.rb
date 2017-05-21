@@ -3,13 +3,14 @@ class VerificationController < ApplicationController
 
   # TODO Look up user through invitation
   def edit
-    @user = User.find(params[:user_id])
+    @user = User.find_by_confirmation_token(params[:token])
   end
 
   def update
-    @user = User.find(params[:user_id])
+    @user = User.find_by_confirmation_token(params[:token])
 
     if @user.update(verification_params)
+      @user.confirm
       redirect_to new_user_session_path
     else
       render :edit

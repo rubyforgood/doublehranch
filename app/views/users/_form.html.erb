@@ -1,4 +1,4 @@
-<%= simple_form_for(@user, url: verification_path(@user)) do |f| %>
+<%= simple_form_for(@user, url: update_verification_path(params[:token])) do |f| %>
   <div class="row">
     <div class="col-6">
       <%= f.input :email %>
