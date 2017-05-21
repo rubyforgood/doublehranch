@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get   "/users/:user_id/verify", to: "verification#edit"
   patch "/users/:user_id/verify", to: "verification#update", as: "verification"
 
+  get "/grapevine/", to: "users#index", as: 'grapevine'
+
   post '/posts/:post_id/comment', to: 'posts#comment', as: 'comment_post'
 
   get 'tags/:tag', to: 'posts#index', as: :tag
