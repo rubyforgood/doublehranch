@@ -29,6 +29,14 @@
 
 The app is built using Rails 5 with Postgres and AWS S3 for storing data.
 
+## Heroku
+
+Paperclip requires an additional buildpack for imagemagick
+
+```
+heroku buildpacks:add --index 1 https://github.com/ello/heroku-buildpack-imagemagick -a doublehranch
+```
+
 ## About Double H Ranch
 
 Double H Ranch is a nonprofit that provides specialized programs and year-round
