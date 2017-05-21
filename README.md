@@ -48,6 +48,13 @@ r> u.confirm
 
 ```
 
+If you need to do this on the production app
+
+```
+heroku run -a doublehranch -- rails console
+# Follow instructions above
+```
+
 ## About Double H Ranch
 
 Double H Ranch is a nonprofit that provides specialized programs and year-round
