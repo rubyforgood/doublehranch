@@ -1,3 +1,5 @@
+![Double H Ranch](https://scontent.cdninstagram.com/t51.2885-15/e35/11934886_1743596452540354_2127773869_n.jpg")
+
 ## About this Project
 
 We are building a one-stop social networking platform for members and their
@@ -33,7 +35,7 @@ The app is built using Rails 5 with Postgres and AWS S3 for storing data.
 Double H Ranch is a nonprofit that provides specialized programs and year-round
 support for children and their families dealing with life-threatening illnesses.
 All programs are free of charge and capture the magic of the Adirondacks of
-upstate New York, and is one of the most uplifting places you could every visit. 
+upstate New York, and is one of the most uplifting places you could every visit.
 
 Double H has limited engagement with former volunteers, campers, and summer
 staff, so would like to a system through which it can engage and build community
@@ -43,4 +45,3 @@ calendar, Raiser's Edge), link to others, and provide a centralized location
 with some special features to allow everyone to interact.
 
 Visit [the Double H Homepage](https://www.doublehranch.org/) for more information.
-
