@@ -21,7 +21,7 @@ class UserImporter
 
   def normalize_year(years)
     years ||= ""
-    list_of_years = years.split(/[\s,&]/)
+    list_of_years = years.split(/[,&]/)
 
     list_of_years.map do |year|
       year = year.strip
@@ -73,7 +73,7 @@ class UserImporter
       programs = years.map do |year|
         start_date = Date.new(year, 6, 1)
         end_date = Date.new(year, 8, 31)
-        
+
         begin
           Program.find_or_create_by!(
           name:       "Summer #{year}",
