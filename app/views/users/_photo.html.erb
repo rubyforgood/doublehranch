@@ -7,6 +7,6 @@
 
   <%= form_for @user, url: update_user_profile_path(@user), html: { multipart: true } do |f| %>
   <%= f.file_field :profile_photo, required: true %> <br /><br />
-  <%= f.submit "Create Post", class: 'btn btn-primary btn-block' %>
+  <%= f.submit "Upload Photo", class: 'btn btn-primary btn-block' %>
   <% end %>
 </div>
