@@ -14,7 +14,7 @@ RailsAdmin.config do |config|
   ## == Pundit ==
   # config.authorize_with :pundit
   config.authorize_with do
-    redirect_to main_app.root_path unless current_user.admin?
+    redirect_to main_app.root_path unless current_user&.admin?
   end
   ## == method to call for current_user ==
   config.current_user_method(&:current_user)
