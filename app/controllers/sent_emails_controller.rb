@@ -6,12 +6,13 @@ class SentEmailsController < ApplicationController
   end
 
   def new
+    binding.pry
+    UserMailer.welcome(1).deliver_later
     @sent_email = SentEmail.new
     @possible_senders = User.default_admin_users << current_user
   end
 
   def create
-    byebug
     @sent_email = SentEmail.new(sent_email_params)
   end
 
