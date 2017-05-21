@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   HONORIFICS = %w(
-    Miss
     Mr.
-    Mrs.
     Ms.
+    Mrs.
+    Dr.
   ).freeze
 
   # Include default devise modules. Others available are:
