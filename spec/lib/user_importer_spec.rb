@@ -95,6 +95,11 @@ describe 'UserImporter' do
         end
       end
 
+      it 'imports things' do
+        subject.import_by_row
+        expect(User.all.count).to_not eq(0)
+      end
+
       it 'normalizes column names' do
         expect(subject.sanitized_rows.first["Year"]).not_to eq(nil)
       end

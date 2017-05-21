@@ -26,9 +26,8 @@ class UsersController < ApplicationController
   def import
     uploaded_file = params[:file]
     importer = UserImporter.new(uploaded_file.path.to_s)
-    
+
     importer.import_by_row
-    binding.pry
     #redirect_to import_volunteer_path, notice: "Import completed! #{importer.row_success_count} rows processed, with #{importer.row_error_count} errors."
     #@participants_unpaginated = set_all_filtered_participants("alpha")
     #@participants = paginated(@participants_unpaginated, 20)
@@ -36,8 +35,6 @@ class UsersController < ApplicationController
   end
 
   def upload
-
-
   end
 
   private

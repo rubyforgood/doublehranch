@@ -21,7 +21,7 @@ class UserImporter
 
   def normalize_year(years)
     years ||= ""
-    list_of_years = years.split(/[,&]/)
+    list_of_years = years.split(/[\s,&]/)
 
     list_of_years.map do |year|
       year = year.strip
@@ -53,23 +53,36 @@ class UserImporter
       years = normalize_year(row["Year"])
 
       newsletter = row["do_not_email"] == "1" ? false : true
+      privacy_settings = {}
+      privacy_settings["do_not_snail_mail"] = row["do_not_snail_mail"]
+      privacy_settings["do_not_call"] = row["do_not_call"]
+      privacy_settings["do_not_solicit"] = row["do_not_solicit"]
+      privacy_settings["do_not_email"] = row["do_not_email"]
 
       user = User.new(
-      email: row["Email"],
+      email: row["Email"].to_s,
       first_name: row["First Name"],
       last_name: row["Last Name"],
       nickname: row["Nickname"],
       maiden_name: row["Maiden Name"],
       salutation: row["Salutation"],
+      privacy_settings: privacy_settings,
       subscribed_to_alumni_newsletter: newsletter
       )
 
       programs = years.map do |year|
-        Program.find_or_create_by!(
-        name:       "Summer #{year}",
-        start_date: DateTime.new(year, 6, 1),
-        end_date:   DateTime.new(year, 8, 31)
-        )
+        start_date = Date.new(year, 6, 1)
+        end_date = Date.new(year, 8, 31)
+        
+        begin
+          Program.find_or_create_by!(
+          name:       "Summer #{year}",
+          start_date: start_date,
+          end_date:   end_date
+          )
+        rescue
+          puts "The year #{year} is invalid"
+        end
       end
 
       all_positions = normalize_position(row["Position"])

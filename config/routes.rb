@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   post '/posts/:post_id/comment', to: 'posts#comment', as: 'comment_post'
 
 
-  get "/admin/upload", to: "users#upload"
-  post "/admin/import", to: "users#import"
-  
+  get "/users/upload", to: "users#upload"
+  post "/users/import", to: "users#import"
+
   get 'tags/:tag', to: 'posts#index', as: :tag
 
   devise_for :users
