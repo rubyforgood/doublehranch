@@ -11,6 +11,9 @@
       </div>
       <%= render 'photos' %>
     </div>
+    <div class="gallery-socialFeed">
+      <%= render 'social_feed' %>
+    </div>
   </div>
   <div class="gallery-right">
     <div class="gallery-events gallery-right-boxes">
@@ -27,12 +30,6 @@
       <h5>Donate</h5>
       Your support is what enables us to continue providing our year-round programs to our campers. Together, there’s no telling how many lives we can touch and how many stories we can inspire as we continue to keep the promise to our campers that the Double H Ranch will be here forever. <br />
       <%= link_to '<button type="button" class="btn btn-primary btn-block">Donate</button>'.html_safe, 'https://www.doublehranch.org/donate' %>
-    </div>
-    <div class="gallery-facebook gallery-right-boxes">
-      <%= render 'social/facebook' %>
-    </div>
-    <div class="gallery-twitter gallery-right-boxes">
-      <%= render 'social/twitter' %>
     </div>
   </div>
 </div>
