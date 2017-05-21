@@ -1,15 +1,18 @@
 <%= render 'layouts/nav' %>
-<div class="greenhouse-container">
-<h1 class="greenhouse-title">The Grapevine</h1>
-<div class="list-group greenhouse-user">
+<div class="grapevine-container">
+<h1 class="grapevine-title mb-4">The Grapevine</h1>
+<div class="grapevine-search mb-4">
+  <%= render 'search', years: @years %>
+</div>
+<div class="list-group grapevine-user">
   <% @users.each do |user| %>
   <%= link_to user_profile_path(user), class: "list-group-item list-group-item-action flex-column align-items-start" do %>
-    <div class="d-flex w-100 greenhouse-user-main">
-      <div class="greenhouse-user-main-photo">
+    <div class="d-flex w-100 grapevine-user-main">
+      <div class="grapevine-user-main-photo">
         <%= image_tag(user.profile_photo) %>
       </div>
-      <div class="greenhouse-user-main-name">
-        <h5 class="mb-1 greenhouse-user-name"><%= "#{user.first_name} \"#{user.nickname}\" #{user.last_name} (fm. #{user.maiden_name})"%></h5>
+      <div class="grapevine-user-main-name">
+        <h5 class="mb-1 grapevine-user-name"><%= "#{user.first_name} \"#{user.nickname}\" #{user.last_name} (fm. #{user.maiden_name})"%></h5>
       </div>
     </div>
     <p class="mb-1">
