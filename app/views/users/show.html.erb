@@ -1,1 +1,16 @@
-<h1><%= @user.nickname %> Profile Page</h1>
+<%= render 'layouts/nav' %>
+<div class="profile-container">
+  <div class="profile-info">
+  <h1><%= @user.friendly_name %>'s Profile Page</h1>
+  <div class="list-group greenhouse-user">
+  <div class="d-flex w-100 greenhouse-user-main">
+    <%= image_tag(@user.profile_photo) %>
+    <h5 class="mb-1 greenhouse-user-name"><%= @user.friendly_name %></h5>
+  </div>
+  <p class="mb-1"><li><%= @user.phone %></li>
+  <li><%= @user.email %></li>
+  <li><%= "#{@user.street_address} #{@user.city} #{@user.state} #{@user.country}" %> </li></p>
+  <%= render 'social_media' %>
+  </div>
+  </div>
+</div>
