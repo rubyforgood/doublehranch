@@ -15,11 +15,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     if @user.update_attributes(user_params)
-      redirect_to users_path, notice: 'User updated.'
+      redirect_to user_profile_path(@user), notice: 'User updated.'
     else
-      redirect_to users_path, alert: 'Unable to update user.'
+      render :edit, alert: 'Unable to update user.'
     end
   end
 
