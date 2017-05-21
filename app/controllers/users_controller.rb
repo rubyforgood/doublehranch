@@ -23,6 +23,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_privacy
+    @user = User.find(params[:user_id])
+    raise params.to_json
+    @user.privacy_settings = { 
+    
+    }
+  end
+
   private
 
   def user_params

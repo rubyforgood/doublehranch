@@ -1,1 +1,40 @@
 <h1>PRIVACY</h1>
+
+<%= form_for @user, url: update_user_privacy_path(@user) do |f| %>
+  <h3>Personal Info</h3>
+  <% @personal_info_preferences = %i{name email address} %>
+  <% @personal_info_preferences.each do |p| %>
+    <div>
+      <%= check_box_tag p %>
+      <%= label_tag p %>
+    </div>
+  <% end %>
+  <h3>Social Media</h3>
+  <% @social_media_preferences = %i{facebook twitter instagram linked_id tumblr} %>
+  <% @social_media_preferences.each do |p| %>
+    <div>
+      <%= check_box_tag p %>
+      <%= label_tag p %>
+    </div>
+  <% end %>
+
+  <h3>Contact Preferences</h3>
+  <% @contact_preferences = %i{ solicitation emails phone_calls snail_mail } %>
+  <% @contact_preferences.each do |p| %>
+    <div>
+      <%= check_box_tag p %>
+      <%= label_tag p %>
+    </div>
+  <% end %>
+  <h3>Camp Preferences</h3>
+  <% @camp_preferences = %i{ volunteer_info donor_info alumni_info counselor_info hostpial_outreach_info } %>
+  <% @camp_preferences.each do |p| %>
+    <div>
+      <%= check_box_tag p %>
+      <%= label_tag p %>
+    </div>
+  <% end %>
+  <%= f.submit "Update privacy preferences" %>
+<% end %>
+
+<br/>
