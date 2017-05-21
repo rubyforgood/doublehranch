@@ -1,5 +1,23 @@
 class UserImporter
   TRUTHY = ["1", "true", "yes", "y"]
+  HEADER_ROW = ["1",
+                "Salutation",
+                "First Name",
+                "Nickname",
+                "Last Name",
+                "Maiden Name",
+                "Email",
+                "Title Name",
+                "Last",
+                "Year",
+                "Position",
+                "verified_info",
+                "missing_lookup",
+                "do_not_snail_mail",
+                "do_not_call",
+                "do_not_solicit",
+                "do_not_email",
+                "Additional Info"]
 
   attr_reader :filename
 
@@ -37,10 +55,7 @@ class UserImporter
 
   def normalize_position(positions)
     positions ||= ""
-    list_of_positions = positions.split(",")
-    list_of_positions.map do |position|
-      position.strip
-    end
+    positions.split(",").map(&:strip)
   end
 
   def join_year_and_position(years, positions)
@@ -56,6 +71,16 @@ class UserImporter
       v = TRUTHY.include?(v.to_s.downcase)
       acc[k] = v
     end
+  end
+
+  def valid_headers?
+    sanitized_rows.first.keys.sort == HEADER_ROW.sort
+  end
+
+  def compare_headers
+    sanitized_rows.first.keys.sort == HEADER_ROW.sort
+    {expected: HEADER_ROW,
+     actual: sanitized_rows.first.keys}
   end
 
   def import_by_row

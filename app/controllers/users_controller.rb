@@ -27,8 +27,13 @@ class UsersController < ApplicationController
   def import
     uploaded_file = params[:file]
     importer = UserImporter.new(uploaded_file.path.to_s)
-
-    importer.import_by_row
+    if importer.valid_headers?
+      importer.import_by_row
+    else
+      header_mismatch = importer.compare_headers
+      flash[:error] = "Headers in spreadsheet do not match the expected layout. We expect: #{header_mismatch[:expected]}, and received #{header_mismatch[:actual]}"
+      redirect_back(fallback_location: users_import_path)
+    end
   end
 
   def upload

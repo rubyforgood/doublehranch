@@ -1,3 +1,7 @@
+<% if flash[:error] %>
+  <%# # TODO: needs styling %>
+  <div class="error"><%= flash[:error] %></div>
+<% end %>
 <div>
   <%= form_tag users_import_path, multipart: true do %>
     <h4>Import users</h4>
