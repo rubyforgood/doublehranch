@@ -6,7 +6,7 @@ We are building a one-stop social networking platform for members and their
 families.
 
 ## Setup
-==
+
 - Install Ruby 2.4.1 (chruby, rbenv, rvm, etc)
 - `bundle install`
 
