@@ -1,10 +1,15 @@
+<%= render 'layouts/nav' %>
 <div class="post-container">
+  <div class="post-navigation">
+    <%= link_to 'Previous', post_path(@post.previous) if @post.previous %>
+    <%= link_to 'Next', post_path(@post.next) if @post.next %>
+  </div>
   <%= image_tag @post.photo.url %>
   <div class="post-caption">
     <%= @post.caption %>
   </div>
   <span class="post-tags">
-    <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t)  }.join(', ')) %>
+    Tags: <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t)  }.join(', ')) %>
   </span>
   <div class="post-comments">
     <%= render @post.comments %>
