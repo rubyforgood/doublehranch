@@ -1,4 +1,4 @@
-![Double H Ranch](https://scontent.cdninstagram.com/t51.2885-15/e35/11934886_1743596452540354_2127773869_n.jpg)
+<img src="https://scontent.cdninstagram.com/t51.2885-15/e35/11934886_1743596452540354_2127773869_n.jpg" width="400">
 
 ## About this Project
 
