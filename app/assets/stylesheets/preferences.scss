@@ -25,12 +25,14 @@
     form {
       display: flex;
       flex-flow: column;
-
-      .btn {
-        min-width: 300px;
-      }
     }
   }
+}
+
+.password {
+  max-width: 450px;
+  display: flex;
+  flex-flow: column;
 }
 
 @media #{$desktop} {

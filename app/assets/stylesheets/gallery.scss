@@ -6,14 +6,6 @@
   @media #{$tablet} {
     flex-direction: column;
   }
-  &-linedetail {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    background-image: url('line-detail.svg');
-    background-size: 50px;
-    background-repeat: repeat-x;
-  }
 
   &-left {
     @media #{$tablet} {
@@ -61,14 +53,15 @@
     margin: 0 auto;
     min-height: 25rem;
 
+    &-tags {
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
     &-add {
       float: right;
       font-size: 2rem;
       color: #6A8645;
-
-      &:hover {
-        color: $green-dark;
-      }
     }
 
     .galleryimg {
