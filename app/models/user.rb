@@ -6,6 +6,9 @@ class User < ApplicationRecord
     Dr.
   ).freeze
 
+  # NOTE: privacy_settings column is an hstore in Postgres, which removes type
+  # information and converts fields to string, thus false becomes "false" string.
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, # :registerable,
