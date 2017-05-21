@@ -13,11 +13,9 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui.min
+//= require jquery-ui/ui/widgets/autocomplete.js
 //= require autocomplete-rails
-
 //= require turbolinks
-//= require tether
-//= require jquery
+//= require tether/dist/js/tether.js
 //= require bootstrap/dist/js/bootstrap.js
 //= require_tree .
