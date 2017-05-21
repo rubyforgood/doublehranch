@@ -1,8 +1,8 @@
 .grapevine {
   &-container {
+    background-color: white;
     width: 90%;
-    margin: 0 auto;
-    padding-top: 1rem;
+    padding: 1rem;
   }
 
   &-title {
@@ -14,11 +14,17 @@
 
     &-main {
       margin-bottom: 1rem;
+      &-photo {
+        img {
+          width: 30%;
+        }
+      }
     }
 
     &-name {
       margin-top: 1.5rem;
       margin-left: 1rem;
     }
+
   }
 }
