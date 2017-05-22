@@ -37,6 +37,24 @@ Paperclip requires an additional buildpack for imagemagick
 heroku buildpacks:add --index 1 https://github.com/ello/heroku-buildpack-imagemagick -a doublehranch
 ```
 
+## Adding users via rails console
+
+```
+$ rails console
+r> u = User.new(last_name: "Last", first_name: "First", email: "email@example.com", salutation: "Mrs.", password: "asdflkjasd;flkjasf;")
+r> u.save
+# Pretend to have received the confirmation email
+r> u.confirm
+
+```
+
+If you need to do this on the production app
+
+```
+heroku run -a doublehranch -- rails console
+# Follow instructions above
+```
+
 ## About Double H Ranch
 
 Double H Ranch is a nonprofit that provides specialized programs and year-round
