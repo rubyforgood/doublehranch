@@ -1,8 +1,10 @@
 .grapevine-social-buttons {
+    display: flex;
+    flex-flow: row wrap;
+    
   .btn{
+    flex: 1 1 40%;
     border: none;
-    width: 40px;
-    height: 40px;
     line-height: 40px;
     outline: 0;
     overflow:hidden;
@@ -10,7 +12,7 @@
     border-radius: 3px;
     position: relative;
     padding: 0;
-    margin: 10px 1px;
+    margin: 5px;
     font-size: 16px;
     font-weight: 400;
     text-transform: uppercase;
@@ -46,6 +48,20 @@
 
     &:hover{
       box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.2), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+
+@media #{$desktop} {
+  .grapevine-user-main {
+    justify-content: center;
+  }
+  .grapevine-social-buttons {
+    width: 100%;
+
+    .btn {
+      flex: 1 1 0;
     }
   }
 }
