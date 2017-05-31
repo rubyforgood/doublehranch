@@ -1,6 +1,9 @@
 <h1>Hidden Posts</h1>
+
+<%= link_to 'Displayed posts', posts_path if current_user.admin? %>
+
 <% @posts.each do |post| %>
-    <%= link_to (image_tag post.photo.url(:thumb)), post_path(post) %>
+    <p><%= link_to (image_tag post.photo.url(:thumb)), post_path(post) %></p>
     <p><%= link_to post.caption, post_path(post) %></p>
-    <%= link_to 'Unhide', unhide_post_path(post.id) if current_user.admin? %>
+    <p><%= link_to 'Unhide', unhide_post_path(post.id), method: :post if current_user.admin? %></p>
 <% end %>

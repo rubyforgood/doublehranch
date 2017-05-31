@@ -4,7 +4,6 @@
     <%= link_to 'Previous', post_path(@post.previous) if @post.previous %>
     <%= link_to 'Next', post_path(@post.next) if @post.next %>
   </div>
-    <%= link_to 'Hide', hide_post_path(@post) if current_user.admin? %>
   <%= image_tag @post.photo.url %>
   <div class="post-caption">
     <%= @post.caption %>
@@ -12,6 +11,9 @@
   <span class="post-tags">
     Tags: <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t)  }.join(', ')) %>
   </span>
+  <div class="text-center">
+    <%= link_to 'Hide', hide_post_path(@post), method: :post, class:'btn btn-warning' if current_user.admin? %>
+  </div>
   <div class="post-comments">
     <%= render @post.comments %>
     <div class="post-comments-form">
