@@ -11,6 +11,9 @@
   <span class="post-tags">
     Tags: <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t)  }.join(', ')) %>
   </span>
+  <div class="post-tag-form">
+    <%= render 'tag_form' %>
+  </div>
   <div class="post-comments">
     <%= render @post.comments %>
     <div class="post-comments-form">
