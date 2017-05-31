@@ -25,10 +25,19 @@ class UsersController < ApplicationController
 
   def update_privacy
     @user = User.find(params[:user_id])
-    raise params.to_json
-    @user.privacy_settings = { 
-    
-    }
+    @user.privacy_settings = ['personal', 'social', 'contact', 'camp'].reduce({}) do |h, key|
+      temp = params[:preferences][key] || {}
+      temp.each do |k,v|
+        temp[k] = (v == "true")
+      end
+      h[key] = temp; h
+    end
+
+    if @user.save
+      redirect_to edit_user_profile_path(@user)
+    else
+      raise 'hello'
+    end
   end
 
   private

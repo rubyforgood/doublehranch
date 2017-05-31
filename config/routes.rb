@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :posts do
-    get :autocomplete_tag_name, :on => :collection    
+    get :autocomplete_tag_name, :on => :collection
   end
   resources :comments, only: [:update, :destroy]
 
