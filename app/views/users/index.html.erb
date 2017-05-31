@@ -13,13 +13,13 @@
         </div>
         <div class="grapevine-user-main-details">
           <div class="grapevine-user-main-name">
-            <h5 class="mb-1 grapevine-user-name"><%= "#{user.first_name} \"#{user.nickname}\" #{user.last_name} (fm. #{user.maiden_name})"%></h5>
+            <h5 class="mb-1 grapevine-user-name"><%= display_name(user) %></h5>
           </div>
           <div class="grapevine-user-main-info">
             <li><%= user.phone %></li>
             <li><%= user.email %></li>
             <li><%= user.street_address %></li>
-            <li><%= "#{user.city}, #{user.state}" %></li>
+            <li><%= display_city_state(user) %></li>
             <li><%= user.country %></li>
           </div>
         </div>
