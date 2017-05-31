@@ -3,6 +3,9 @@
   <div class="home-hero">
     <div class="home-hero-user">
       <div class="home-hero-userpic">
+        <% if current_user.profile_photo %>
+          <%= image_tag(current_user.profile_photo.url) %>
+        <% end %>
       </div>
       <div class="home-hero-username">
         <h1>Hi, <%= @name %>!</h1> <br />
@@ -13,4 +16,3 @@
   </div>
   <%= render 'gallery' %>
 </div>
-

@@ -1,15 +1,31 @@
-<h1>Greenhouse (= user directory page)</h1>
-<ul>
-<% @users.each do |user| %>
-  <li><%= user.nickname %></li>
-  <li><%= user.profile_photo if user.privacy_settings && user.privacy_settings[:profile_photo] %></li>
-  <li><%= user.phone if user.privacy_settings && user.privacy_settings[:phone] %></li>
-  <li><%= user.email if user.privacy_settings && user.privacy_settings[:email] %></li>
-  <li><%= user.facebook_username if user.privacy_settings && user.privacy_settings[:facebook_username] %></li>
-  <li><%= user.twitter_handle if user.privacy_settings && user.privacy_settings[:twitter_handle] %></li>
-  <li><%= user.instagram_username if user.privacy_settings && user.privacy_settings[:instagram_username] %></li>
-  <li><%= user.tumblr_name if user.privacy_settings && user.privacy_settings[:tumblr_name] %></li>
-  <li><%= user.linkedin_username if user.privacy_settings && user.privacy_settings[:linkedin_username] %></li>
-  <li><%= user.pinterest_name if user.privacy_settings && user.privacy_settings[:pinterest_name] %></li>
-<% end %>
-</ul>
+<%= render 'layouts/nav' %>
+<div class="grapevine-container">
+<h1 class="grapevine-title mb-4">The Grapevine</h1>
+<div class="grapevine-search mb-4">
+  <%= render 'search', years: @years %>
+</div>
+<div class="list-group grapevine-user">
+  <% @users.each do |user| %>
+  <%= link_to user_profile_path(user), class: "list-group-item list-group-item-action flex-column align-items-start" do %>
+    <div class="d-flex w-100 grapevine-user-main">
+      <div class="grapevine-user-main-photo">
+        <%= image_tag(user.profile_photo) %>
+      </div>
+      <div class="grapevine-user-main-name">
+        <h5 class="mb-1 grapevine-user-name"><%= "#{user.first_name} \"#{user.nickname}\" #{user.last_name} (fm. #{user.maiden_name})"%></h5>
+      </div>
+    </div>
+    <p class="mb-1">
+    <li><%= user.phone %></li>
+    <li><%= user.email %></li>
+    <li>
+      <%= user.street_address %> <br />
+      <%= "#{user.city}, #{user.state}" %> <br />
+      <%= user.country %>
+    </li>
+  </p>
+    <%= render 'social_media' %>
+  <% end %>
+  <% end %>
+</div>
+</div>

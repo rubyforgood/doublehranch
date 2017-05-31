@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="85px" viewBox="0 0 128 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>HHLOGOblackgrey</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HHLOGOblackgrey" fill-rule="nonzero">
+            <rect id="Rectangle-path" fill-opacity="0.5" fill="#000000" x="0.5" y="0.5" width="10" height="83.5"></rect>
+            <rect id="Rectangle-path" fill-opacity="0.5" fill="#000000" x="117.5" y="0.5" width="10" height="83.5"></rect>
+            <rect id="Rectangle-path" fill="#333333" x="43" y="1" width="17" height="83.27"></rect>
+            <rect id="Rectangle-path" fill="#333333" x="67.5" y="1" width="17" height="83.53"></rect>
+            <polygon id="Shape" fill="#333333" points="19 21.5 19 34.5 44 51.5 44 34.75"></polygon>
+            <polygon id="Shape" fill="#333333" points="108.5 35.5 108.5 48.5 83.5 65.5 83.5 48.75"></polygon>
+        </g>
+    </g>
+</svg>

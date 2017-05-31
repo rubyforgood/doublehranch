@@ -1,14 +1,62 @@
+.navbar {
+  padding: 2px 1rem;
+}
+
 .orchard-navbar {
   background-color: #E7E8B8;
 
   &-logo {
+    display: flex;
+
     img {
-      width: 8rem;
-      height: auto;
+      width: 3.5rem;
+      height: 3rem;
+      margin-right: 15px;
     }
+
+    h1 {
+      align-self: flex-end;
+      margin: 0;
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 2rem;
+    }
+  }
+
+  .nav-link img {
+    height: 2rem;
   }
 
   &-toggler {
     margin-top: 1.5rem;
+  }
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  .nav-item {
+    padding: 0 5px;
+  }
+
+  .fa-user-circle {
+    color: rgba(black, 0.5);
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .fa-sign-out {
+    color: rgba(black, 0.5);
+    cursor: pointer;
+    font-size: 2rem;
+  }
+
+  .fa:hover {
+    color: rgba(black, 0.7);
   }
 }

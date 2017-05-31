@@ -15,6 +15,7 @@ gem 'coffee-rails'
 gem 'country_select'
 gem 'devise'
 gem 'erubis'
+gem 'font-awesome-sass'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -30,8 +31,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'simple_form', '~> 3.5'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker'
-
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -47,6 +46,7 @@ end
 
 group :test do
   gem 'rake'
+  gem 'database_cleaner'
 end
 
 group :development do

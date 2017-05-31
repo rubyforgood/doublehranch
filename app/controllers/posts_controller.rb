@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy, :edit_tags]
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
 
@@ -54,6 +54,15 @@ class PostsController < ApplicationController
       redirect_to post_path(@comment.commentable_id), notice: 'Comment was successfully created'
     else
       render post_path(@comment.commentable_id)
+    end
+  end
+
+  def edit_tags
+    @post.tag_list = params[:post][:tag_list]
+    if @post.save
+      redirect_to post_path(@post), notice: 'Tags were successfully updated'
+    else
+      redirect_to post_path(@post), notice: 'Tags were unable to update'
     end
   end
 

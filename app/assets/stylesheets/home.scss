@@ -1,36 +1,42 @@
 .home {
-  background-color: #fff;
+  background-color: $beige;
 
   &-hero {
-    background-color: #215B33;
+    background-image: asset-url("DarkPattern.svg");
+    background-color: $green-background;
     background-repeat: repeat;
     background-size: 500px;
-    background-image: image_url('DarkPattern.svg');
-    height: 15rem;
-    padding: 1rem;
+    display: flex;
+    align-items: center;
+    height: 13rem;
+    justify-content: center;
     position: relative;
-    margin-top: 2rem;
 
     &-user {
+      align-items: center;
       display: flex;
+      padding-left: 3em;
       width: 100%;
-      position: absolute;
-      bottom: 2rem;
-      left: 3rem;
     }
 
     &-userpic {
-      height: 8rem;
-      width: 8rem;
-      border-radius: 0 50% 50% 50%;
       background-color: #102f1a;
+      border-radius: 100%;
+      display: flex;
+      height: 10rem;
+      justify-content: center;
+      overflow: hidden;
+      width: 10rem;
+
+      img {
+        height: 100%;
+      }
     }
 
     &-username {
       color: #fff;
       font-size: 2rem;
       margin-left: 1rem;
-      margin-top: 1rem;
       h1 {
         position: absolute;
       }

@@ -26,5 +26,13 @@ class UserPolicy
     user.admin? || record.user == user
   end
 
+  def upload
+    user.admin?
+  end
+
+  def import
+    user.admin?
+  end
+
 
 end
