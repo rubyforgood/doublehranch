@@ -2,6 +2,7 @@
 <div class="post-container">
   <div class="post-navigation">
     <%= link_to 'Previous', post_path(@post.previous) if @post.previous %>
+    <%= link_to 'Hide', hide_path(@post) if current_user.admin? %>
     <%= link_to 'Next', post_path(@post.next) if @post.next %>
   </div>
   <%= image_tag @post.photo.url %>
