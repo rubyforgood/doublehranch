@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   patch "/users/:user_id/verify", to: "verification#update", as: "verification"
 
   post '/posts/:post_id/comment', to: 'posts#comment', as: 'comment_post'
-
+  post '/posts/:post_id/hide', to: 'posts#hide', as: 'hide_post'
+  post '/posts/:post_id/unhide', to: 'posts#unhide', as: 'unhide_post'
 
   get "/users/upload", to: "users#upload"
   post "/users/import", to: "users#import"

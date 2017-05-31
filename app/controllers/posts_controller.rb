@@ -57,6 +57,22 @@ class PostsController < ApplicationController
     end
   end
 
+  def hidden
+      @posts = Post.where(hide: true)
+  end
+
+  def hide
+      post = Post.find(params[:post_id])
+      post.update(hide: true)
+      redirect_to posts_path, notice: 'Post hidden.'
+  end
+ 
+  def unhide
+      post = Post.find(params[:post_id])
+      post.update(hide: false)
+      redirect_to posts_path, notice: 'Post is no longer hidden.'
+  end
+
   private
 
   def set_post
