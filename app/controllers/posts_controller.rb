@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy, :edit_tags]
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
 
@@ -72,6 +72,14 @@ class PostsController < ApplicationController
       post = Post.find(params[:post_id])
       post.update(hide: false)
       redirect_to posts_path, notice: 'Post is no longer hidden.'
+
+  def edit_tags
+    @post.tag_list = params[:post][:tag_list]
+    if @post.save
+      redirect_to post_path(@post), notice: 'Tags were successfully updated'
+    else
+      redirect_to post_path(@post), notice: 'Tags were unable to update'
+    end
   end
 
   private
