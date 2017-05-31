@@ -1,21 +1,21 @@
 <%= render 'layouts/nav' %>
 <div class="preferences">
-  <div class="preferences-sidebar">
+  <div class="preferences-stepper">
     <%= link_to edit_user_profile_path(current_user, state: 'general') do %>
-      <h4 class="<%= "active" if params[:state].in?([nil, 'general']) %>"> General</h4>
+      <%= image_tag("yellow-arrowhead.svg", class: params[:state].in?([nil, "general"]) ? "active" : "") %>
     <% end %>
     <%= link_to edit_user_profile_path(current_user, state: 'photo') do %>
-      <h4 class=" <%= "active" if params[:state] == "photo" %>">Photo</h4>
+      <%= image_tag("dark-green-arrowhead.svg", class: params[:state] == "photo" ? "active" : "") %>
     <% end %>
     <%= link_to edit_user_profile_path(current_user, state: 'password') do %>
-      <h4 class=" <%= "active" if params[:state] == "password" %>">Password</h4>
+      <%= image_tag("medium-green-arrowhead.svg", class: params[:state] == "password" ? "active" : "") %>
     <% end %>
     <%= link_to edit_user_profile_path(current_user, state: 'privacy') do %>
-      <h4 class=" <%= "active" if params[:state] == "privacy" %>">Privacy</h4>
+      <%= image_tag("light-green-arrowhead.svg", class: params[:state] == "privacy" ? "active" : "") %>
     <% end %>
   </div>
 
-  <div class="preferences-form">
+  <div class="preferences-form w-75 mx-auto">
     <% if params[:state] == 'privacy' %>
       <%= render "privacy" %>
     <% elsif params[:state] == 'photo' %>
