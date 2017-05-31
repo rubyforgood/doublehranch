@@ -1,0 +1,4 @@
+<%= form_for(@post, url: edit_post_tags_path(@post)) do |f| %>
+  <%= f.text_field :tag_list, value: f.object.tag_list.to_s %>
+  <%= f.submit 'Edit Tags', class: 'btn btn-primary'  %>
+<% end %>
