@@ -23,9 +23,13 @@ class User < ApplicationRecord
   has_attached_file :profile_photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.png"
   validates_attachment_content_type :profile_photo, content_type: /\Aimage\/.*\z/
 
-  validates :first_name, presence: true
-  validates :last_name,  presence: true
   validates :salutation, inclusion: HONORIFICS
+  validates :last_name,  presence: true
+  validates :first_name, presence: true
+  validates :email,
+            uniqueness: {scope: [:last_name, :first_name]},
+            allow_blank: true,
+            :if => lambda {|attr| attr.present?}
 
   def friendly_name
     nickname || first_name || "Friend"
