@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   patch '/posts/:id/tags', to: 'posts#edit_tags', as: 'edit_post_tags'
 
-  get "/users/upload", to: "users#upload"
+  get "/users/upload", to: "users#upload", as: "upload_users"
   post "/users/import", to: "users#import"
 
   get 'tags/:tag', to: 'posts#index', as: :tag
