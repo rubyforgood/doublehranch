@@ -5,7 +5,7 @@
       <%= f.input :salutation, collection: User::HONORIFICS, include_blank: false %>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :maiden_name %>
+      <%= f.input :maiden_name, label: "Maiden name (if applicable)" %>
     </div>
     <div class="col-6">
       <%= f.input :country, priority: ["US"] %>
