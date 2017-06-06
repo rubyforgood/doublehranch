@@ -1,8 +1,5 @@
 <div class="grapevine-social-buttons">
   <% if user.facebook_username.present? %>
-    <!--<button class="btn">-->
-      <!--<i class="fa fa-facebook"></i>-->
-    <!--</button>-->
     <%= link_to("https://www.facebook.com/#{user.facebook_username}", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-facebook"></i>
