@@ -33,14 +33,11 @@ class UsersController < ApplicationController
   def update_privacy_settings
     @user = User.find(params[:user_id])
 
-    privacy_settings_params.each do |setting|
-        @user.update(privacy_settings: setting)
+    if @user.update(privacy_settings: privacy_settings_params)
+      redirect_to user_profile_path(@user), notice: 'Privacy settings updated.'
+    else
+      render :edit, alert: 'Unable to update privacy settings.'
     end
-
-      redirect_to user_profile_path(@user), notice: 'User updated.'
-    # else
-    #   render :edit, alert: 'Unable to update user.'
-    # end
   end
 
   def import
@@ -90,7 +87,7 @@ class UsersController < ApplicationController
   end
 
   def privacy_settings_params
-    params.require(:user).permit(privacy_settings: {})
+    params.require(:privacy_settings).permit!
   end
 
 end
