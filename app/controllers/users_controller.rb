@@ -3,8 +3,15 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
     @years = [2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992]
+
+    if params[:search]
+        @users = User.search(params[:search].downcase)
+        @users += User.search(params[:search].capitalize)
+        @users.uniq!
+    else
+        @users = User.all
+    end
   end
 
   def show
@@ -18,11 +25,29 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:user_id])
+
+    privacy_settings_params.each do |setting|
+        @user.update(privacy_settings: setting)
+    end
+
     if @user.update_attributes(user_params)
       redirect_to user_profile_path(@user), notice: 'User updated.'
     else
       render :edit, alert: 'Unable to update user.'
     end
+  end
+  
+  def update_privacy_settings
+    @user = User.find(params[:user_id])
+
+    privacy_settings_params.each do |setting|
+        @user.update(privacy_settings: setting)
+    end
+
+      redirect_to user_profile_path(@user), notice: 'User updated.'
+    # else
+    #   render :edit, alert: 'Unable to update user.'
+    # end
   end
 
   def import
@@ -58,7 +83,6 @@ class UsersController < ApplicationController
     :password,
     :phone,
     :pinterest_name,
-    :privacy_settings,
     :profile_photo_content_type,
     :profile_photo_file_name,
     :profile_photo_file_size,
@@ -70,6 +94,10 @@ class UsersController < ApplicationController
     :twitter_handle,
     :zip_code,
     )
+  end
+
+  def privacy_settings_params
+    params.require(:user).permit(privacy_settings: {})
   end
 
 end
