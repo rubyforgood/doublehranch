@@ -1,5 +1,5 @@
 addons:
-    postgres: "9.5"
+    postgresql: "9.5"
 language: ruby
 cache: bundler
 script:
