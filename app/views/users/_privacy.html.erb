@@ -1,1 +1,39 @@
 <h1>PRIVACY</h1>
+
+
+<%= simple_form_for(@user, url: update_user_privacy_settings_path(@user)) do |f| %>
+
+    <table id="privacy-settings" class="table table-responsive table-bordered table-hover text-center">
+    <thead>
+        <tr>
+            <th>Social Media Buttons</th>
+            <th>Profile Options</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><%= f.label "Facebook" %></td>
+        <td><%=f.collection_radio_buttons :privacy_settings, value: "privacy_settings[facebook_username]", [[true, 'Show'] ,[false, 'Hide']], :first, :last, checked: @user.privacy_settings['facebook_username'] %></td>
+    </tr>
+    <tr>
+        <td><%= f.label "Twitter" %></td>
+        <td><%=f.collection_radio_buttons "privacy_settings[twitter_handle]", [[true, 'Show'] ,[false, 'Hide']], :first, :last, checked: @user.privacy_settings['twitter_handle']  %></td>
+    </tr>
+    <tr>
+        <td><%= f.label "Instagram" %></td>
+        <td><%=f.collection_radio_buttons :instagram_username, [[true, 'Show'] ,[false, 'Hide']], :first, :last, checked: @user.privacy_settings['instagram_username']  %></td>
+    </tr>
+    <tr>
+        <td><%= f.label "Tumblr" %></td>
+        <td><%=f.collection_radio_buttons :tumblr_name, [[true, 'Show'] ,[false, 'Hide']], :first, :last, checked: @user.privacy_settings['tumblr_name']  %></td>
+    </tr>
+    <tr>
+        <td><%= f.label "LinkedIn" %></td>
+        <td><%=f.collection_radio_buttons :linkedin_username, [[true, 'Show'] ,[false, 'Hide']], :first, :last, checked: @user.privacy_settings['linkedin_username']  %></td>
+    </tr>
+    </tbody>
+</table>
+
+<%= f.button :submit, "Save", class: "btn btn-block" %>
+<% end %>
+
