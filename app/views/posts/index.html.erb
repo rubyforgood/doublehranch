@@ -1,6 +1,6 @@
 <h1>Posts</h1>
 
-<%= link_to 'Hidden Posts', hidden_posts_path if current_user.admin? %>
+<p><%= link_to 'Manage Hidden Posts', hidden_posts_path if current_user.admin? %></p>
 
 <% @posts.each do |post| %>
     <p><%= link_to (image_tag post.photo.url(:thumb)), post_path(post) %></p>
