@@ -1,6 +1,6 @@
 <div class="grapevine-social-buttons">
   <% if user.facebook_username.present? %>
-    <%= link_to("https://www.facebook.com/#{user.facebook_username}", class: "btn") do %>
+      <%= link_to("https://www.facebook.com/#{user.facebook_username}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-facebook"></i>
       </button>
@@ -8,7 +8,7 @@
   <% end %>
 
   <% if user.twitter_handle.present? %>
-    <%= link_to("https://www.twitter.com/#{user.twitter_handle}", class: "btn") do %>
+    <%= link_to("https://www.twitter.com/#{user.twitter_handle}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-twitter"></i>
       </button>
@@ -16,7 +16,7 @@
   <% end %>
 
   <% if user.instagram_username.present? %>
-    <%= link_to("https://www.instagram.com/#{user.instagram_username}", class: "btn") do %>
+    <%= link_to("https://www.instagram.com/#{user.instagram_username}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-instagram"></i>
       </button>
@@ -24,7 +24,7 @@
   <% end %>
 
   <% if user.linkedin_username.present? %>
-    <%= link_to("https://www.linkedin.com/#{user.linkedin_username}", class: "btn") do %>
+    <%= link_to("https://www.linkedin.com/#{user.linkedin_username}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-linkedin"></i>
       </button>
@@ -32,7 +32,7 @@
   <% end %>
 
   <% if user.pinterest_name.present? %>
-    <%= link_to("https://www.pinterest.com/#{user.pinterest_name}", class: "btn") do %>
+    <%= link_to("https://www.pinterest.com/#{user.pinterest_name}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-pinterest"></i>
       </button>
@@ -40,7 +40,7 @@
   <% end %>
 
   <% if user.tumblr_name.present? %>
-    <%= link_to("https://www.tumblr.com/#{user.tumblr_name}", class: "btn") do %>
+    <%= link_to("https://www.tumblr.com/#{user.tumblr_name}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-tumblr-square"></i>
       </button>
