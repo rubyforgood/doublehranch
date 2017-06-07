@@ -1,5 +1,7 @@
 RailsAdmin.config do |config|
 
+  config.include Rails.application.routes.url_helpers
+
   ### Popular gems integration
 
   ## == Devise ==
