@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   get '/posts/hidden', to: 'posts#hidden', as: 'hidden_posts'
   post '/posts/:post_id/hide', to: 'posts#hide', as: 'hide_post'
   post '/posts/:post_id/unhide', to: 'posts#unhide', as: 'unhide_post'
-
   patch '/posts/:id/tags', to: 'posts#edit_tags', as: 'edit_post_tags'
 
   get "/users/upload", to: "users#upload", as: "upload_users"
