@@ -30,6 +30,12 @@ class VerificationController < ApplicationController
       state
       street_address
       zip_code
+      facebook_username
+      twitter_handle
+      instagram_username
+      linkedin_username
+      pinterest_name
+      tumblr_name
     )
 
     params.require(:user).permit(*permitted_params)

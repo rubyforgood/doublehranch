@@ -1,34 +1,73 @@
-<nav class="navbar navbar-toggleable-sm navbar-light bg-faded orchard-navbar">
-    <button class="navbar-toggler navbar-toggler-right orchard-navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand orchard-navbar-logo abs" href="/">
-        <%= image_tag("OrchardTrees.svg") %>
-        <h1>Orchard</h1>
-    </a>
+<% rails_routes = Rails.application.routes.url_helpers %>
 
-    <div class="navbar-collapse collapse" id="collapsingNavbar">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <%= link_to grapevine_path, class: 'nav-link' do %>
-                <h1>The Grapevine</h1>
+<nav class="navbar navbar-toggleable-sm navbar-light bg-faded orchard-navbar">
+  <button class="navbar-toggler navbar-toggler-right orchard-navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand orchard-navbar-logo abs" href="/">
+    <%= image_tag("OrchardTrees.svg") %>
+    <h1>Orchard</h1>
+  </a>
+
+  <div class="navbar-collapse collapse" id="collapsingNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to rails_routes.grapevine_path, class: 'nav-link' do %>
+          <h1>The Grapevine</h1>
+        <% end %>
+      </li>
+      <% if current_user.admin %>
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle"
+             data-toggle="dropdown"
+             href="#">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to rails_routes.edit_user_profile_path(current_user),
+                          class: 'nav-link' do %>
+                <i class="fa fa-user-circle" aria-hidden="true">
+                  <span><h4>Update (account) info</h4></span>
+                </i>
               <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to edit_user_profile_path(current_user), class: 'nav-link' do %>
-                <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <li>
+              <%= link_to rails_admin.dashboard_path,
+                          class: 'nav-link' do %>
+                <i class="fa fa-lock" aria-hidden="true">
+                  <span><h4>Manage data</h4></span>
+                </i>
               <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to 'https://www.doublehranch.org/', class: 'nav-link' do %>
-                <%= image_tag("HHLogoGrey.svg") %>
+            <li>
+              <%= link_to rails_routes.upload_users_path,
+                          class: 'nav-link' do %>
+                <i class="fa fa-upload" aria-hidden="true">
+                  <span><h4>Upload users</h4></span>
+                </i>
               <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-              <% end %>
-            </li>
-        </ul>
-    </div>
+          </ul>
+        </li>
+
+      <% else %>
+        <li class="nav-item">
+          <%= link_to rails_routes.edit_user_profile_path(current_user), class: 'nav-link' do %>
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+          <% end %>
+        </li>
+      <% end %>
+      <li class="nav-item">
+        <%= link_to 'https://www.doublehranch.org/', class: 'nav-link' do %>
+          <%= image_tag("HHLogoGrey.svg") %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to rails_routes.destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
 </nav>

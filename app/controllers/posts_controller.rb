@@ -58,7 +58,6 @@ class PostsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
   def hidden
       @posts = Post.where(hide: true)
   end
@@ -73,7 +72,8 @@ class PostsController < ApplicationController
       post = Post.find(params[:post_id])
       post.update(hide: false)
       redirect_to posts_path, notice: 'Post is no longer hidden.'
-=======
+  end
+
   def edit_tags
     @post.tag_list = params[:post][:tag_list]
     if @post.save
@@ -81,7 +81,6 @@ class PostsController < ApplicationController
     else
       redirect_to post_path(@post), notice: 'Tags were unable to update'
     end
->>>>>>> 19abd98... adds ability to edit tags
   end
 
   private
@@ -106,5 +105,4 @@ class PostsController < ApplicationController
       :commentable_type,
     )
   end
-
 end

@@ -13,16 +13,13 @@ Rails.application.routes.draw do
   patch "/users/:user_id/verify", to: "verification#update", as: "verification"
 
   post '/posts/:post_id/comment', to: 'posts#comment', as: 'comment_post'
-<<<<<<< HEAD
   get '/posts/hidden', to: 'posts#hidden', as: 'hidden_posts'
   post '/posts/:post_id/hide', to: 'posts#hide', as: 'hide_post'
   post '/posts/:post_id/unhide', to: 'posts#unhide', as: 'unhide_post'
-=======
 
   patch '/posts/:id/tags', to: 'posts#edit_tags', as: 'edit_post_tags'
->>>>>>> 19abd98... adds ability to edit tags
 
-  get "/users/upload", to: "users#upload"
+  get "/users/upload", to: "users#upload", as: "upload_users"
   post "/users/import", to: "users#import"
 
   get 'tags/:tag', to: 'posts#index', as: :tag
