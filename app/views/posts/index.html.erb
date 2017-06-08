@@ -1,13 +1,31 @@
 <%= render 'layouts/nav' %>
+<div class="gallery-photos">
+    <h3>Posts<%= link_to 'Back Home', root_path, class: "gallery-photos-add" %></h3>
+    <%= form_tag(posts_path, :method => "get", id: "search-tags-form") do %>
+        <%= text_field_tag :tag, params[:tag], placeholder: "Search by tag" %>
+        <%= submit_tag "Search", class: "btn btn-primary btn-md" %>
+    <% end %>
+    <div class="gallery-photos-tags">
+    Filter by popular tags: <% @tags.each do |t| %>
+        <%= link_to t.name, (root_path + "?tag=#{t.name}") %>
+    <% end %>
+    </div>
+    <% @posts.each do | post | %>
+    <div class="responsive">
+        <div class="galleryimg text-center">
+            <%= link_to image_tag(post.photo.url(:medium)), post %>
+            <%= link_to post.caption, post_path(post) %></p>
+            <p>Tags: <%= raw(post.tag_list.map { |t| link_to t, tag_path(t)  }.join(', ')) %></p>
+            <% if current_user.admin? %>
+                <p><%= link_to 'Hide', hide_post_path(post.id), method: :post, class: "btn btn-warning" %></p>
+            <% end %>
+            </a>
+        </div>
+    </div>
+    <% end %>
+    <div class="clearfix"></div>
+</div>
 
-<h1>Posts</h1>
-
-<p><%= link_to 'Manage Hidden Posts', hidden_posts_path if current_user.admin? %></p>
-
-<% @posts.each do |post| %>
-    <p><%= link_to (image_tag post.photo.url(:thumb)), post_path(post) %></p>
-    <p><%= link_to post.caption, post_path(post) %></p>
-    <p><%= link_to 'Hide', hide_post_path(post.id), method: :post if current_user.admin? %></p>
+<% if current_user.admin? %>
+    <%= link_to 'Manage hidden posts', hidden_posts_path, class: "btn btn-warning" %></p>
 <% end %>
-
-<p><%= link_to 'Back to the Orchard', root_path %></p>

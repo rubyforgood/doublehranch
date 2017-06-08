@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
 
   def index
+    @tags = ActsAsTaggableOn::Tag.all
     if params[:tag]
       tagged = Post.tagged_with(params[:tag])
       @posts = tagged.where(hide: false)
