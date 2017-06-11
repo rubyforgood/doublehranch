@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @tags = ActsAsTaggableOn::Tag.most_used(10)
+    @tags = ActsAsTaggableOn::Tag.most_used(5)
 
     if params[:tag]
       @photos = Post.tagged_with(params[:tag])
