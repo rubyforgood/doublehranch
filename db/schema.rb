@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531002549) do
+ActiveRecord::Schema.define(version: 20170607144309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,21 +75,6 @@ ActiveRecord::Schema.define(version: 20170531002549) do
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "sent_emails", force: :cascade do |t|
-    t.bigint "sender_id", null: false
-    t.bigint "recipient_id", null: false
-    t.datetime "time_sent"
-    t.string "reply_to_name"
-    t.string "reply_to_email"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "email_template_id"
-    t.index ["email_template_id"], name: "index_sent_emails_on_email_template_id"
-    t.index ["recipient_id"], name: "index_sent_emails_on_recipient_id"
-    t.index ["sender_id"], name: "index_sent_emails_on_sender_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -166,6 +151,4 @@ ActiveRecord::Schema.define(version: 20170531002549) do
   add_foreign_key "positions_helds", "programs"
   add_foreign_key "positions_helds", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "sent_emails", "users", column: "recipient_id"
-  add_foreign_key "sent_emails", "users", column: "sender_id"
 end

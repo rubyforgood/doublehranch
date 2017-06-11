@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    ['personal', 'social', 'contact', 'camp'].each do |key|
+        @user.privacy_settings[key] ||= {}
+    end
   end
 
   def update
