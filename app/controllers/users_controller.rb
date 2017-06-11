@@ -66,6 +66,7 @@ class UsersController < ApplicationController
     :password,
     :phone,
     :pinterest_name,
+    :privacy_settings,
     :profile_photo_content_type,
     :profile_photo_file_name,
     :profile_photo_file_size,
