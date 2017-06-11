@@ -1,6 +1,9 @@
-<p>all posts</p>
+<h1>Posts</h1>
+
+<p><%= link_to 'Manage Hidden Posts', hidden_posts_path if current_user.admin? %></p>
 
 <% @posts.each do |post| %>
-<%= link_to (image_tag post.photo.url(:thumb)), post_path(post) %>
-<p><%= link_to post.caption, post_path(post) %></p>
+    <p><%= link_to (image_tag post.photo.url(:thumb)), post_path(post) %></p>
+    <p><%= link_to post.caption, post_path(post) %></p>
+    <p><%= link_to 'Hide', hide_post_path(post.id), method: :post if current_user.admin? %></p>
 <% end %>

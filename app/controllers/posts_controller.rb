@@ -5,9 +5,10 @@ class PostsController < ApplicationController
 
   def index
     if params[:tag]
-      @posts = Post.tagged_with(params[:tag])
+      tagged = Post.tagged_with(params[:tag])
+      @posts = tagged.where(hide: false)
     else
-      @posts = Post.all
+      @posts = Post.where(hide: false)
     end
   end
 
@@ -57,6 +58,22 @@ class PostsController < ApplicationController
     end
   end
 
+  def hidden
+      @posts = Post.where(hide: true)
+  end
+
+  def hide
+      post = Post.find(params[:post_id])
+      post.update(hide: true)
+      redirect_to posts_path, notice: 'Post hidden.'
+  end
+ 
+  def unhide
+      post = Post.find(params[:post_id])
+      post.update(hide: false)
+      redirect_to posts_path, notice: 'Post is no longer hidden.'
+  end
+
   def edit_tags
     @post.tag_list = params[:post][:tag_list]
     if @post.save
@@ -88,5 +105,4 @@ class PostsController < ApplicationController
       :commentable_type,
     )
   end
-
 end

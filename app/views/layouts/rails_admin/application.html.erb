@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="NONE,NOARCHIVE" name="robots">
+  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag "rails_admin/rails_admin.js" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+<body class="rails_admin">
+<div id="loading" class="label label-warning" style="display:none; position:fixed; right:20px; bottom:20px; z-index:100000">
+  <%= t('admin.loading') %>
+</div>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <!--<div class="nav-collapse">-->
+        <!--<%#= render :partial => 'layouts/rails_admin/secondary_navigation' %>-->
+      <!--</div>-->
+      <%#= link_to dashboard_path, class: "brand pjax" do %>
+      <%#= _get_plugin_name[0] || 'Rails' %>
+      <!--<small><%#= _get_plugin_name[1] || 'Admin' %></small>-->
+      <%# end %>
+      <%= render 'layouts/nav' %>
+    </div>
+  </div>
+</div>
+<!--<div class="container-fluid">-->
+  <!--<div class="row-fluid">-->
+    <!--<div class="span8">-->
+      <!--<%#= "Content" %>-->
+    <!--</div>-->
+    <!--<div class="span4 sidebar-nav">-->
+      <!--<h2> Should be the sideBar</h2>-->
+      <!--<p>-->
+        <!--Contain within the second column.-->
+      <!--</p>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <!--<div class="span3">-->
+      <!--<div class="well sidebar-nav">-->
+        <!--<ul class="nav nav-list">-->
+          <!--<%#= main_navigation %>-->
+        <!--</ul>-->
+        <!--<ul class="nav nav-list">-->
+          <!--<%#= static_navigation %>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="span9">-->
+      <!--<div class="row-fluid">-->
+        <div class="custom-dashboard">
+          <div class="content" data-pjax-container="1">
+            <%= render :template => 'layouts/rails_admin/pjax' %>
+          </div>
+        </div>
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+</div>
+</body>
+</html>
