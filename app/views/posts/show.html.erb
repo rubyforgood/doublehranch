@@ -14,8 +14,6 @@
   <span class="post-tags">
     Tags: <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t)  }.join(', ')) %>
   </span>
-  <div class="text-center">
-    <%= link_to 'Hide', hide_post_path(@post), method: :post, class:'btn btn-warning' if current_user.admin? %>
   <div class="post-tag-form">
     <%= render 'tag_form' %>
   </div>
@@ -24,4 +22,5 @@
     <div class="post-comments-form">
       <%= render 'comment_form' %>
     </div>
+  </div>
 </div>

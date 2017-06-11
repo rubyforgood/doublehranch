@@ -5,30 +5,34 @@
     <%= render 'search', years: @years %>
   </div>
   <div class="list-group grapevine-user">
-    <% @users.each do |user| %>
-      <div class="list-group-item list-group-item-action">
-        <%= link_to user_profile_path(user) do %>
-          <div class="grapevine-user-main">
-            <div class="grapevine-user-main-photo">
-              <%= image_tag(user.profile_photo) %>
+    <% if @users.blank? %>
+        <h4>There are no users that matched your search of <%= params[:search] %>.</h4>
+    <% else %>
+        <% @users.each do |user| %>
+        <div class="list-group-item list-group-item-action">
+            <%= link_to user_profile_path(user) do %>
+            <div class="grapevine-user-main">
+                <div class="grapevine-user-main-photo">
+                <%= image_tag(user.profile_photo) %>
+                </div>
+                <div class="grapevine-user-main-details">
+                <div class="grapevine-user-main-name">
+                    <h5 class="mb-1 grapevine-user-name"><%= display_name(user) %></h5>
+                </div>
+                <div class="grapevine-user-main-info">
+                    <li><%= user.phone %></li>
+                    <li><%= user.email %></li>
+                    <li><%= user.street_address %></li>
+                    <li><%= display_city_state(user) %></li>
+                    <li><%= user.country %></li>
+                </div>
+                </div>
             </div>
-            <div class="grapevine-user-main-details">
-              <div class="grapevine-user-main-name">
-                <h5 class="mb-1 grapevine-user-name"><%= display_name(user) %></h5>
-              </div>
-              <div class="grapevine-user-main-info">
-                <li><%= user.phone %></li>
-                <li><%= user.email %></li>
-                <li><%= user.street_address %></li>
-                <li><%= display_city_state(user) %></li>
-                <li><%= user.country %></li>
-              </div>
-            </div>
-          </div>
+            <% end %>
+            <%= render 'social_media_buttons', user: user %>
+            <%= render 'positions_held', user: user %>
+        </div>
         <% end %>
-        <%= render 'social_media_buttons', user: user %>
-        <%= render 'positions_held', user: user %>
-      </div>
     <% end %>
   </div>
 </div>
