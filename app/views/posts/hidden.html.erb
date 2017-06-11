@@ -1,6 +1,8 @@
+<%= render 'layouts/nav' %>
+
 <h1>Hidden Posts</h1>
 
-<%= link_to 'Displayed posts', posts_path if current_user.admin? %>
+<%= link_to 'Back to displayed posts', posts_path if current_user.admin? %>
 
 <% @posts.each do |post| %>
     <p><%= link_to (image_tag post.photo.url(:thumb)), post_path(post) %></p>
