@@ -4,14 +4,13 @@
   <div class="gallery-left">
     <div class="gallery-photos">
 
-      <h3>The Greenhouse <%= link_to '+ Upload Photo', new_post_path, class: "gallery-photos-add" %></h3>
+      <h3><%= link_to 'The Greenhouse', posts_path%><%= link_to '+ Upload Photo', new_post_path, class: "gallery-photos-add" %></h3>
 
       <%= form_tag(posts_path, :method => "get", id: "search-tags-form") do %>
         <%= text_field_tag :tag, params[:tag], placeholder: "Search by tag" %>
         <%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
       <% end %>
 
-      <h3><%= link_to 'The Greenhouse', posts_path%><%= link_to '+ Upload Photo', new_post_path, class: "gallery-photos-add" %></h3>
       <div class="gallery-photos-tags">
         Filter by popular tags: <% @tags.each do |t| %>
           <%= link_to t.name, (root_path + "?tag=#{t.name}") %>
