@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531000849) do
+ActiveRecord::Schema.define(version: 20170611213843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "announcements", force: :cascade do |t|
+    t.string "text"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", id: :serial, force: :cascade do |t|
     t.string "title", limit: 50, default: ""
@@ -77,21 +85,6 @@ ActiveRecord::Schema.define(version: 20170531000849) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sent_emails", force: :cascade do |t|
-    t.bigint "sender_id", null: false
-    t.bigint "recipient_id", null: false
-    t.datetime "time_sent"
-    t.string "reply_to_name"
-    t.string "reply_to_email"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "email_template_id"
-    t.index ["email_template_id"], name: "index_sent_emails_on_email_template_id"
-    t.index ["recipient_id"], name: "index_sent_emails_on_recipient_id"
-    t.index ["sender_id"], name: "index_sent_emails_on_sender_id"
-  end
-
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -128,7 +121,6 @@ ActiveRecord::Schema.define(version: 20170531000849) do
     t.string "nickname"
     t.string "maiden_name"
     t.string "salutation"
-    t.hstore "privacy_settings"
     t.boolean "admin", default: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -158,6 +150,7 @@ ActiveRecord::Schema.define(version: 20170531000849) do
     t.integer "profile_photo_file_size"
     t.datetime "profile_photo_updated_at"
     t.boolean "subscribed_to_alumni_newsletter", default: true, null: false
+    t.json "privacy_settings", default: {}
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -166,6 +159,4 @@ ActiveRecord::Schema.define(version: 20170531000849) do
   add_foreign_key "positions_helds", "programs"
   add_foreign_key "positions_helds", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "sent_emails", "users", column: "recipient_id"
-  add_foreign_key "sent_emails", "users", column: "sender_id"
 end
