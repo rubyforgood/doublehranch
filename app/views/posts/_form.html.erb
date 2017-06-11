@@ -12,5 +12,5 @@
   <%= f.text_field :caption %> <br /><br />
   <%= f.label :tag_list, "Tags (comma separated)" %>
   <%= f.text_field :tag_list, value: f.object.tag_list.to_s %> <br /><br />
-  <%= f.submit "Create Post", class: 'btn btn-primary btn-block' %>
+  <%= f.submit "Create #{Post.model_name.human.capitalize}", class: 'btn btn-primary btn-block' %>
 <% end %>
