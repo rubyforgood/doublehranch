@@ -43,14 +43,15 @@ class AnnouncementsController < ApplicationController
       flash[:success] = 'Announcement deleted!'
       redirect_to action: 'index'
     else
-      render 'show'
+      flash[:alert] = 'There was a problem deleting this announcement.'
+      render 'index'
     end
   end
 
   private
 
   def set_announcement
-    @announcement = Post.find(params[:id])
+    @announcement = Announcement.find(params[:id])
   end
 
   def announcement_params
