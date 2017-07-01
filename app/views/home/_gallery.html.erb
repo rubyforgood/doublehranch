@@ -35,19 +35,36 @@
   </div>
   <div class="gallery-right">
     <div class="gallery-events gallery-right-boxes">
-      <h5>Calendar</h5>
-       Check out our awesome upcoming events for Double H Ranch! <br />
-      <%= link_to '<button type="button" class="btn btn-primary btn-block">Events Calendar</button>'.html_safe, 'https://www.doublehranch.org/calendar' %>
+      <h5><%= link_to "Calendar",
+                      "https://www.doublehranch.org/calendar",
+                      target: "_blank" %></h5>
+      Check out our awesome upcoming events for Double H Ranch! <br />
+      <%= link_to '<button type="button" class="btn btn-primary btn-block">Events Calendar</button>'.html_safe,
+                  'https://www.doublehranch.org/calendar',
+                  target: "_blank" %>
     </div>
     <div class="gallery-volunteer gallery-right-boxes">
-      <h5>Volunteer</h5>
-      Every set of hands make the work lighter and the applause louder. Whether you have a day, weekend, week or an entire summer, our camp offers a range of volunteer opportunities for you to make a difference by giving your time and talent.<br />
-       <%= link_to '<button type="button" class="btn btn-primary btn-block">Volunteer Application</button>'.html_safe, 'https://www.doublehranch.org/volunteer' %>
+      <h5><%= link_to "Volunteer",
+                      "https://www.doublehranch.org/volunteer",
+                      target: "_blank" %></h5>
+      Every set of hands make the work lighter and the applause louder.
+      Whether you have a day, weekend, week or an entire summer,
+      our camp offers a range of volunteer opportunities for you to make a difference
+      by giving your time and talent.<br />
+      <%= link_to '<button type="button" class="btn btn-primary btn-block">Volunteer Application</button>'.html_safe,
+                  'https://www.doublehranch.org/volunteer',
+                  target: "_blank" %>
     </div>
     <div class="gallery-donate gallery-right-boxes">
-      <h5>Donate</h5>
-      Your support is what enables us to continue providing our year-round programs to our campers. Together, there’s no telling how many lives we can touch and how many stories we can inspire as we continue to keep the promise to our campers that the Double H Ranch will be here forever. <br />
-      <%= link_to '<button type="button" class="btn btn-primary btn-block">Donate</button>'.html_safe, 'https://www.doublehranch.org/donate' %>
+      <h5><%= link_to "Donate",
+                      "https://www.doublehranch.org/donate", target: "_blank" %></h5>
+      Your support is what enables us to continue providing our year-round programs to our campers.
+      Together, there’s no telling how many lives we can touch and how many stories we can
+      inspire as we continue to keep the promise to our campers that the
+      Double H Ranch will be here forever. <br />
+      <%= link_to '<button type="button" class="btn btn-primary btn-block">Donate</button>'.html_safe,
+                  'https://www.doublehranch.org/donate',
+                  target: "_blank" %>
     </div>
   </div>
 </div>

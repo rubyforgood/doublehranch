@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     saved = false if posts.empty?
 
     if saved
-      redirect_to posts.first, notice: 'Post was successfully created'
+      redirect_to posts_path, notice: 'Post was successfully created'
     else
       @post = Post.new(post_attrs)
       @post.valid?

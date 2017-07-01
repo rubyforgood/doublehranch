@@ -1,8 +1,14 @@
 <%= render 'layouts/nav' %>
 <div class="post-container">
+  <div>
+    <h3><%= link_to 'Back to Greenhouse', posts_path %></h3>
+  </div>
+  <div class="text-center page-header">
     <span class="post-tags">
-        <%= link_to 'Hide', hide_post_path(@post), method: :post, class:'btn btn-warning' if current_user.admin? %>
+      <%= link_to 'Hide', hide_post_path(@post), method: :post, class:'btn btn-warning' if current_user.admin? %>
     </span>
+  </div>
+
   <div class="post-navigation">
     <%= link_to 'Previous', post_path(@post.previous) if @post.previous %>
     <%= link_to 'Next', post_path(@post.next) if @post.next %>
