@@ -1,3 +1,11 @@
+<div class="gallery-announcements text-center">
+  <h5>Announcements</h5>
+  <ul class="list-group">
+  <% @announcements.each do |announcement| %>
+    <li class="list-group-item"><%= announcement.text %></li>
+  <% end %>
+  </ul>
+</div>
 <div class="gallery">
   <div class="gallery-linedetail">
   </div>

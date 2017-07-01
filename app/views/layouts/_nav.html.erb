@@ -33,6 +33,14 @@
               <% end %>
             </li>
             <li>
+              <%= link_to announcements_path,
+                          class: 'nav-link' do %>
+                <i class="fa fa-bell" aria-hidden="true">
+                  <span><h4>Announcements</h4></span>
+                </i>
+              <% end %>
+            </li>
+            <li>
               <%= link_to rails_admin.dashboard_path,
                           class: 'nav-link' do %>
                 <i class="fa fa-lock" aria-hidden="true">
