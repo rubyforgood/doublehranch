@@ -68,7 +68,7 @@ class PostsController < ApplicationController
       post.update(hide: true)
       redirect_to posts_path, notice: 'Post hidden.'
   end
- 
+
   def unhide
       post = Post.find(params[:post_id])
       post.update(hide: false)
