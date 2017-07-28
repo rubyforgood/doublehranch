@@ -46,6 +46,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post.delete
+    redirect_to posts_path
+  end
+
   def comment
     @comment = Comment.new(comment_params)
     @comment.user = current_user
