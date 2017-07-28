@@ -51,6 +51,15 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def edit
+
+  end
+
+  def update
+    @post.update(caption: params[:caption])
+    redirect_to post_path(@post)
+  end
+
   def comment
     @comment = Comment.new(comment_params)
     @comment.user = current_user
