@@ -8,6 +8,7 @@
 
 - Install Ruby 2.4.1 (chruby, rbenv, rvm, etc)
 - `bin/setup` initially, then `bin/update` thereafter
+- Additionally, for AWS and Paperclip to work locally, be sure to update your own `.env` file with relevant AWS credentials, per the `config/environments/development.rb`
 
 ## What This App Does
 
