@@ -5,10 +5,10 @@
      <input type="text" name="search" id="search" class="form-control" aria-describedby="search" placeholder="Name or Email">
   </div>
  </div>
- 
+
  <div class="form-group mr-2">
    <label class="sr-only" for="exampleSelect1">Year</label>
-   <select class="form-control" id="exampleSelect1">
+   <select class="form-control" id="years" name='year'>
      <%= years.each do |year| %>
         <option> <%= year %> </option>
      <% end %>
@@ -16,12 +16,10 @@
  </div>
  <div class="form-group mr-2">
    <label class="sr-only" for="exampleSelect1">Position</label>
-   <select class="form-control" id="exampleSelect1">
-     <option>Position</option>
-     <option>Position</option>
-     <option>Position</option>
-     <option>Position</option>
-     <option>Position</option>
+   <select class="form-control" id="positions" name='position'>
+     <%= positions.each do |position| %>
+        <option> <%= position.name %> </option>
+     <% end %>
    </select>
  </div>
  <button type="submit" class="btn btn-primary ml-2">Search</button>
