@@ -1,1 +1,6 @@
 <%= render "users/form" %>
+
+<div class="preferences-navigation-footer">
+  <%= link_to "Cancel", root_path, {class: 'btn btn-danger btn-cancel', method: 'get'} %>
+  <%= link_to "Skip to Photo", edit_user_profile_path(@user, state: 'photo'), {class: 'btn btn-primary btn-skip', method: 'get'} %>
+</div>
