@@ -29,6 +29,10 @@
 
 The app is built using Rails 5 with Postgres and AWS S3 for storing data.
 
+A visual representation of the database schema is shown below to give users and contributors a better sense of the overall application structure included within this project:
+
+<img src="http://imgur.com/ZsWeAdU.png" width="600">
+
 ## Heroku
 
 Paperclip requires an additional buildpack for imagemagick
