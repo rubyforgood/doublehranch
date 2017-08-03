@@ -60,6 +60,16 @@ heroku run -a doublehranch -- rails console
 # Follow instructions above
 ```
 
+## Contributing
+Our process is very similar to the [guide](https://guides.github.com/introduction/flow/) created by Gitub:
+* Please [fork the app](https://help.github.com/articles/fork-a-repo/) and create a feature branch.
+* Work on the issue.
+* Please make sure tests continue to pass and if applicable that you also add tests to the feature you have implemented.
+* Open a pull request (PR) for it when you feel it's ready to merge.
+* At least one other person on the team needs to approve the  PR before merging. The purpose of this review requirement is to ensure shared knowledge of the app and its changes and to take advantage of the benefits of working together.
+
+Please let us know if you have any question. Thanks again for your interest in contributing.
+
 ## About Double H Ranch
 
 Double H Ranch is a nonprofit that provides specialized programs and year-round
