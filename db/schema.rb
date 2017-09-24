@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 20170611213843) do
     t.string "nickname"
     t.string "maiden_name"
     t.string "salutation"
-    t.hstore "privacy_settings"
     t.boolean "admin", default: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -151,6 +150,7 @@ ActiveRecord::Schema.define(version: 20170611213843) do
     t.integer "profile_photo_file_size"
     t.datetime "profile_photo_updated_at"
     t.boolean "subscribed_to_alumni_newsletter", default: true, null: false
+    t.json "privacy_settings", default: {}
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -6,7 +6,7 @@
 
 <%= form_for @user, url: update_user_privacy_path(@user) do |f| %>
   <h3>Personal Info</h3>
-  <% @personal_info_preferences = %i{name email address} %>
+  <% @personal_info_preferences = %i{name email address phone} %>
   <% @personal_info_preferences.each do |p| %>
     <div>
       <%= check_box_tag "preferences[personal][#{p}]", true, @user.privacy_settings['personal'][p.to_s] %>
@@ -14,7 +14,7 @@
     </div>
   <% end %>
   <h3>Social Media</h3>
-  <% @social_media_preferences = %i{facebook twitter instagram linked_id tumblr} %>
+  <% @social_media_preferences = %i{facebook twitter instagram linked_id pinterest tumblr} %>
   <% @social_media_preferences.each do |p| %>
     <div>
       <%= check_box_tag "preferences[social][#{p}]", true, @user.privacy_settings['social'][p.to_s] %>

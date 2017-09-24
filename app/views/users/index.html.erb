@@ -18,17 +18,19 @@
                 <div class="grapevine-user-main-details">
                   <div class="grapevine-user-main-name">
                     <h5 class="mb-1 grapevine-user-name">
-                      <%= display_name(user) %>
+                      <%= display_name(user) if user.privacy_settings["personal"]["name"] || user == current_user || current_user.admin? %>
                     </h5>
                   </div>
                 </div>
               <% end %>
               <div class="grapevine-user-main-info">
-                <li><%= user.phone %></li>
-                <li><%= mail_to(user.email) %></li>
-                <li><%= user.street_address %></li>
-                <li><%= display_city_state(user) %></li>
-                <li><%= user.country %></li>
+                <li><%= user.phone if user.privacy_settings["personal"]["phone"] || user == current_user || current_user.admin? %></li>
+                <li><%= mail_to(user.email) if user.privacy_settings["personal"]["email"] || user == current_user || current_user.admin? %></li>
+                <% if user.privacy_settings["personal"]["address"] || user == current_user || current_user.admin? %>
+                  <li><%= user.street_address %></li>
+                  <li><%= display_city_state(user) %></li>
+                  <li><%= user.country %></li>
+                <% end %>
               </div>
             </div>
             <%= render 'social_media_buttons', user: user %>
