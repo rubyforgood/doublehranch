@@ -2,7 +2,9 @@
 <div class="profile-container">
   <div class="profile-info">
     <h1>
-      <%= @user.friendly_name %>'s Profile Page
+      <% if @user.privacy_settings["personal"]["name"] %>
+        <%= @user.friendly_name %>'s Profile Page
+      <% end %>
       <% if current_user == @user %>
         <%= link_to '<button type="button" class="btn btn-secondary">Update Info</button>'.html_safe, edit_user_profile_path(current_user) %>
       <% end %>
@@ -14,12 +16,20 @@
         <%= render 'social_media_buttons', user: @user %>
       </div>
       <p class="mb-1">
-        <br><%= @user.phone %>
-        <br><%= @user.email %>
+        <% if @user.privacy_settings["personal"]["phone"] %>
+          <br><%= @user.phone %>
+        <% end %>
+        <% if @user.privacy_settings["personal"]["email"] %>
+          <br><%= @user.email %>
+        <% end %>
         <br>
-        <br><%= display_name(@user) %>
-        <br><%= "#{@user.street_address}" %>
-        <br><%= "#{@user.city}, #{@user.state} #{@user.country}" %>
+        <% if @user.privacy_settings["personal"]["name"] %>
+          <br><%= display_name(@user) %>
+        <% end %>
+        <% if @user.privacy_settings["personal"]["address"] %>
+          <br><%= "#{@user.street_address}" %>
+          <br><%= "#{@user.city}, #{@user.state} #{@user.country}" %>
+        <% end %>
       </p>
 
       <%= render 'positions_held', user: @user %>
