@@ -4,13 +4,20 @@ class UsersController < ApplicationController
 
   def index
     @years = (1992..2018).to_a.reverse!
+    @positions = Position.all
+    @users = User.all
 
     if params[:search]
-        @users = User.search(params[:search].downcase)
-        @users += User.search(params[:search].capitalize)
-        @users.uniq!
-    else
-        @users = User.all
+        @users = @users.search(params[:search])
+    end
+
+    if params[:position]
+        position = Position.find_by(name: params[:position])
+        @users = @users.joins(positions_held: :position).where(name: position)
+    end
+
+    if params[:year]
+        @users = @users.select{|u| u.programs.pluck(:years).include?(params[:year])}
     end
   end
 

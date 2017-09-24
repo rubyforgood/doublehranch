@@ -2,7 +2,7 @@
 <div class="grapevine-container">
   <h1 class="grapevine-title mb-4">The Grapevine</h1>
   <div class="grapevine-search mb-4">
-    <%= render 'search', years: @years %>
+    <%= render 'search', years: @years, positions: @positions %>
   </div>
   <div class="list-group grapevine-user">
     <% if @users.blank? %>
