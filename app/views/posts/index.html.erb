@@ -5,7 +5,7 @@
         <h3><%= Post.model_name.human.pluralize %><%= link_to 'Back Home', root_path, class: "gallery-photos-add" %></h3>
     </div>
 
-  <p><%= link_to "New #{Post.model_name.human.capitalize}", new_post_path, class: "btn btn-primary btn-lg" %></p>
+  <p><%= link_to "Upload photo", new_post_path, class: "btn btn-primary btn-lg" %></p>
 
   <div class="row">
     <%= form_tag(posts_path, :method => "get", id: "search-tags-form") do %>
