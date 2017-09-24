@@ -1,0 +1,12 @@
+<div class="gallery-announcements">
+  <h3><%= link_to("Announcements", announcements_path) %></h3>
+  <% if @announcements.any? %>
+    <ul class="gallery-announcements-list list-group">
+      <% @announcements.each do |announcement| %>
+        <li class="gallery-announcements-item list-group-item"><%= announcement.text %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    No announcements
+  <% end %>
+</div>

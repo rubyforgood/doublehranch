@@ -1,5 +1,9 @@
 <h1>PRIVACY & PREFERENCES</h1>
 
+<div class="preferences-navigation-footer">
+  <%= link_to "Cancel", root_path, {class: 'btn btn-danger', method: 'get'} %>
+</div>
+
 <%= form_for @user, url: update_user_privacy_path(@user) do |f| %>
   <h3>Personal Info</h3>
   <% @personal_info_preferences = %i{name email address} %>

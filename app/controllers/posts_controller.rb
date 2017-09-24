@@ -46,6 +46,20 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post.delete
+    redirect_to posts_path
+  end
+
+  def edit
+
+  end
+
+  def update
+    @post.update(caption: params[:caption])
+    redirect_to post_path(@post)
+  end
+
   def comment
     @comment = Comment.new(comment_params)
     @comment.user = current_user
@@ -68,7 +82,7 @@ class PostsController < ApplicationController
       post.update(hide: true)
       redirect_to posts_path, notice: 'Post hidden.'
   end
- 
+
   def unhide
       post = Post.find(params[:post_id])
       post.update(hide: false)
