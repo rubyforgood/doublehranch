@@ -8,6 +8,7 @@
 
 - Install Ruby 2.4.1 (chruby, rbenv, rvm, etc)
 - `bin/setup` initially, then `bin/update` thereafter
+- Additionally, for AWS and Paperclip to work locally, be sure to update your own `.env` file with relevant AWS credentials, per the `config/environments/development.rb`
 
 ## What This App Does
 
@@ -28,6 +29,10 @@
 ## Architecture
 
 The app is built using Rails 5 with Postgres and AWS S3 for storing data.
+
+A visual representation of the database schema is shown below to give users and contributors a better sense of the overall application structure included within this project:
+
+<img src="http://imgur.com/ZsWeAdU.png" width="600">
 
 ## Heroku
 
@@ -54,6 +59,16 @@ If you need to do this on the production app
 heroku run -a doublehranch -- rails console
 # Follow instructions above
 ```
+
+## Contributing
+Our process is very similar to the [guide](https://guides.github.com/introduction/flow/) created by Gitub:
+* Please [fork the app](https://help.github.com/articles/fork-a-repo/) and create a feature branch.
+* Work on the issue.
+* Please make sure tests continue to pass and if applicable that you also add tests to the feature you have implemented.
+* Open a pull request (PR) for it when you feel it's ready to merge.
+* At least one other person on the team needs to approve the  PR before merging. The purpose of this review requirement is to ensure shared knowledge of the app and its changes and to take advantage of the benefits of working together.
+
+Please let us know if you have any question. Thanks again for your interest in contributing.
 
 ## About Double H Ranch
 

@@ -38,6 +38,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'launchy'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
@@ -47,6 +48,7 @@ end
 group :test do
   gem 'rake'
   gem 'database_cleaner'
+  gem 'launchy'
 end
 
 group :development do

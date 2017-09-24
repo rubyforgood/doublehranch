@@ -33,7 +33,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to announcements_path,
+              <%= link_to rails_routes.announcements_path,
                           class: 'nav-link' do %>
                 <i class="fa fa-bell" aria-hidden="true">
                   <span><h4>Announcements</h4></span>
@@ -44,7 +44,7 @@
               <%= link_to rails_admin.dashboard_path,
                           class: 'nav-link' do %>
                 <i class="fa fa-lock" aria-hidden="true">
-                  <span><h4>Manage data</h4></span>
+                  <span><h4>Site administration</h4></span>
                 </i>
               <% end %>
             </li>
@@ -67,7 +67,7 @@
         </li>
       <% end %>
       <li class="nav-item">
-        <%= link_to 'https://www.doublehranch.org/', class: 'nav-link' do %>
+        <%= link_to 'https://www.doublehranch.org/', target: "_blank", class: 'nav-link' do %>
           <%= image_tag("HHLogoGrey.svg") %>
         <% end %>
       </li>

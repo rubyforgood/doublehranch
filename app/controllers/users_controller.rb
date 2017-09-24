@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @years = [2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992]
+    @years = (1992..2018).to_a.reverse!
     @positions = Position.all
     @users = nil
     if params[:position]
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if params[:year]
       # need to associate users with years in order to fulfill this.
     end
+    
     if params[:search]
         @users += User.search(params[:search].downcase)
         @users += User.search(params[:search].capitalize)
@@ -29,6 +30,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    ['personal', 'social', 'contact', 'camp'].each do |key|
+        @user.privacy_settings[key] ||= {}
+    end
   end
 
   def update
@@ -38,6 +42,23 @@ class UsersController < ApplicationController
       redirect_to user_profile_path(@user), notice: 'User updated.'
     else
       render :edit, alert: 'Unable to update user.'
+    end
+  end
+
+  def update_privacy
+    @user = User.find(params[:user_id])
+    @user.privacy_settings = ['personal', 'social', 'contact', 'camp'].reduce({}) do |h, key|
+      temp = params[:preferences][key] || {}
+      temp.each do |k,v|
+        temp[k] = (v == "true")
+      end
+      h[key] = temp; h
+    end
+
+    if @user.save
+      redirect_to edit_user_profile_path(@user)
+    else
+      raise 'hello'
     end
   end
 
@@ -87,5 +108,4 @@ class UsersController < ApplicationController
     :zip_code,
     )
   end
-
 end

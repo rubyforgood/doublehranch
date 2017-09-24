@@ -23,6 +23,12 @@
   <div class="post-tag-form">
     <%= render 'tag_form' %>
   </div>
+  <div class="delete-post">
+    <%= button_to "Delete Post", @post, method: :delete, class: "btn btn-danger" %>
+  </div>
+  <div class="edit-post">
+    <%= button_to "Edit Post", edit_post_path(@post), method: :get, class: "btn btn-warning" %>
+  </div>
   <div class="post-comments">
     <%= render @post.comments %>
     <div class="post-comments-form">

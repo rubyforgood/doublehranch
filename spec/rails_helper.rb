@@ -57,8 +57,16 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-
+  config.before(:each) do
+    allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true)
+  end
 
   # Devise
-   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :feature
+  config.include Warden::Test::Helpers
+
+  config.after :each do
+    Warden.test_reset!
+  end
 end
