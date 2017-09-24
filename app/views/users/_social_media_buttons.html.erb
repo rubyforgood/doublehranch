@@ -48,7 +48,7 @@
   <% end %>
 
   <% if user.tumblr_name.present? %>
-    <%= link_to("https://www.tumblr.com/#{user.tumblr_name}", target: "_blank", class: "btn") do %>
+    <%= link_to("https://www.#{user.tumblr_name}tumblr.com", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-tumblr-square"></i>
       </button>
