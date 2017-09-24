@@ -30,4 +30,9 @@ class User < ApplicationRecord
   def friendly_name
     nickname || first_name || "Friend"
   end
+
+  def self.search(search)
+    where("first_name LIKE ? OR last_name LIKE ? OR nickname LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%") 
+  end
+
 end

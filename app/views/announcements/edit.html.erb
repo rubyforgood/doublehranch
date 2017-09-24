@@ -1,0 +1,19 @@
+<%= render 'layouts/nav' %>
+<div class="upload-container">
+  <h3>Edit Announcement</h3>
+  <br />
+  <% if @announcement.errors.any? %>
+    <ul>
+    <% @announcement.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+  <%= simple_form_for @announcement do |f| %>
+    <%= f.input :text %>
+    <%= f.input :start_date, as: :date %>
+    <%= f.input :end_date, as: :date %>
+    <%= f.submit "Update announcement", class: 'btn btn-primary btn-block' %>
+  <% end %>
+</div>

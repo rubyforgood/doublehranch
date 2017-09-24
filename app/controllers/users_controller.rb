@@ -3,8 +3,15 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
     @years = (1992..2018).to_a.reverse!
+
+    if params[:search]
+        @users = User.search(params[:search].downcase)
+        @users += User.search(params[:search].capitalize)
+        @users.uniq!
+    else
+        @users = User.all
+    end
   end
 
   def show
@@ -21,6 +28,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:user_id])
+
     if @user.update_attributes(user_params)
       redirect_to user_profile_path(@user), notice: 'User updated.'
     else
