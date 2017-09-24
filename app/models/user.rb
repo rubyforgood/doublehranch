@@ -35,7 +35,7 @@ class User < ApplicationRecord
     if user.privacy_settings.empty?
       user.privacy_settings = {
         "personal"=>{"name"=>true, "email"=>true, "address"=>true, "phone"=>true},
-        "social"=>{"facebook"=>true, "twitter"=>true, "instagram"=>true, "linked_id"=>true, "tumblr"=>true},
+        "social"=>{"facebook"=>true, "twitter"=>true, "instagram"=>true, "linked_id"=>true, "pinterest"=>true, "tumblr"=>true},
         "contact"=>{"solicitation"=>true, "emails"=>true, "phone_calls"=>true, "snail_mail"=>true},
         "camp"=>{"volunteer_info"=>true, "donor_info"=>true, "alumni_info"=>true, "counselor_info"=>true, "hospital_outreach_info"=>true}
       }

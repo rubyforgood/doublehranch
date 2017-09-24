@@ -1,5 +1,5 @@
 <div class="grapevine-social-buttons">
-  <% if user.facebook_username.present? %>
+  <% if user.facebook_username.present? & user.privacy_settings["social"]["facebook"] %>
       <%= link_to("https://www.facebook.com/#{user.facebook_username}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-facebook"></i>
@@ -7,7 +7,7 @@
     <% end %>
   <% end %>
 
-  <% if user.twitter_handle.present? %>
+  <% if user.twitter_handle.present? & user.privacy_settings["social"]["twitter"] %>
     <%= link_to("https://www.twitter.com/#{user.twitter_handle}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-twitter"></i>
@@ -15,7 +15,7 @@
     <% end %>
   <% end %>
 
-  <% if user.instagram_username.present? %>
+  <% if user.instagram_username.present? & user.privacy_settings["social"]["instagram"] %>
     <%= link_to("https://www.instagram.com/#{user.instagram_username}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-instagram"></i>
@@ -23,7 +23,7 @@
     <% end %>
   <% end %>
 
-  <% if user.linkedin_username.present? %>
+  <% if user.linkedin_username.present? & user.privacy_settings["social"]["linked_in"]  %>
     <%= link_to("https://www.linkedin.com/#{user.linkedin_username}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-linkedin"></i>
@@ -31,10 +31,18 @@
     <% end %>
   <% end %>
 
-  <% if user.pinterest_name.present? %>
+  <% if user.pinterest_name.present? & user.privacy_settings["social"]["pinterest"] %>
     <%= link_to("https://www.pinterest.com/#{user.pinterest_name}", target: "_blank", class: "btn") do %>
       <button class="btn">
         <i class="fa fa-pinterest"></i>
+      </button>
+    <% end %>
+  <% end %>
+
+  <% if user.tumblr_name.present? & user.privacy_settings["social"]["tumblr"] %>
+    <%= link_to("https://www.tumblr.com/#{user.tumblr_name}", target: "_blank", class: "btn") do %>
+      <button class="btn">
+        <i class="fa fa-tumblr"></i>
       </button>
     <% end %>
   <% end %>

@@ -14,7 +14,7 @@
     </div>
   <% end %>
   <h3>Social Media</h3>
-  <% @social_media_preferences = %i{facebook twitter instagram linked_id tumblr} %>
+  <% @social_media_preferences = %i{facebook twitter instagram linked_id pinterest tumblr} %>
   <% @social_media_preferences.each do |p| %>
     <div>
       <%= check_box_tag "preferences[social][#{p}]", true, @user.privacy_settings['social'][p.to_s] %>
