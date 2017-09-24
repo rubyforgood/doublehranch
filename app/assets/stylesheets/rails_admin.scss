@@ -6,3 +6,40 @@
 ol.breadcrumb li:first-child {
   display: none;
 }
+
+.nav-tabs {
+  > li {
+    color: white;
+    background-color: $orange;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    margin: .25rem;
+    padding: .5rem 1rem;
+  }
+
+  a {
+    color: white;
+  }
+
+  .dropdown-menu {
+      padding: 0;
+
+    li {
+      padding: 0.25rem 0.7rem;
+
+      a {
+        color: $green-dark;
+      }
+
+      &:hover {
+        background-color: $green-med;
+        cursor: pointer;
+
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}
