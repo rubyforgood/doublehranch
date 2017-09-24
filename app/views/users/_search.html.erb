@@ -7,8 +7,8 @@
  </div>
 
  <div class="form-group mr-2">
-   <label class="sr-only" for="exampleSelect1">Year</label>
-   <select class="form-control" id="years" name='year'>
+   <label class="sr-only" for="years">Year</label>
+   <select class="form-control" id="years" name="year">
      <%= years.each do |year| %>
         <option> <%= year %> </option>
      <% end %>
@@ -16,7 +16,7 @@
  </div>
  <div class="form-group mr-2">
    <label class="sr-only" for="exampleSelect1">Position</label>
-   <select class="form-control" id="positions" name='position'>
+   <select class="form-control" id="positions" name="position">
      <%= positions.each do |position| %>
         <option> <%= position.name %> </option>
      <% end %>
