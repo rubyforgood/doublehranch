@@ -1,0 +1,9 @@
+<%= render 'layouts/nav' %>
+<div class="upload-container">
+  <h3>Edit your Post Caption</h3>
+  <br />
+  <%= form_tag post_path(@post), method: "put" do %>
+    <%= text_area_tag :caption, @post.caption %><br>
+    <%= submit_tag "Submit Edits" %>
+  <% end %>
+</div>

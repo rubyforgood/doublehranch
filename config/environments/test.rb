@@ -41,3 +41,10 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
+
+Rails.application.config.assets.compile = false
+Sprockets::Rails::Helper.prepend(Module.new do
+  def resolve_asset_path(path, *)
+    super || path
+  end
+end)
