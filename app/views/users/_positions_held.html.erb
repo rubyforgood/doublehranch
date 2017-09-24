@@ -1,10 +1,8 @@
-<% unless user.positions_held.empty? %>
-  <div class="grapevine-user-positions-helds">
-    <strong>Positions:</strong>
-    <ul>
-      <% user.positions_held.each do |position_held| %>
-        <li><%= position_held.name %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<div class="grapevine-user-positions-helds">
+  <strong>Positions:</strong>
+  <ul>
+    <% user.positions_held.each do |position_held| %>
+      <li><%= position_held.name %></li>
+    <% end %>
+  </ul>
+</div>
