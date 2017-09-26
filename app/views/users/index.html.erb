@@ -6,7 +6,12 @@
   </div>
   <div class="list-group grapevine-user">
     <% if @users.blank? %>
-        <h4>There are no users that matched your search of <%= params[:search] %>.</h4>
+        <h4>No profiles that matched your search of:</h4>
+        <ul>
+          <li><strong>Name or email:</strong> <%= params[:search].present? ? params[:search] : "---" %></li>
+          <li><strong>Year:</strong> <%= params[:year].present? ? params[:year] : "---" %></li>
+          <li><strong>Position:</strong> <%= params[:position].present? ? params[:position] : "---" %></li>
+        </ul>
     <% else %>
         <% @users.each do |user| %>
           <div class="list-group-item list-group-item-action">
@@ -30,6 +35,9 @@
                   <li><%= user.street_address %></li>
                   <li><%= display_city_state(user) %></li>
                   <li><%= user.country %></li>
+                <% end %>
+                <% if current_user.admin? || current_user == @user %>
+                  <%= link_to '<button type="button" class="btn btn-secondary">Update Info</button>'.html_safe, edit_user_profile_path(current_user) %>
                 <% end %>
               </div>
             </div>

@@ -5,19 +5,19 @@ class UsersController < ApplicationController
   def index
     @years = (1992..2018).to_a.reverse!
     @positions = Position.all
-    @users = User.all
+    @users = User.includes(positions_held: [:program, :position]).
+                  references(positions_held: [:program, :position])
 
-    if params[:search]
+    if params[:search].present?
         @users = @users.search(params[:search])
     end
 
-    if params[:position]
-        position = Position.find_by(name: params[:position])
-        @users = @users.joins(positions_held: :position).where(name: position)
+    if params[:position].present?
+        @users = @users.where("positions.name ilike '%#{params[:position]}%'")
     end
 
-    if params[:year]
-        @users = @users.select{|u| u.programs.pluck(:years).include?(params[:year])}
+    if params[:year].present?
+        @users = @users.select{|u| u.years.include?(params[:year].to_i)}
     end
   end
 
@@ -65,6 +65,7 @@ class UsersController < ApplicationController
     importer = UserImporter.new(uploaded_file.path.to_s)
     if importer.valid_headers?
       importer.import_by_row
+      redirect_to grapevine_path
     else
       header_mismatch = importer.compare_headers
       flash[:error] = "Headers in spreadsheet do not match the expected layout. We expect: #{header_mismatch[:expected]}, and received #{header_mismatch[:actual]}"
