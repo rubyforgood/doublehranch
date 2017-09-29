@@ -1,5 +1,13 @@
 <%= render 'layouts/nav' %>
 <div class="preferences">
+  <h1>
+    <% if @user.privacy_settings["personal"]["name"] || @user == current_user || current_user.admin? %>
+      Editing <%= @user.friendly_name %>'s profile
+    <% end %>
+    <% if current_user.admin? || current_user == @user %>
+      <%= link_to '<button type="button" class="btn btn-secondary">View profile</button>'.html_safe, user_profile_path(current_user) %>
+    <% end %>
+  </h1>
   <div class="preferences-stepper">
     <%= link_to edit_user_profile_path(current_user, state: 'general') do %>
       <%= image_tag("yellow-arrowhead.svg", class: params[:state].in?([nil, "general"]) ? "active" : "") %>

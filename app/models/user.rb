@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :email_templates, foreign_key: :author_id
   has_many :positions_held
   has_many :positions, through: :positions_held
+  has_many :programs, through: :positions_held
   has_many :posts
 
   has_attached_file :profile_photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.png"
@@ -49,12 +50,22 @@ class User < ApplicationRecord
   end
 
   def friendly_name
-    nickname || first_name || "Friend"
+    if nickname.present?
+      nickname
+    elsif first_name.present?
+      first_name
+    else
+      "Friend"
+    end
+  end
+
+  def years
+    programs.map(&:years).flatten
   end
 
   def self.search(search)
     search.downcase!
-    where("lower(first_name) LIKE ? OR lower(last_name) LIKE ? OR lower(maiden_name) LIKE ? OR lower(nickname) LIKE ? OR lower(email) LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%") 
+    where("lower(first_name) LIKE ? OR lower(last_name) LIKE ? OR lower(maiden_name) LIKE ? OR lower(nickname) LIKE ? OR lower(email) LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
   end
 
 end
