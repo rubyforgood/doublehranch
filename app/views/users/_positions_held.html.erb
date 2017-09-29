@@ -2,7 +2,11 @@
   <strong>Positions:</strong>
   <ul>
     <% user.positions_held.each do |position_held| %>
-      <li><%= position_held.name %></li>
+      <% if current_user.admin? || current_user == @user %>
+        <li><%= link_to "#{position_held.name}", edit_positions_held_path(position_held) %></li>
+      <% else %>
+        <li><%= position_held.name %></li>
+      <% end  %>
     <% end %>
   </ul>
 </div>

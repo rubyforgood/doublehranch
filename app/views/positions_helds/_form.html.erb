@@ -1,0 +1,15 @@
+<%= simple_form_for(@positions_held) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user, :label_method => lambda { |user| "#{user.friendly_name}" } %>
+    <%= f.association :position %>
+    <%= f.association :program %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <%= link_to 'New position held', new_positions_held_path, class: "btn btn-optional" %>
+    <%= link_to "View user's profile", edit_user_profile_path(f.object.user_id), class: "btn btn-optional" %>
+  </div>
+<% end %>

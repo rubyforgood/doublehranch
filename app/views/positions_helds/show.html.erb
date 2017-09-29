@@ -1,0 +1,21 @@
+<%= render 'layouts/nav' %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @positions_held.user.friendly_name %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @positions_held.position.name %>
+</p>
+
+<p>
+  <strong>Program:</strong>
+  <%= @positions_held.program.name %>
+</p>
+
+<%= link_to 'Edit', edit_positions_held_path(@positions_held) %> |
+<%= link_to 'Back', positions_helds_path %>
