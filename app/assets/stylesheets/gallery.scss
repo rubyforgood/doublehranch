@@ -12,11 +12,14 @@
     box-shadow: 0 1px 15px -5px rgba(0, 0, 0, 0.9);
     padding: 1rem;
     padding-bottom: 2rem;
-    background-color: white;
     width: 100%;
     margin-bottom: 1rem;
     overflow-y: scroll;
     opacity: 0.8;
+
+    &-active {
+      background-color: white;
+    }
 
     &-item {
       margin: 0.5rem 0;

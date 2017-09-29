@@ -1,6 +1,8 @@
-<div class="gallery-announcements">
+<% announcements_present = @announcements.any? %>
+
+<div class="gallery-announcements <%= "active" if announcements_present %>">
   <h3><%= link_to("Announcements", announcements_path) %></h3>
-  <% if @announcements.any? %>
+  <% if announcements_present %>
     <ul class="gallery-announcements-list list-group">
       <% @announcements.each do |announcement| %>
         <li class="gallery-announcements-item list-group-item"><%= announcement.text %></li>
