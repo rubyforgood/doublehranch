@@ -29,8 +29,10 @@ Rails.application.routes.draw do
   resources :posts do
     get :autocomplete_tag_name, :on => :collection
   end
+
+  resources :announcements
   resources :comments, only: [:update, :destroy]
   resources :email_templates
-  resources :announcements
+  resources :positions_helds
 
 end
