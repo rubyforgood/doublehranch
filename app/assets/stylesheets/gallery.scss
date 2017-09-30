@@ -8,6 +8,17 @@
     flex-direction: column;
   }
 
+  &-search-box {
+    margin-left:15px;
+    border-radius:0.25rem;
+    line-height:1;
+    padding: 0.5rem 1rem;
+  }
+
+  &-add-photo-button {
+    margin-left:2em;
+  }
+
   &-announcements {
     box-shadow: 0 1px 15px -5px rgba(0, 0, 0, 0.9);
     padding: 1rem;
