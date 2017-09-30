@@ -1,44 +1,58 @@
-<h1>PRIVACY & PREFERENCES</h1>
-
-<div class="preferences-navigation-footer">
-  <%= link_to "Cancel", root_path, {class: 'btn btn-danger', method: 'get'} %>
+<div class="col-md-12">
+  <h1>PRIVACY PREFERENCES</h1>
+  <em>(checkmarks below indicate you ARE ok with sharing that info with other Orchard users)</em>
+  <br><hr>
 </div>
 
 <%= form_for @user, url: update_user_privacy_path(@user) do |f| %>
-  <h3>Personal Info</h3>
-  <% @personal_info_preferences = %i{name email address phone} %>
-  <% @personal_info_preferences.each do |p| %>
-    <div>
-      <%= check_box_tag "preferences[personal][#{p}]", true, @user.privacy_settings['personal'][p.to_s] %>
-      <%= label_tag p %>
+  <div class="row col-md-12">
+    <div class="col-md-6">
+      <h3>Personal Info</h3>
+      <% @personal_info_preferences = %i{name email address phone} %>
+      <% @personal_info_preferences.each do |p| %>
+        <div>
+          <%= check_box_tag "preferences[personal][#{p}]", true, @user.privacy_settings['personal'][p.to_s] %>
+          <%= label_tag p %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  <h3>Social Media</h3>
-  <% @social_media_preferences = %i{facebook twitter instagram linked_id pinterest tumblr} %>
-  <% @social_media_preferences.each do |p| %>
-    <div>
-      <%= check_box_tag "preferences[social][#{p}]", true, @user.privacy_settings['social'][p.to_s] %>
-      <%= label_tag p %>
-    </div>
-  <% end %>
 
-  <h3>Contact Preferences</h3>
-  <% @contact_preferences = %i{ solicitation emails phone_calls snail_mail } %>
-  <% @contact_preferences.each do |p| %>
-    <div>
-      <%= check_box_tag "preferences[contact][#{p}]", true, @user.privacy_settings['contact'][p.to_s] %>
-      <%= label_tag p %>
+    <div class="col-md-6">
+      <h3>Contact Preferences</h3>
+      <% @contact_preferences = %i{ solicitation emails phone_calls snail_mail } %>
+      <% @contact_preferences.each do |p| %>
+        <div>
+          <%= check_box_tag "preferences[contact][#{p}]", true, @user.privacy_settings['contact'][p.to_s] %>
+          <%= label_tag p %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  <h3>Camp Preferences</h3>
-  <% @camp_preferences = %i{ volunteer_info donor_info alumni_info counselor_info hospital_outreach_info } %>
-  <% @camp_preferences.each do |p| %>
-    <div>
-      <%= check_box_tag "preferences[camp][#{p}]", true, @user.privacy_settings['camp'][p.to_s] %>
-      <%= label_tag p %>
+
+    <div class="col-md-6">
+      <h3>Social Media</h3>
+      <% @social_media_preferences = %i{facebook twitter instagram linked_id pinterest tumblr} %>
+      <% @social_media_preferences.each do |p| %>
+        <div>
+          <%= check_box_tag "preferences[social][#{p}]", true, @user.privacy_settings['social'][p.to_s] %>
+          <%= label_tag p %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  <%= f.submit "Update privacy preferences" %>
+
+    <div class="col-md-6">
+      <h3>Camp Preferences</h3>
+      <% @camp_preferences = %i{ volunteer_info donor_info alumni_info counselor_info hospital_outreach_info } %>
+      <% @camp_preferences.each do |p| %>
+        <div>
+          <%= check_box_tag "preferences[camp][#{p}]", true, @user.privacy_settings['camp'][p.to_s] %>
+          <%= label_tag p %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="preferences-navigation-footer">
+      <%= f.submit "Update privacy preferences", class: "btn btn-primary" %>
+      <%= link_to "Cancel", root_path, {class: 'btn btn-outline-danger', method: 'get'} %>
+    </div>
+  </div>
 <% end %>
-
-<br/>
