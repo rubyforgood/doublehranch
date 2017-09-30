@@ -32,6 +32,11 @@ class User < ApplicationRecord
             allow_blank: true,
             :if => lambda {|attr| attr.present?}
 
+  validates :last_name,
+            uniqueness: {scope: [:first_name, :email]},
+            allow_blank: true,
+            :if => lambda {|attr| attr.present?}
+
   before_create do |user|
     if user.privacy_settings.empty?
       user.privacy_settings = {
