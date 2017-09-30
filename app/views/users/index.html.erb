@@ -25,7 +25,8 @@
                         <%= display_name(user) if user.privacy_settings["personal"]["name"] || user == current_user || current_user.admin? %>
                         <% if current_user.admin? || current_user == user %>
                           <%= link_to '<button type="button" class="btn btn-secondary"><span class="fa fa-pencil"></span></button>'.html_safe,
-                                      edit_user_profile_path(user) %>
+                                      edit_user_profile_path(user),
+                                      class: "edit-profile-button" %>
                         <% end %>
                       </h3>
                     </div>
