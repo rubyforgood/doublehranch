@@ -24,7 +24,7 @@
     <% end %>
     <p><%= link_to "Greenhouse viewer".html_safe,
                    post_path(Post.first),
-                   class: "btn btn-outline-secondary gallery-additional-button" %></p>
+                   class: "btn btn-outline-secondary gallery-additional-button" if Post.any? %></p>
   </div>
 
   <div class="gallery-photos-tags">
