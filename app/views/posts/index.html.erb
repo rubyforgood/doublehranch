@@ -13,10 +13,18 @@
                          class:"gallery-search-box" %>
       <%= submit_tag "Search", class: "btn btn-primary" %>
       <%= link_to 'Clear', posts_path, class: "btn btn-outline-success" %>
-      <%= link_to "<span class='fa fa-plus'></span><span class='fa fa-camera'></span>".html_safe,
-                  new_post_path,
-                  class: "btn btn-outline-secondary gallery-add-photo-button" %>
     <% end %>
+    <p><%= link_to "<span class='fa fa-plus'></span><span class='fa fa-camera'></span>".html_safe,
+                  new_post_path,
+                  class: "btn btn-outline-secondary gallery-additional-button" %></p>
+    <% if current_user.admin? %>
+      <p><%= link_to "Manage hidden",
+                     hidden_posts_path,
+                     class: "btn btn-outline-warning gallery-additional-button" %></p>
+    <% end %>
+    <p><%= link_to "Greenhouse viewer".html_safe,
+                   post_path(Post.first),
+                   class: "btn btn-outline-secondary gallery-additional-button" %></p>
   </div>
 
   <div class="gallery-photos-tags">
@@ -42,7 +50,3 @@
   <% end %>
   <div class="clearfix"></div>
 </div>
-
-<% if current_user.admin? %>
-    <p><%= link_to "Manage hidden #{Post.model_name.human.pluralize}", hidden_posts_path, class: "btn btn-warning" %></p>
-<% end %>
