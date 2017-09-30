@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User2s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Street address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Zip code</th>
+      <th>Nickname</th>
+      <th>Maiden name</th>
+      <th>Salutation</th>
+      <th>Admin</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Facebook username</th>
+      <th>Twitter handle</th>
+      <th>Instagram username</th>
+      <th>Tumblr name</th>
+      <th>Linkedin username</th>
+      <th>Pinterest name</th>
+      <th>Profile photo</th>
+      <th>Subscribed to alumni newsletter</th>
+      <th>Privacy settings</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user2s.each do |user2| %>
+      <tr>
+        <td><%= user2.first_name %></td>
+        <td><%= user2.last_name %></td>
+        <td><%= user2.street_address %></td>
+        <td><%= user2.city %></td>
+        <td><%= user2.state %></td>
+        <td><%= user2.country %></td>
+        <td><%= user2.zip_code %></td>
+        <td><%= user2.nickname %></td>
+        <td><%= user2.maiden_name %></td>
+        <td><%= user2.salutation %></td>
+        <td><%= user2.admin %></td>
+        <td><%= user2.email %></td>
+        <td><%= user2.phone %></td>
+        <td><%= user2.facebook_username %></td>
+        <td><%= user2.twitter_handle %></td>
+        <td><%= user2.instagram_username %></td>
+        <td><%= user2.tumblr_name %></td>
+        <td><%= user2.linkedin_username %></td>
+        <td><%= user2.pinterest_name %></td>
+        <td><%= user2.profile_photo %></td>
+        <td><%= user2.subscribed_to_alumni_newsletter %></td>
+        <td><%= user2.privacy_settings %></td>
+        <td><%= link_to 'Show', user2 %></td>
+        <td><%= link_to 'Edit', edit_user2_path(user2) %></td>
+        <td><%= link_to 'Destroy', user2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User2', new_user2_path %>

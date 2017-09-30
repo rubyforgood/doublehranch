@@ -1,29 +1,63 @@
-<h2>Sign up</h2>
+<div class="col-md-12">
+  <h1>CREATE USER</h1>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-6">
+        <%= f.input :salutation, required: true %>
+        <%= f.input :first_name, required: true %>
+        <%= f.input :last_name, required: true %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-6">
+        <%= f.input :admin %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-6">
+        <%= f.label :email, required: true %>
+        <%= f.email_field :email, required: true, autofocus: true, class: "form-control" %>
+        <br>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-6">
+        <%= f.label :password, required: true %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, required: true, autocomplete: "off", class: "form-control" %>
+        <br>
+        <%= f.label :password_confirmation, required: true %><br />
+        <%= f.password_field :password_confirmation, required: true, autocomplete: "off", class: "form-control" %>
+        <br><br>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-6 text-center">
+        <div class="actions">
+          <%= f.submit "Sign up", class: "btn btn-success" %>
+        </div>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
