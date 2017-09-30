@@ -1,13 +1,5 @@
 <div class="post-comment">
-  <%= comment.comment %>
-
-  <div class="post-comment-details">
-    <div class="post-comment-details-email">
-      <%= comment.user.email %>
-    </div>
-    <div class="post-comment-details-date">
-      Written <%= time_ago_in_words(comment.created_at) %> ago
-    </div>
-  </div>
+  <%= comment.user.friendly_name %> (<%=
+  time_ago_in_words(comment.created_at) %> ago): <strong><%= comment.comment %></strong>
 </div>
 

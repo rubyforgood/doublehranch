@@ -1,38 +1,59 @@
 <%= render 'layouts/nav' %>
 <div class="post-container">
-  <div>
-    <h3><%= link_to 'Back to Greenhouse', posts_path %></h3>
-  </div>
-  <div class="text-center page-header">
-    <span class="post-tags">
-      <%= link_to 'Hide', hide_post_path(@post), method: :post, class:'btn btn-warning' if current_user.admin? %>
-    </span>
+  <div class="gallery-page-header">
+    <h1>
+      GREENHOUSE VIEWER
+      <%= link_to 'Back to Greenhouse', posts_path, class: "btn btn-outline-secondary" %>
+    </h1>
+    <div class="post-navigation">
+      <%= link_to 'Previous', post_path(@post.previous), class: "btn btn-outline-secondary" if @post.previous %>
+      <%= link_to 'Next', post_path(@post.next), class: "btn btn-outline-secondary" if @post.next %>
+    </div>
   </div>
 
-  <div class="post-navigation">
-    <%= link_to 'Previous', post_path(@post.previous) if @post.previous %>
-    <%= link_to 'Next', post_path(@post.next) if @post.next %>
-  </div>
-  <%= image_tag @post.photo.url %>
-  <div class="post-caption">
-    <%= @post.caption %>
-  </div>
-  <span class="post-tags">
-    Tags: <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t)  }.join(', ')) %>
-  </span>
-  <div class="post-tag-form">
-    <%= render 'tag_form' %>
-  </div>
-  <div class="delete-post">
-    <%= button_to "Delete Post", @post, method: :delete, class: "btn btn-danger" %>
-  </div>
-  <div class="edit-post">
-    <%= button_to "Edit Post", edit_post_path(@post), method: :get, class: "btn btn-warning" %>
-  </div>
-  <div class="post-comments">
-    <%= render @post.comments %>
-    <div class="post-comments-form">
-      <%= render 'comment_form' %>
+  <div class="row col-md-12">
+    <div class="col-md-8">
+      <%= image_tag @post.photo.url %>
+      <!--<div class="col-md-4">-->
+      <div class="text-center page-header">
+        <span class="post-tags">
+          <span class="post-tags">
+            <h5>
+              TAGS:
+              <%= raw(@post.tag_list.map { |t| link_to t, tag_path(t)  }.join(', ')) %>
+            </h5>
+
+          </span>
+          <hr>
+          <div class="post-tag-form">
+            <%= render 'tag_form' %>
+          </div>
+          <hr>
+          <div class="actions">
+            <%= link_to 'Hide', hide_post_path(@post), method: :post, class:'btn btn-warning' if current_user.admin? %>
+            <%= link_to "Delete", @post, method: :delete, class: "btn btn-outline-danger" if (current_user.admin? || @post.user == current_user) && @post.comments.none? %>
+          </div>
+        </span>
+      </div>
+    <!--</div>-->
+    </div>
+    <div class="col-md-4">
+      <div class="post-caption">
+        <h5>
+          <strong><%= link_to("CAPTION: " + @post.caption, edit_post_path(@post)) %></strong>
+        </h5>
+        <hr>
+      </div>
+      <div class="post-comments">
+        <% if @post.comments.any? %>
+          <h5>COMMENTS</h5>
+          <%= render @post.comments %>
+          <hr><br>
+        <% end %>
+        <div class="post-comments-form">
+          <%= render 'comment_form' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

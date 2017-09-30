@@ -18,7 +18,10 @@
           <%= link_to 'Clear', posts_path, class: "btn btn-outline-success" %>
           <%= link_to "<span class='fa fa-plus'></span><span class='fa fa-camera'></span>".html_safe,
                       new_post_path,
-                      class: "btn btn-outline-secondary gallery-add-photo-button" %>
+                      class: "btn btn-outline-secondary gallery-additional-button" %>
+          <%= link_to "Greenhouse viewer".html_safe,
+                         post_path(Post.first),
+                         class: "btn btn-outline-secondary gallery-additional-button" %>
         <% end %>
       </div>
 
