@@ -7,9 +7,9 @@ class PostsController < ApplicationController
     @tags = ActsAsTaggableOn::Tag.most_used(5)
     if params[:tag]
       tagged = Post.tagged_with(params[:tag])
-      @posts = tagged.where(hide: false)
+      @posts = tagged.hidden(false)
     else
-      @posts = Post.where(hide: false)
+      @posts = Post.hidden(false)
     end
   end
 
@@ -74,7 +74,7 @@ class PostsController < ApplicationController
   end
 
   def hidden
-      @posts = Post.where(hide: true)
+      @posts = Post.hidden(true)
   end
 
   def hide

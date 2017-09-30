@@ -8,6 +8,8 @@ class Post < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   validates_attachment_presence :photo
 
+  scope :hidden, -> (hidden) { where('hide = ?', hidden) }
+
   def next
     self.class.where("id > ?", id).first
   end
