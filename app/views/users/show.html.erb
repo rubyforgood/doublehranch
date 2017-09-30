@@ -7,7 +7,8 @@
       <% end %>
       <% if current_user.admin? || current_user == @user %>
         <%= link_to '<button type="button" class="btn btn-secondary"><span class="fa fa-pencil"></button>'.html_safe,
-                    edit_user_profile_path(@user) %>
+                    edit_user_profile_path(@user),
+                    class: "edit-profile-button" %>
       <% end %>
     </h1>
 

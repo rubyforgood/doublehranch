@@ -12,7 +12,7 @@ RSpec.feature('Update user profile') do
       visit root_path
 
       within(:css, '.home-hero-username') do
-        click_link('Update Info')
+        find(:css, '#edit-my-profile-button').click
       end
 
       path = edit_user_profile_path(user)
@@ -42,7 +42,7 @@ RSpec.feature('Update user profile') do
       expect(current_path).to eq(root_path)
 
       within(:css, '.home-hero-username') do
-        click_link('Update Info')
+        find(:css, '#edit-my-profile-button').click
       end
 
       name = find_by_id('user_first_name').value
