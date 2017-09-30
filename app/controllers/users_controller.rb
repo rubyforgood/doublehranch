@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @years = (1992..2018).to_a.reverse!
-    @positions = Position.all
+    @years = (1992..2020).to_a.reverse!
+    @positions = Position.order(:name)
     @users = User.includes(positions_held: [:program, :position]).
                   references(positions_held: [:program, :position])
 
