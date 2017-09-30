@@ -6,45 +6,57 @@
   </div>
   <div class="list-group grapevine-user">
     <% if @users.blank? %>
-        <h4>No profiles that matched your search of:</h4>
-        <ul>
-          <li><strong>Name or email:</strong> <%= params[:search].present? ? params[:search] : "---" %></li>
-          <li><strong>Year:</strong> <%= params[:year].present? ? params[:year] : "---" %></li>
-          <li><strong>Position:</strong> <%= params[:position].present? ? params[:position] : "---" %></li>
-        </ul>
+      <h4>No profiles that matched your search of:</h4>
+      <ul>
+        <li><strong>Name or email:</strong> <%= params[:search].present? ? params[:search] : "---" %></li>
+        <li><strong>Year:</strong> <%= params[:year].present? ? params[:year] : "---" %></li>
+        <li><strong>Position:</strong> <%= params[:position].present? ? params[:position] : "---" %></li>
+      </ul>
     <% else %>
-        <% @users.each do |user| %>
-          <div class="list-group-item list-group-item-action">
+      <% @users.each do |user| %>
+        <div class="list-group-item list-group-item-action">
+          <div class="col-md-12">
             <div class="grapevine-user-main">
-              <%= link_to user_profile_path(user) do %>
-                <div class="grapevine-user-main-photo">
-                  <%= image_tag(user.profile_photo) %>
-                </div>
-                <div class="grapevine-user-main-details">
-                  <div class="grapevine-user-main-name">
-                    <h5 class="mb-1 grapevine-user-name">
-                      <%= display_name(user) if user.privacy_settings["personal"]["name"] || user == current_user || current_user.admin? %>
-                    </h5>
+              <div class="col-md-12">
+                <%= link_to user_profile_path(user) do %>
+                  <div class="grapevine-user-main-details">
+                    <div class="grapevine-user-main-name">
+                      <h3 class="mb-1 grapevine-user-name">
+                        <%= display_name(user) if user.privacy_settings["personal"]["name"] || user == current_user || current_user.admin? %>
+                        <% if current_user.admin? || current_user == @user %>
+                          <%= link_to '<button type="button" class="btn btn-secondary"><span class="fa fa-pencil"></span></button>'.html_safe, edit_user_profile_path(current_user) %>
+                        <% end %>
+                      </h3>
+                    </div>
                   </div>
-                </div>
-              <% end %>
-              <div class="grapevine-user-main-info">
-                <li><%= user.phone if user.privacy_settings["personal"]["phone"] || user == current_user || current_user.admin? %></li>
-                <li><%= mail_to(user.email) if user.privacy_settings["personal"]["email"] || user == current_user || current_user.admin? %></li>
-                <% if user.privacy_settings["personal"]["address"] || user == current_user || current_user.admin? %>
-                  <li><%= user.street_address %></li>
-                  <li><%= display_city_state(user) %></li>
-                  <li><%= user.country %></li>
-                <% end %>
-                <% if current_user.admin? || current_user == @user %>
-                  <%= link_to '<button type="button" class="btn btn-secondary">Update Info</button>'.html_safe, edit_user_profile_path(current_user) %>
                 <% end %>
               </div>
+              <div class="col-4">
+                <%= link_to user_profile_path(user) do %>
+                  <div class="grapevine-user-main-photo">
+                    <%= image_tag(user.profile_photo) %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-4">
+                <div class="grapevine-user-main-info">
+                  <li><%= user.phone if user.privacy_settings["personal"]["phone"] || user == current_user || current_user.admin? %></li>
+                  <li><%= mail_to(user.email) if user.privacy_settings["personal"]["email"] || user == current_user || current_user.admin? %></li>
+                  <% if user.privacy_settings["personal"]["address"] || user == current_user || current_user.admin? %>
+                    <li><%= user.street_address %></li>
+                    <li><%= display_city_state(user) %></li>
+                    <li><%= user.country %></li>
+                  <% end %>
+                  <%= render 'social_media_buttons', user: user %>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <%= render 'positions_held', user: user %>
+              </div>
             </div>
-            <%= render 'social_media_buttons', user: user %>
-            <%= render 'positions_held', user: user %>
           </div>
-        <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
