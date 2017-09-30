@@ -6,33 +6,42 @@
         <%= @user.friendly_name %>'s Profile Page
       <% end %>
       <% if current_user.admin? || current_user == @user %>
-        <%= link_to '<button type="button" class="btn btn-secondary">Update Info</button>'.html_safe, edit_user_profile_path(current_user) %>
+        <%= link_to '<button type="button" class="btn btn-secondary"><span class="fa fa-pencil"></button>'.html_safe, edit_user_profile_path(current_user) %>
       <% end %>
     </h1>
 
     <div class="list-group greenhouse-user">
-      <div class="d-flex w-100 greenhouse-user-main">
-        <%= image_tag(@user.profile_photo) %>
-        <%= render 'social_media_buttons', user: @user %>
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <div class="d-flex w-10 greenhouse-user-main">
+            <%= image_tag(@user.profile_photo) %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <p class="mb-1">
+          <h1>CONTACT INFO</h1>
+          <% if @user.privacy_settings["personal"]["name"] || @user == current_user || current_user.admin? %>
+            <br><%= display_name(@user) %>
+          <% end %>
+          <% if @user.privacy_settings["personal"]["address"] || @user == current_user || current_user.admin? %>
+            <br><%= "#{@user.street_address}" %>
+            <br><%= "#{@user.city}, #{@user.state} #{@user.country}" %>
+          <% end %>
+          <% if @user.privacy_settings["personal"]["email"] || @user == current_user || current_user.admin? %>
+            <br><%= @user.email %>
+          <% end %>
+          <% if @user.privacy_settings["personal"]["phone"] || @user == current_user || current_user.admin? %>
+            <br><%= @user.phone %>
+          <% end %>
+          <%= render 'social_media_buttons', user: @user %>
+          <br>
+          </p>
+          <p class="mb-1">
+          <h1>POSITIONS HELD</h1>
+          <%= render 'positions_held', user: @user %>
+          </p>
+        </div>
       </div>
-      <p class="mb-1">
-        <% if @user.privacy_settings["personal"]["phone"] || @user == current_user || current_user.admin? %>
-          <br><%= @user.phone %>
-        <% end %>
-        <% if @user.privacy_settings["personal"]["email"] || @user == current_user || current_user.admin? %>
-          <br><%= @user.email %>
-        <% end %>
-        <br>
-        <% if @user.privacy_settings["personal"]["name"] || @user == current_user || current_user.admin? %>
-          <br><%= display_name(@user) %>
-        <% end %>
-        <% if @user.privacy_settings["personal"]["address"] || @user == current_user || current_user.admin? %>
-          <br><%= "#{@user.street_address}" %>
-          <br><%= "#{@user.city}, #{@user.state} #{@user.country}" %>
-        <% end %>
-      </p>
-
-      <%= render 'positions_held', user: @user %>
     </div>
   </div>
 </div>

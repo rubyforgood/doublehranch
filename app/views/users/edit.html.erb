@@ -12,6 +12,9 @@
     <%= link_to edit_user_profile_path(current_user, state: 'general') do %>
       <%= image_tag("yellow-arrowhead.svg", class: params[:state].in?([nil, "general"]) ? "active" : "") %>
     <% end %>
+    <%= link_to edit_user_profile_path(current_user, state: 'positions') do %>
+      <%= image_tag("line-detail.svg", class: params[:state].in?([nil, "positions"]) ? "active" : "") %>
+    <% end %>
     <%= link_to edit_user_profile_path(current_user, state: 'photo') do %>
       <%= image_tag("dark-green-arrowhead.svg", class: params[:state] == "photo" ? "active" : "") %>
     <% end %>
@@ -30,6 +33,9 @@
       <%= render "photo" %>
     <% elsif params[:state] == 'password' %>
       <%= render "password" %>
+    <% elsif params[:state] == 'positions' %>
+      <h1>POSITIONS HELD</h1>
+      <%= render "positions_held_form", user: @user %>
     <% else params[:state] == 'general' %>
       <%= render "general" %>
     <% end %>

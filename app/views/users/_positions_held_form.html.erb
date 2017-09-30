@@ -1,0 +1,7 @@
+<%= render "positions_held", user: user %>
+
+<div class="preferences-navigation-footer">
+  <%= link_to "Cancel", root_path, {class: 'btn btn-outline-danger', method: 'get'} %>
+  <%= link_to "New Position held", new_positions_held_path(user: user), {class: 'btn btn-success', method: 'get'} %>
+  <%= link_to "Skip to Photo", edit_user_profile_path(user, state: 'photo'), {class: 'btn btn-outline-secondary', method: 'get'} %>
+</div>
