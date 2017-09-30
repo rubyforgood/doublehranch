@@ -6,12 +6,12 @@
   </div>
 
   <%= form_for @user, url: update_user_profile_path(@user), html: { multipart: true } do |f| %>
-  <%= f.file_field :profile_photo, required: true %> <br /><br />
-  <%= f.submit "<span class='fa fa-plus'></span><span class='fa fa-camera'></span>".html_safe, class: 'btn btn-primary btn-block' %>
+  <%= f.file_field :profile_photo, required: true, class: "btn btn-outline-success" %> <br /><br />
+  <%= f.submit "Upload photo", class: 'btn btn-primary btn-block' %>
   <% end %>
 </div>
 
 <div class="preferences-navigation-footer">
-  <%= link_to "Cancel", root_path, {class: 'btn btn-danger', method: 'get'} %>
-  <%= link_to "Skip to Password", edit_user_profile_path(@user, state: 'password'), {class: 'btn btn-secondary', method: 'get'} %>
+  <%= link_to "Cancel", root_path, {class: 'btn btn-outline-danger', method: 'get'} %>
+  <%= link_to "Skip to Password", edit_user_profile_path(@user, state: 'password'), {class: 'btn btn-outline-secondary', method: 'get'} %>
 </div>

@@ -2,20 +2,25 @@
   <div class="row">
     <div class="col-6">
       <%= f.input :email %>
-      <%= f.input :salutation, collection: User::HONORIFICS, include_blank: false %>
       <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <%= f.input :maiden_name, label: "Maiden name (if applicable)" %>
+      <%= f.input :nickname %>
     </div>
     <div class="col-6">
-      <%= f.input :country, priority: ["US"] %>
+      <%= f.input :salutation, collection: User::HONORIFICS, include_blank: false %>
+      <%= f.input :last_name %>
+      <%= f.input :maiden_name, label: "Maiden name (if different)" %>
+    </div>
+    <div class="col-6">
       <%= f.input :street_address %>
-      <%= f.input :city %>
       <%= f.input :state %>
+    </div>
+    <div class="col-6">
+      <%= f.input :city %>
       <%= f.input :zip_code %>
+      <%= f.input :country, priority: ["US"] %>
     </div>
   </div>
-  <hr>
+
   <div class="row">
     <div class="col-6">
       <%= f.input :facebook_username %>
@@ -28,5 +33,10 @@
       <%= f.input :tumblr_name %>
     </div>
   </div>
-  <%= f.button :submit, "Verify Information" %>
+  <div class="row">
+    <div class="col-12 text-center">
+      <br><br>
+      <%= f.button :submit, "Verify Information", class: "btn btn-success" %>
+    </div>
+  </div>
 <% end %>
