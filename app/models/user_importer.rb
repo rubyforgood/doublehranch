@@ -93,15 +93,29 @@ class UserImporter
       newsletter = privacy_settings["do_not_email"]
 
       user = User.new(
-      email: row["Email"].to_s,
-      first_name: row["First Name"],
-      last_name: row["Last Name"],
-      nickname: row["Nickname"],
-      maiden_name: row["Maiden Name"],
-      salutation: row["Salutation"],
+      email: row["Email"].strip,
+      first_name: row["First Name"].strip,
+      last_name: row["Last Name"].strip,
+      nickname: row["Nickname"].strip,
+      maiden_name: row["Maiden Name"].strip,
+      salutation: row["Salutation"].strip,
       privacy_settings: privacy_settings,
       subscribed_to_alumni_newsletter: newsletter
       )
+
+      existing_user = User.where(email: user.email,
+                                 first_name: user.first_name,
+                                 last_name: user.last_name).last
+      if existing_user
+        new_attributes = {nickname: user.nickname,
+                          maiden_name: user.maiden_name,
+                          salutation: user.salutation}
+        new_attributes.each do |attr|
+          existing_user.update(attr[0].to_sym => attr[1]) if attr[1].present?
+        end
+        user = existing_user
+      end
+
 
       programs = years.map do |year|
         start_date = Date.new(year, 6, 1)
