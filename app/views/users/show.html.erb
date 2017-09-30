@@ -6,7 +6,8 @@
         <%= @user.friendly_name %>'s Profile Page
       <% end %>
       <% if current_user.admin? || current_user == @user %>
-        <%= link_to '<button type="button" class="btn btn-secondary"><span class="fa fa-pencil"></button>'.html_safe, edit_user_profile_path(current_user) %>
+        <%= link_to '<button type="button" class="btn btn-secondary"><span class="fa fa-pencil"></button>'.html_safe,
+                    edit_user_profile_path(@user) %>
       <% end %>
     </h1>
 

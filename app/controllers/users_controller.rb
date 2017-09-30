@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:user_id])
     ['personal', 'social', 'contact', 'camp'].each do |key|
         @user.privacy_settings[key] ||= {}
     end
