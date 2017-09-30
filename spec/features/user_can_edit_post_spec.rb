@@ -11,7 +11,7 @@ describe 'a user can edit a post caption' do
 
   it 'allows user to edit a post caption' do
     visit post_path(@post)
-    click_on 'Edit Post'
+    find(:css, '#edit-caption').click
     expect(current_path).to eq("/posts/#{@post.id}/edit")
     fill_in "caption", with: "replaced"
     click_on 'Submit Edits'
