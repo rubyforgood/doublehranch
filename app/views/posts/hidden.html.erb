@@ -1,6 +1,8 @@
 <%= render 'layouts/nav' %>
 
-<h1>Hidden Posts</h1>
+<div class="gallery-page-header">
+  <h1>Hidden Posts</h1>
+</div>
 
 <%= link_to "Back to displayed #{Post.model_name.human.pluralize}", posts_path if current_user.admin? %>
 
