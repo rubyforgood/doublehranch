@@ -4,9 +4,9 @@ class HomeController < ApplicationController
     @announcements = Announcement.active
 
     if params[:tag]
-      @photos = Post.tagged_with(params[:tag])
+      @photos = Post.hidden(false).tagged_with(params[:tag]).last(10)
     else
-      @photos = Post.all
+      @photos = Post.hidden(false).last(10)
     end
 
     @name = current_user.friendly_name
