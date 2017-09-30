@@ -1,17 +1,21 @@
 <%= render 'layouts/nav' %>
 <div class="gallery-photos">
 
-    <div class="text-center page-header">
-        <h3><%= Post.model_name.human.pluralize %><%= link_to 'Back Home', root_path, class: "gallery-photos-add" %></h3>
-    </div>
-
-  <p><%= link_to "Upload photo", new_post_path, class: "btn btn-primary btn-lg" %></p>
+  <div class="text-center page-header">
+      <h3><%= Post.model_name.human.pluralize %><%= link_to 'Back Home', root_path, class: "gallery-photos-add" %></h3>
+  </div>
 
   <div class="row">
     <%= form_tag(posts_path, :method => "get", id: "search-tags-form") do %>
-      <%= text_field_tag :tag, params[:tag], placeholder: "Search by tag", style:"margin-left:15px;" %>
+      <%= text_field_tag :tag,
+                         params[:tag],
+                         placeholder: "Search by tag",
+                         class:"gallery-search-box" %>
       <%= submit_tag "Search", class: "btn btn-primary" %>
       <%= link_to 'Clear', posts_path, class: "btn btn-outline-success" %>
+      <%= link_to "<span class='fa fa-plus'></span><span class='fa fa-camera'></span>".html_safe,
+                  new_post_path,
+                  class: "btn btn-outline-secondary gallery-add-photo-button" %>
     <% end %>
   </div>
 

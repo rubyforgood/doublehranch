@@ -9,7 +9,7 @@
       </div>
       <div class="home-hero-username">
         <h1>Hi, <%= @name %>!</h1> <br />
-          <%= link_to '<button type="button" class="btn btn-secondary">Update Info</button>'.html_safe, edit_user_profile_path(current_user) %>
+          <%= link_to "<button type='button' class='btn btn-secondary'><span class='fa fa-pencil'></span></button>".html_safe, edit_user_profile_path(current_user) %>
         <br />
       </div>
     </div>

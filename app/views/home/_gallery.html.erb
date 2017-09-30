@@ -7,13 +7,18 @@
   <div class="gallery-container">
     <div class="gallery-left">
       <div class="gallery-photos">
-        <h3><%= link_to 'The Greenhouse', posts_path%><%= link_to '+ Upload Photo', new_post_path, class: "gallery-photos-add" %></h3>
+        <h3><%= link_to 'The Greenhouse', posts_path %></h3>
 
       <div class="row">
         <%= form_tag(posts_path, :method => "get", id: "search-tags-form") do %>
-          <%= text_field_tag :tag, params[:tag], placeholder: "Search by tag", style: "margin-left:15px;" %>
+          <%= text_field_tag :tag, params[:tag],
+                             placeholder: "Search by tag",
+                             class: "gallery-search-box" %>
           <%= submit_tag "Search", class: "btn btn-primary" %>
-          <%= link_to 'Clear', posts_path, class: "btn btn-outline-success"%>
+          <%= link_to 'Clear', posts_path, class: "btn btn-outline-success" %>
+          <%= link_to "<span class='fa fa-plus'></span><span class='fa fa-camera'></span>".html_safe,
+                      new_post_path,
+                      class: "btn btn-outline-secondary gallery-add-photo-button" %>
         <% end %>
       </div>
 
