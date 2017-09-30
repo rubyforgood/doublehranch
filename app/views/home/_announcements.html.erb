@@ -5,7 +5,13 @@
   <% if announcements_present %>
     <ul class="gallery-announcements-list list-group">
       <% @announcements.each do |announcement| %>
-        <li class="gallery-announcements-item list-group-item"><%= announcement.text %></li>
+        <li class="gallery-announcements-item list-group-item">
+          <% if current_user.admin? %>
+            <%= link_to announcement.text, edit_announcement_path(announcement) %>
+          <% else %>
+            <% announcement.text %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   <% else %>
