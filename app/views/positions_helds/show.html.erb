@@ -9,12 +9,12 @@
 
 <p>
   <strong>Position:</strong>
-  <%= @positions_held.position.name %>
+  <%= @positions_held.position.name if @positions_held.position %>
 </p>
 
 <p>
   <strong>Program:</strong>
-  <%= @positions_held.program.name %>
+  <%= @positions_held.program.name if @positions_held.program %>
 </p>
 
 <%= link_to 'Edit', edit_positions_held_path(@positions_held) %> |
