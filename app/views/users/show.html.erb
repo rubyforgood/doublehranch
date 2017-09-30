@@ -1,16 +1,18 @@
 <%= render 'layouts/nav' %>
 <div class="profile-container">
   <div class="profile-info">
-    <h1>
-      <% if @user.privacy_settings["personal"]["name"] || @user == current_user || current_user.admin? %>
-        <%= @user.friendly_name %>'s Profile Page
-      <% end %>
-      <% if current_user.admin? || current_user == @user %>
-        <%= link_to '<button type="button" class="btn btn-secondary"><span class="fa fa-pencil"></button>'.html_safe,
-                    edit_user_profile_path(@user),
-                    class: "edit-profile-button" %>
-      <% end %>
-    </h1>
+    <div class="gallery-page-header">
+      <h1>
+        <% if @user.privacy_settings["personal"]["name"] || @user == current_user || current_user.admin? %>
+          <%= @user.friendly_name %>'s Profile Page
+        <% end %>
+        <% if current_user.admin? || current_user == @user %>
+          <%= link_to '<button type="button" class="btn btn-secondary"><span class="fa fa-pencil"></button>'.html_safe,
+                      edit_user_profile_path(@user),
+                      class: "edit-profile-button" %>
+        <% end %>
+      </h1>
+    </div>
 
     <div class="list-group greenhouse-user">
       <div class="col-md-12">
