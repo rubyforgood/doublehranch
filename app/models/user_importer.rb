@@ -103,6 +103,8 @@ class UserImporter
       subscribed_to_alumni_newsletter: newsletter
       )
 
+      user.skip_confirmation!
+      
       existing_user = User.where(email: user.email,
                                  first_name: user.first_name,
                                  last_name: user.last_name).last
