@@ -2,9 +2,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :user, :label_method => lambda { |user| display_name(user) } %>
-    <%= f.association :position %>
-    <%= f.association :program %>
+    <%= f.association :user,
+                      label_method: lambda { |user| display_name(user) },
+                      collection: User.all.order(:last_name, :nickname, :first_name, :email)
+    %>
+    <%= f.association :position,
+                      collection: Position.all.order(:name)  %>
+    <%= f.association :program,
+                      collection: Program.all.order(:name) %>
   </div>
 
   <div class="form-actions">
