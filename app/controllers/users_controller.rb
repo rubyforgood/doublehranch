@@ -60,6 +60,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def list
+    @years = (1992..2020).to_a.reverse!
+    @positions = Position.order(:name)
+    @users = User.includes(positions_held: [:program, :position]).
+        references(positions_held: [:program, :position])
+
+    if params[:search].present?
+      @users = @users.search(params[:search])
+    end
+
+    if params[:position].present?
+      @users = @users.where("positions.name ilike '%#{params[:position]}%'")
+    end
+
+    if params[:year].present?
+      @users = @users.select{|u| u.years.include?(params[:year].to_i)}
+    end
+  end
+
   def import
     uploaded_file = params[:file]
     importer = UserImporter.new(uploaded_file.path.to_s)

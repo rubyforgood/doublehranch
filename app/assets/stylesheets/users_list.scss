@@ -1,0 +1,9 @@
+.users {
+  &-hidden-detail {
+    color: grey;
+    text-decoration: line-through;
+  }
+  &-display-name {
+    text-wrap: none;
+  }
+}

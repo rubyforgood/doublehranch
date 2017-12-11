@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'posts#index', as: :tag
 
+  get "/users", to: "users#list", as: "list_users"
+
   devise_for :users
   resources :posts do
     get :autocomplete_tag_name, :on => :collection
