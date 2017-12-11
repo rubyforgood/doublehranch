@@ -1,9 +1,9 @@
-class UserPolicy
+class ProgramPolicy
   attr_reader :current_user, :model
 
   def initialize(current_user, model)
     @current_user = current_user
-    @user = model
+    @program = model
   end
 
   def index?
@@ -11,7 +11,7 @@ class UserPolicy
   end
 
   def show?
-    @current_user.admin? or @current_user == @user
+    @current_user.admin?
   end
 
   def update?
@@ -19,11 +19,11 @@ class UserPolicy
   end
 
   def edit?
-    user.admin? || record.user == user
+    user.admin?
   end
 
   def destroy?
-    user.admin? || record.user == user
+    user.admin?
   end
 
   def list?
