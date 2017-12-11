@@ -4,7 +4,9 @@
   <div class="form-inputs">
     <%= f.association :user,
                       label_method: lambda { |user| display_name(user) },
-                      collection: User.all.order(:last_name, :nickname, :first_name, :email)
+                      collection: User.all.order(:last_name, :nickname, :first_name, :email),
+                      selected: @positions_held.user_id || params[:user],
+                      input_html: { value:  @positions_held.user_id || params[:user]}
     %>
     <%= f.association :position,
                       collection: Position.all.order(:name)  %>
