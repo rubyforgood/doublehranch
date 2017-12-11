@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :email_templates
 
   resources :programs
+  resources :positions
   resources :positions_helds
 
 end
