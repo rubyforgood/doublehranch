@@ -1,4 +1,5 @@
-<form id="search-form" class="form-inline mb-2 justify-content-center" action="/profiles" accept-charset="UTF-8" method="get">
+<% is_index = action_name == "index" %>
+<form id="search-form" class="form-inline mb-2 justify-content-center" action="<%= is_index ? "/profiles" : "/users" %>" accept-charset="UTF-8" method="get">
  <div class="form-group">
    <label class="sr-only" for="exampleInputEmail1">Name</label>
    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -25,5 +26,7 @@
    </select>
  </div>
  <button type="submit" class="btn btn-primary ml-2">Search</button>
-<%= link_to 'Clear', user_profiles_path, class: "btn btn-outline-success ml-2" %>
+<%= link_to 'Clear',
+            is_index ? user_profiles_path : list_users_path,
+            class: "btn btn-outline-success ml-2" %>
 </form>
