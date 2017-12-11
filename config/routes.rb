@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   resources :announcements
   resources :comments, only: [:update, :destroy]
   resources :email_templates
+
+  resources :programs
   resources :positions_helds
 
 end

@@ -12,6 +12,7 @@ FactoryGirl.define do
     maiden_name            { Faker::Name.last_name }
     salutation             { User::HONORIFICS.sample }
     password 'hunter2'
+    confirmed_at           { Time.now }
 
     trait :admin do
       sequence(:email) { |n| "admin#{n}@example.com" }
