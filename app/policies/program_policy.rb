@@ -14,29 +14,19 @@ class ProgramPolicy
     @current_user.admin?
   end
 
+  def edit?
+    @current_user.admin?
+  end
+
+  def create?
+    @current_user.admin?
+  end
+
   def update?
     @current_user.admin?
   end
 
-  def edit?
-    user.admin?
-  end
-
   def destroy?
-    user.admin?
+    @current_user.admin?
   end
-
-  def list?
-    user.admin?
-  end
-
-  def upload
-    user.admin?
-  end
-
-  def import
-    user.admin?
-  end
-
-
 end

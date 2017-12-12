@@ -14,29 +14,19 @@ class PositionPolicy
     @current_user.admin?
   end
 
-  def update?
+  def edit?
     @current_user.admin?
   end
 
-  def edit?
+  def create?
+    @current_user.admin?
+  end
+
+  def update?
     @current_user.admin?
   end
 
   def destroy?
     @current_user.admin?
   end
-
-  def list?
-    @current_user.admin?
-  end
-
-  def upload
-    @current_user.admin?
-  end
-
-  def import
-    @current_user.admin?
-  end
-
-
 end
