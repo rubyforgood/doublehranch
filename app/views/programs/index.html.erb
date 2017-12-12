@@ -1,30 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-6">
+              <div class="gallery-page-header">
+                <h3 class="panel-title">Programs</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body text-left">
+          <table class="table table-striped table-bordered table-list">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th class="text-center"><em class="fa fa-cog"></em></th>
+              </tr>
+            </thead>
 
-<h1>Programs</h1>
+            <tbody>
+              <% @programs.each do |program| %>
+                <tr>
+                  <td><%= program.name %></td>
+                  <td><%= program.start_date && program.start_date.to_date %></td>
+                  <td><%= program.end_date && program.end_date.to_date %></td>
+                  <td align="center">
+                    <%= link_to edit_program_path(program) do %>
+                      <i class="btn btn-primary"><em class="fa fa-pencil"></em></i>
+                    <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                    <%= link_to program_path(program), method: :delete do %>
+                      <i class="btn btn-outline-danger"><em class="fa fa-trash"></em></i>
+                    <% end %>
 
-  <tbody>
-    <% @programs.each do |program| %>
-      <tr>
-        <td><%= program.name %></td>
-        <td><%= program.start_date %></td>
-        <td><%= program.end_date %></td>
-        <td><%= link_to 'Show', program %></td>
-        <td><%= link_to 'Edit', edit_program_path(program) %></td>
-        <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <br>
 
