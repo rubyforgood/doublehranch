@@ -1,0 +1,133 @@
+<%= render 'layouts/nav' %>
+<div class="home">
+  <div class="home-hero">
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-6">
+              <div class="text-center gallery-page-header">
+                <h3>Admin panel</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body text-center">
+          <table class="table table-striped table-bordered table-list">
+            <thead>
+            <tr>
+              <th class="text-center">Record</th>
+              <th class="text-center">Count</th>
+              <th class="text-center"><em class="fa fa-cog"></em></th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= link_to(User.model_name.human.pluralize, list_users_path) %></td>
+                <td><%= @user_count %> (active: <%= @active_user_count %>)</td>
+                <td>
+                  <%= link_to new_user_profile_path do %>
+                    <i class="btn btn-primary" title="Create new"><em class="fa fa-plus"></em></i>
+                  <% end %>
+
+                  <%= link_to list_users_path do %>
+                    <i class="btn btn-primary" title="View all"><em class="fa fa-bars"></em></i>
+                  <% end %>
+
+                  <%= link_to list_users_path do %>
+                    <i class="btn btn-primary" title="Grapevine"><em class="fa fa-pagelines"></em></i>
+                  <% end %>
+                </td>
+              </tr>
+
+              <tr>
+                <td><%= link_to(Post.model_name.human.pluralize, positions_helds_path) %></td>
+                <td><%= @greenhouse_post_count %></td>
+                <td>
+                  <%= link_to new_post_path do %>
+                    <i class="btn btn-primary" title="Create new"><em class="fa fa-plus"></em></i>
+                  <% end %>
+
+                  <%= link_to posts_path do %>
+                    <i class="btn btn-primary" title="View all"><em class="fa fa-bars"></em></i>
+                  <% end %>
+
+                  <%= link_to list_users_path do %>
+                    <i class="btn btn-primary" title="Grapevine"><em class="fa fa-pagelines"></em></i>
+                  <% end %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Comments</td>
+                <td><%= @comment_count %></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td><%= link_to(Announcement.model_name.human.pluralize, announcements_path) %></td>
+                <td><%= @announcement_count %> (active: <%= @active_announcement_count %>)</td>
+                <td>
+                  <%= link_to new_announcement_path do %>
+                    <i class="btn btn-primary" title="Create new"><em class="fa fa-plus"></em></i>
+                  <% end %>
+
+                  <%= link_to announcements_path do %>
+                    <i class="btn btn-primary" title="View all"><em class="fa fa-bars"></em></i>
+                  <% end %>
+                </td>
+              </tr>
+
+              <tr>
+                <td><%= link_to(Program.model_name.human.pluralize, programs_path) %></td>
+                <td><%= @program_count %></td>
+                <td>
+                  <%= link_to new_program_path do %>
+                    <i class="btn btn-primary" title="Create new"><em class="fa fa-plus"></em></i>
+                  <% end %>
+
+                  <%= link_to programs_path do %>
+                    <i class="btn btn-primary" title="View all"><em class="fa fa-bars"></em></i>
+                  <% end %>
+                </td>
+              </tr>
+
+              <tr>
+                <td><%= link_to(Position.model_name.human.pluralize + "/Job Titles", positions_path) %></td>
+                <td><%= @positions_count %></td>
+                <td>
+                  <%= link_to new_position_path do %>
+                    <i class="btn btn-primary" title="Create new"><em class="fa fa-plus"></em></i>
+                  <% end %>
+
+                  <%= link_to positions_path do %>
+                    <i class="btn btn-primary" title="View all"><em class="fa fa-bars"></em></i>
+                  <% end %>
+                </td>
+              </tr>
+
+              <tr>
+                <td><%= link_to(PositionsHeld.model_name.human.pluralize, positions_helds_path) %></td>
+                <td><%= @positions_held_count %></td>
+                <td>
+                  <%= link_to new_positions_held_path do %>
+                    <i class="btn btn-primary" title="Create new"><em class="fa fa-plus"></em></i>
+                  <% end %>
+
+                  <%= link_to positions_helds_path do %>
+                    <i class="btn btn-primary" title="View all"><em class="fa fa-bars"></em></i>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
