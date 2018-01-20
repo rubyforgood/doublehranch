@@ -72,7 +72,7 @@
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to rails_routes.destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+        <%= link_to rails_routes.destroy_user_session_path, method: :delete, data: {confirm: 'Are you sure you want to sign out?'}, class: 'nav-link' do %>
           <i class="fa fa-sign-out" aria-hidden="true"></i>
         <% end %>
       </li>
