@@ -46,7 +46,7 @@ heroku buildpacks:add --index 1 https://github.com/ello/heroku-buildpack-imagema
 
 ```
 $ rails console
-r> u = User.new(last_name: "Last", first_name: "First", email: "email@example.com", salutation: "Mrs.", password: "asdflkjasd;flkjasf;")
+r> u = User.new(last_name: "Last", first_name: "First", email: "email@example.com", salutation: "Mrs.", password: "asdflkjasd;flkjasf;", privacy_settings: "")
 r> u.save
 # Pretend to have received the confirmation email
 r> u.confirm
